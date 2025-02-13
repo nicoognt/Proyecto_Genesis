@@ -8,25 +8,35 @@ using namespace std;
 struct producto_con_char{
 	char nombre[255];
 	char categoria[255];
-	char talle[10];
 	char genero[10];
-	int id_producto,stock;
+	int talle_s;
+	int talle_m;
+	int talle_l;
+	int id_producto;
 	float precio;
 };
 
 class Producto {
 public:
 	Producto(const producto_con_char& meg);
-	void reducirStock(int cantidad);
+	
+	void Modificar_S(int cantidad);
+	void Modificar_M(int cantidad);
+	void Modificar_L(int cantidad);
+	
 	string VerNombre();
 	string VerCategoria();
-	string VerTalle();
+	int VerTalleS();
+	int VerTalleM();
+	int VerTalleL();
 	string VerGen();
 	int Ver_id();
-	int VerStock();
 	float VerPrecio();
 private:
-	string nombre,categoria,talle,genero;
+	string nombre,categoria,genero;
+	int talle_s;
+	int talle_m;
+	int talle_l;
 	int id,stock;
 	float precio;
 };

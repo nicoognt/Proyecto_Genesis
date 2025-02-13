@@ -32,27 +32,36 @@ Tienda::Tienda() {
 
 Producto Tienda::MostrarProducto(int i){return lista[i];}
 
-Factura Tienda::RealizarVenta(CarritoDeCompras& carrito){
-	if(carrito.EstaVacio()){
-		cout << "El carrito esta vacio... Llenalo con lo que mas te guste" << endl;
-		return Factura({},0);
-	}
-	
-	float total = carrito.CalcularTotal();
-	auto productos = carrito.ObtenerProductos();
-	
-	for(auto& par : productos){
-		for(auto& p : lista){
-			if(p.Ver_id() == par.first.Ver_id() && p.VerStock() >= par.second){
-				p.reducirStock(par.second);
-			}
-		}
-	}
-	Factura Nueva(productos,total);
-	carrito.Vaciar();
-	
-	return Nueva;
+//Factura Tienda::RealizarVenta(CarritoDeCompras& carrito){
+//	if(carrito.EstaVacio()){
+//		cout << "El carrito esta vacio... Llenalo con lo que mas te guste" << endl;
+//		return Factura({},0);
+//	}
+//	
+//	float total = carrito.CalcularTotal();
+//	auto productos = carrito.ObtenerProductos();
+//	
+//	for(auto& par : productos){
+//		for(auto& p : lista){
+//			if(p.Ver_id() == par.first.Ver_id() && p.VerStock() >= par.second){
+//				p.reducirStock(par.second);
+//			}
+//		}
+//	}
+//	Factura Nueva(productos,total);
+//	carrito.Vaciar();
+//	
+//	return Nueva;
+//}
+
+void Tienda::AgregarProducto(Producto A){
+	lista.push_back(A);
+	sort(lista.begin(),lista.end(),ordenar_producto);
 }
 
 int Tienda::CantidadProductos(){return lista.size();}
+
+bool ordenar_producto(Producto a1,Producto a2){
+	return (a1.VerNombre() < a2.VerNombre());
+}
 
