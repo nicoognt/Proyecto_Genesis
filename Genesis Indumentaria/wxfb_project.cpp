@@ -49,30 +49,6 @@ MyFrame4::MyFrame4( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer6;
 	bSizer6 = new wxBoxSizer( wxVERTICAL );
 	
-	wxBoxSizer* bSizer7;
-	bSizer7 = new wxBoxSizer( wxVERTICAL );
-	
-	m_textCtrl12 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer7->Add( m_textCtrl12, 0, wxALL|wxEXPAND, 5 );
-	
-	
-	bSizer6->Add( bSizer7, 0, wxEXPAND, 5 );
-	
-	wxBoxSizer* bSizer8;
-	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
-	
-	wxBoxSizer* bSizer10;
-	bSizer10 = new wxBoxSizer( wxVERTICAL );
-	
-	m_button2 = new wxButton( this, wxID_ANY, wxT("Búsqueda"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer10->Add( m_button2, 0, wxALL, 5 );
-	
-	
-	bSizer8->Add( bSizer10, 1, wxEXPAND, 5 );
-	
-	
-	bSizer6->Add( bSizer8, 1, wxEXPAND, 5 );
-	
 	
 	this->SetSizer( bSizer6 );
 	this->Layout();

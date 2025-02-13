@@ -19,7 +19,6 @@
 #include <wx/button.h>
 #include <wx/sizer.h>
 #include <wx/frame.h>
-#include <wx/textctrl.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -55,8 +54,6 @@ class MyFrame4 : public wxFrame
 	private:
 	
 	protected:
-		wxTextCtrl* m_textCtrl12;
-		wxButton* m_button2;
 	
 	public:
 		
