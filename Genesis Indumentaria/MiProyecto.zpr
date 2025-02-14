@@ -39,7 +39,7 @@ cursor=22:14
 open=true
 [source]
 path=CarritoDeCompras.cpp
-cursor=58:14
+cursor=23:16
 open=true
 [source]
 path=Factura.cpp
@@ -62,11 +62,11 @@ cursor=41:10
 open=true
 [header]
 path=Tienda.h
-cursor=16:34
+cursor=29:19
 open=true
 [header]
 path=CarritoDeCompras.h
-cursor=18:20
+cursor=7:0
 open=true
 [header]
 path=Factura.h

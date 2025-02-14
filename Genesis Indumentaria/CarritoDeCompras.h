@@ -5,9 +5,15 @@ using namespace std;
 
 class Producto;
 
+
+
 class CarritoDeCompras {
 public:
+	
+	/// El carrito empieza vacío
 	CarritoDeCompras();
+	
+	/// Método para ver si hay productos en el carrito
 	bool EstaVacio();
 	const vector<pair<Producto,int>>& ObtenerProductos();
 	void Agregar(Producto a);
