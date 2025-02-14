@@ -18,12 +18,20 @@ struct producto_con_char{
 
 class Producto {
 public:
-	Producto(const producto_con_char& meg);
 	
+	/** Se define el const. de esta forma para que existan
+	* métodos que exclusivamente importen o exporten desde
+	* un archivo binario.
+	**/
+	Producto(string nom="",string cat="",string gen="",int tS=0,
+			 int tM=0,int tL=0,int Id=0,float p=0);
+	
+	/// Métodos para modificar c/u de los stocks
 	void Modificar_S(int cantidad);
 	void Modificar_M(int cantidad);
 	void Modificar_L(int cantidad);
 	
+	/// Métodos que devuelven todos los datos de un producto
 	string VerNombre();
 	string VerCategoria();
 	int VerTalleS();
@@ -32,13 +40,21 @@ public:
 	string VerGen();
 	int Ver_id();
 	float VerPrecio();
+	
+	/// Método para importar desde un archivo binario
+	void CargarDesdeBin(ifstream& archivo);
+	/// Método para exportar a un archivo binario
+	void SubirEnBin(ofstream& archivo);
+	
 private:
+	
 	string nombre,categoria,genero;
 	int talle_s;
 	int talle_m;
 	int talle_l;
-	int id,stock;
+	int id;
 	float precio;
+	
 };
 
 #endif

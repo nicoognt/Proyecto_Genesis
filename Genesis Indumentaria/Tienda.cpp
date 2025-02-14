@@ -4,30 +4,27 @@
 #include <algorithm>
 #include "Factura.h"
 #include "CarritoDeCompras.h"
+#include <string>
 using namespace std;
 
-Tienda::Tienda() {
-	hombre = mujer = true;
-	ta_s = ta_m = ta_l = false;
-	precio_asc = precio_des = false;
-	estrellas = 1;
-	busqueda = "";
-	
-	fstream datos("lista_de_ropa.bin",ios::binary|ios::in|ios::ate);
-	if(!datos.is_open()) throw runtime_error ("Hubo un problema con abrir el archivo");
-	
-	producto_con_char aux;
-	
-	int cant_productos = datos.tellg()/sizeof(producto_con_char);
-	datos.seekg(0);
-	
-	for(int i=0;i<cant_productos;i++) { 
-		datos.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-		Producto A(aux);
-		lista.push_back(A);
+Tienda::Tienda(string nom) {
+	file_name=nom;
+	ifstream datos(file_name.c_str(),ios::binary|ios::ate);
+	if(datos.is_open()){
+		
+		hombre=mujer=true;
+		ta_s=ta_m=ta_l=false;
+		precio_asc=precio_des=false;
+		
+		int prod_am=datos.tellg()/sizeof(producto_con_char);
+		lista.resize(prod_am);
+		datos.seekg(0,ios::beg);
+		for(int i=0;i<prod_am;i++) { 
+			lista[i].CargarDesdeBin(datos);
+		}
+		datos.close();
+		
 	}
-	
-	datos.close();
 }
 
 Producto Tienda::MostrarProducto(int i){return lista[i];}
