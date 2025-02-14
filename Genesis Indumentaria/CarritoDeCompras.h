@@ -18,8 +18,12 @@ public:
 	void Agregar(Producto a,Tienda& t);
 	void Eliminar(int id,Tienda& t);
 	void Vaciar();
-	void Aumentar(int id);
-	void Disminuir(int id);
+	void Aumentars(int id);
+	void Aumentarm(int id);
+	void Aumentarl(int id);
+	void Disminuirs(int id);
+	void Disminuirm(int id);
+	void Disminuirl(int id);
 	Producto MostrarProducto_C(int i);
 	float CalcularTotal();
 private:

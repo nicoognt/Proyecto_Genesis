@@ -8,8 +8,12 @@ CarritoDeCompras::CarritoDeCompras(){
 }
 
 void CarritoDeCompras::Agregar(Producto a,Tienda& t){
-	pair<Producto,int> b = {a,1};
-	compras.push_back(b);
+	for(int i=0;i<t.CantidadProductos();i++) { 
+		Producto aux= t.MostrarProducto(i);
+		if a.Ver_id()==aux.Ver_id(){
+		}
+	}
+	compras.push_back(a);
 }
 
 bool CarritoDeCompras::EstaVacio(){
@@ -31,10 +35,24 @@ void CarritoDeCompras::Vaciar(){
 	compras.erase(compras.begin(),compras.end());
 }
 
-void CarritoDeCompras::Aumentar(int id){
+void CarritoDeCompras::Aumentars(int id){
 	for(auto pr : compras){ 
 		if(pr.Ver_id() == id){
-			;
+			pr.Modificar_S(1);
+		}
+	}
+}
+void CarritoDeCompras::Aumentarm(int id){
+	for(auto pr : compras){ 
+		if(pr.Ver_id() == id){
+			pr.Modificar_M(1);
+		}
+	}
+}
+void CarritoDeCompras::Aumentarl(int id){
+	for(auto pr : compras){ 
+		if(pr.Ver_id() == id){
+			pr.Modificar_L(1);
 		}
 	}
 }

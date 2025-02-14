@@ -28,7 +28,13 @@ Tienda::Tienda(string nom) {
 	}
 }
 
-Producto Tienda::MostrarProducto(int i){return lista[i];}
+vector<Producto> Tienda::MostrarVector(){
+	return vector<Producto> vector_base;
+}
+
+Producto& Tienda::MostrarProducto(int i){
+	return vector_base[i];
+}
 
 //Factura Tienda::RealizarVenta(CarritoDeCompras& carrito){
 //	if(carrito.EstaVacio()){
@@ -53,11 +59,11 @@ Producto Tienda::MostrarProducto(int i){return lista[i];}
 //}
 
 void Tienda::AgregarProducto(Producto A){
-	lista.push_back(A);
-	sort(lista.begin(),lista.end(),ordenar_producto);
+	vector_base.push_back(A);
+	sort(vector_base.begin(),vector_base.end(),ordenar_producto);
 }
 
-int Tienda::CantidadProductos(){return lista.size();}
+int Tienda::CantidadProductos(){return vector_base.size();}
 
 bool ordenar_producto(Producto a1,Producto a2){
 	return (a1.VerNombre() < a2.VerNombre());

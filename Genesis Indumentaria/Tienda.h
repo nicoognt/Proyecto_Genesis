@@ -13,7 +13,8 @@ class Tienda {
 public:
 	
 	Tienda(string nom);
-	Producto MostrarProducto(int i);
+	vector<Producto> MostrarVector();
+	Producto& MostrarProducto(int i);
 	Factura RealizarVenta(CarritoDeCompras& carrito);
 	void AgregarProducto(Producto A);
 	int CantidadProductos();
