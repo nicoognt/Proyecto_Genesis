@@ -17,11 +17,12 @@ Tienda::Tienda(string nom) {
 		precio_asc=precio_des=false;
 		
 		int prod_am=datos.tellg()/sizeof(producto_con_char);
-		lista.resize(prod_am);
+		vector_base.resize(prod_am);
 		datos.seekg(0,ios::beg);
 		for(int i=0;i<prod_am;i++) { 
-			lista[i].CargarDesdeBin(datos);
+			vector_base[i].CargarDesdeBin(datos);
 		}
+		
 		datos.close();
 		
 	}

@@ -49,9 +49,11 @@ public:
 private:
 	
 	string nombre,categoria,genero;
+	/// Se guarda el stock particular de c/talle
 	int talle_s;
 	int talle_m;
 	int talle_l;
+	
 	int id;
 	float precio;
 	

@@ -23,7 +23,7 @@ private:
 	*	así como el vector contenedor con lo que se va a laburar
 	**/
 	string file_name;
-	vector<Producto> lista;
+	vector<Producto> vector_base;vector<Producto> vector_filtros;
 	
 	bool hombre,mujer;
 	bool ta_s,ta_m,ta_l;

@@ -10,6 +10,7 @@ public:
 	Factura(vector<pair<Producto,int>> items, float total);
 	void ImprimirFactura();
 private:
+	
 	vector<pair<Producto,int>> productosComprados;
 	float totalVenta;
 };
