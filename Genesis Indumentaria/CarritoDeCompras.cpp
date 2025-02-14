@@ -1,12 +1,13 @@
 #include "CarritoDeCompras.h"
 #include "Producto.h"
+#include "Tienda.h"
 #include <vector>
 using namespace std;
 
 CarritoDeCompras::CarritoDeCompras(){
 }
 
-void CarritoDeCompras::Agregar(Producto a){
+void CarritoDeCompras::Agregar(Producto a,Tienda& t){
 	pair<Producto,int> b = {a,1};
 	compras.push_back(b);
 }
@@ -15,9 +16,9 @@ bool CarritoDeCompras::EstaVacio(){
 	return compras.empty();
 }
 
-const vector<pair<Producto,int>>& CarritoDeCompras::ObtenerProductos(){return compras;}
+const vector<Producto>& CarritoDeCompras::ObtenerProductos(){return compras;}
 
-void CarritoDeCompras::Eliminar(int id){
+void CarritoDeCompras::Eliminar(int id,Tienda& t){
 	for(size_t i=0;i<compras.size();i++) { 
 		if(compras[i].first.Ver_id() == id){
 			auto it = compras.begin()+i;
@@ -31,9 +32,9 @@ void CarritoDeCompras::Vaciar(){
 }
 
 void CarritoDeCompras::Aumentar(int id){
-	for(size_t i=0;i<compras.size();i++) { 
-		if(compras[i].first.Ver_id() == id){
-			compras[i].second++;
+	for(auto pr : compras){ 
+		if(pr.Ver_id() == id){
+			;
 		}
 	}
 }
@@ -49,12 +50,12 @@ void CarritoDeCompras::Disminuir(int id){
 	}
 }
 
-pair<Producto,int> CarritoDeCompras::MostrarCompra(int i){return compras[i];}
+Producto CarritoDeCompras::MostrarProducto_C(int i){return compras[i];}
 
 float CarritoDeCompras::CalcularTotal(){
 	float total = 0;
-	for(size_t i=0;i<compras.size();i++) { 
-		total += compras[i].first.VerPrecio() * compras[i].second;
+	for(auto p : compras) { 
+		total += p.VerPrecio()*(p.VerTalleS()+p.VerTalleM()+p.VerTalleL());
 	}
 	return total;
 }
