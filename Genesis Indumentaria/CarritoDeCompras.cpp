@@ -8,19 +8,24 @@ CarritoDeCompras::CarritoDeCompras(){
 }
 
 void CarritoDeCompras::Agregar(Producto a,Tienda& t){
-	for(int i=0;i<t.CantidadProductos();i++) { 
-		Producto aux= t.MostrarProducto(i);
-		if a.Ver_id()==aux.Ver_id(){
+	
+	vector<Producto>* vec = t.MostrarVector();
+	for(auto p : vec){
+		if(a.Ver_id()==p.Ver_id()){
+			p.Modificar_S(-a.VerTalleS());
+			p.Modificar_M(-a.VerTalleM());
+			p.Modificar_L(-a.VerTalleL());
 		}
 	}
 	compras.push_back(a);
+	
 }
 
 bool CarritoDeCompras::EstaVacio(){
 	return compras.empty();
 }
 
-const vector<Producto>& CarritoDeCompras::ObtenerProductos(){return compras;}
+vector<Producto>& CarritoDeCompras::ObtenerProductos(){return compras;}
 
 void CarritoDeCompras::Eliminar(int id,Tienda& t){
 	for(size_t i=0;i<compras.size();i++) { 

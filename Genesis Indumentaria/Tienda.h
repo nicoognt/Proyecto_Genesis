@@ -7,13 +7,12 @@
 using namespace std;
 
 class Producto;
-struct
 
 class Tienda {
 public:
 	
 	Tienda(string nom);
-	vector<Producto> MostrarVector();
+	vector<Producto>* MostrarVector();
 	Producto& MostrarProducto(int i);
 	Factura RealizarVenta(CarritoDeCompras& carrito);
 	void AgregarProducto(Producto A);
