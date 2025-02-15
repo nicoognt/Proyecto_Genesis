@@ -16,7 +16,7 @@ tab_use_spaces=0
 explorer_path=.
 inspection_improving_template=wxString|>printf "%ls",${EXP}.m_impl._M_data()
 inherits_from=
-current_source=CarritoDeCompras.cpp
+current_source=Tienda.cpp
 path_char=\
 [source]
 path=Application.cpp
@@ -35,7 +35,7 @@ cursor=23:21
 open=true
 [source]
 path=Tienda.cpp
-cursor=30:17
+cursor=43:3
 open=true
 [source]
 path=CarritoDeCompras.cpp

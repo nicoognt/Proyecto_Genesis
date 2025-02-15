@@ -36,7 +36,7 @@ Producto& Tienda::MostrarProducto(int i){
 	return vector_base[i];
 }
 
-//Factura Tienda::RealizarVenta(CarritoDeCompras& carrito){
+// Factura Tienda::RealizarVenta(CarritoDeCompras& carrito){
 //	if(carrito.EstaVacio()){
 //		cout << "El carrito esta vacio... Llenalo con lo que mas te guste" << endl;
 //		return Factura({},0);
