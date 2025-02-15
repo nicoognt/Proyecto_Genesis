@@ -28,8 +28,8 @@ Tienda::Tienda(string nom) {
 	}
 }
 
-vector<Producto>* Tienda::MostrarVector(){
-	return vector<Producto> vector_base;
+vector<Producto*> Tienda::MostrarVector(){
+	return  vector_base;
 }
 
 Producto& Tienda::MostrarProducto(int i){

@@ -25,12 +25,8 @@ public:
 	void Vaciar();
 	
 	/// Aumentar o disminuir cuántas unidades se llevan de c/talle.
-	void Aumentars(int id);
-	void Aumentarm(int id);
-	void Aumentarl(int id);
-	void Disminuirs(int id);
-	void Disminuirm(int id);
-	void Disminuirl(int id);
+	void Aumentar(int pos, Tienda &t);
+	void Disminuir (int pos, Tienda &t);
 	
 	
 	Producto MostrarProducto_C(int i);
