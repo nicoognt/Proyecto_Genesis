@@ -11,55 +11,45 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
-#include <wx/stattext.h>
+#include <wx/textctrl.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/button.h>
 #include <wx/sizer.h>
+#include <wx/button.h>
+#include <wx/grid.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class wxfbExample
+/// Class ventanuli
 ///////////////////////////////////////////////////////////////////////////////
-class wxfbExample : public wxFrame 
+class ventanuli : public wxFrame 
 {
 	private:
 	
 	protected:
-		wxStaticText* m_staticText1;
-		wxButton* m_button1;
+		wxTextCtrl* BarraBusqueda;
+		wxButton* BotonBuscar;
+		wxGrid* grilla;
+		wxButton* VerCarro;
+		wxButton* VerFiltros;
 		
 		// Virtual event handlers, overide them in your derived class
-		virtual void OnButtonClose( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_buscar( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Casilla_ClicDerecho( wxGridEvent& event ) { event.Skip(); }
+		virtual void Clic_VerCarro( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
 		
-		wxfbExample( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("T"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 599,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		
-		~wxfbExample();
-	
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class MyFrame4
-///////////////////////////////////////////////////////////////////////////////
-class MyFrame4 : public wxFrame 
-{
-	private:
-	
-	protected:
-	
-	public:
-		
-		MyFrame4( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
-		
-		~MyFrame4();
+		~ventanuli();
 	
 };
 

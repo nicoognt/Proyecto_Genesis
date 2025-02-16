@@ -7,6 +7,10 @@ class Producto;
 class Tienda;
 
 class CarritoDeCompras {
+private:
+	
+	vector<Producto> compras;
+	
 public:
 	
 	/// El carrito empieza vacío.
@@ -18,22 +22,19 @@ public:
 	
 	/// Agregar o eliminar productos al carrito, y modificar el stock original
 	/// de la tienda.
-	void Agregar(Producto a,Tienda& t);
-	void Eliminar(int id,Tienda& t);
+	void Agregar(Producto a);
+	void Eliminar(int id);
 	
 	/// Método para vaciar el vector de carrito.
 	void Vaciar();
 	
 	/// Aumentar o disminuir cuántas unidades se llevan de c/talle.
-	void Aumentar(int pos, Tienda &t);
-	void Disminuir (int pos, Tienda &t);
+	void Aumentar(int pos);
+	void Disminuir (int pos);
 	
-	
-	Producto MostrarProducto_C(int i);
+	Producto VerProducto(int id);
 	float CalcularTotal();
 	
-private:
-	vector<Producto> compras;
 };
 
 #endif

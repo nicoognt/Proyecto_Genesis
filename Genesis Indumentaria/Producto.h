@@ -17,6 +17,17 @@ struct producto_con_char{
 };
 
 class Producto {
+private:
+	
+	string nombre,categoria,genero;
+	/// Se guarda el stock particular de c/talle
+	int talle_s;
+	int talle_m;
+	int talle_l;
+	
+	int id;
+	float precio;
+	
 public:
 	
 	/** Se define el const. de esta forma para que existan
@@ -45,17 +56,6 @@ public:
 	void CargarDesdeBin(ifstream& archivo);
 	/// Método para exportar a un archivo binario
 	void SubirEnBin(ofstream& archivo);
-	
-private:
-	
-	string nombre,categoria,genero;
-	/// Se guarda el stock particular de c/talle
-	int talle_s;
-	int talle_m;
-	int talle_l;
-	
-	int id;
-	float precio;
 	
 };
 

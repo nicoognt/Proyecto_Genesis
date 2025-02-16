@@ -9,15 +9,6 @@ using namespace std;
 class Producto;
 
 class Tienda {
-public:
-	
-	Tienda(string nom);
-	vector<Producto*> MostrarVector();
-	Producto& MostrarProducto(int i);
-	Factura RealizarVenta(CarritoDeCompras& carrito);
-	void AgregarProducto(Producto A);
-	int CantidadProductos();
-	
 private:
 	
 	/** Similar al ejemplo de la agenda: nombre del archivo para importar y exportar datos
@@ -26,12 +17,27 @@ private:
 	string file_name;
 	vector<Producto> vector_base;vector<Producto> vector_filtros;
 	
-	/// Puede llegar a no servir que esté acá
-	bool hombre,mujer;
-	bool ta_s,ta_m,ta_l;
-	bool precio_asc,precio_des;
+	/// ¡La tienda tiene un carrito ahora! :0
+	CarritoDeCompras carrito;
+	
+public:
+	
+	/// El constructor recibe un nombre para abrir el archivo donde se encuentren los datos
+	Tienda(string nom);
+	
+	/// Retornar un elemento cuando se lo muestre en la interfaz
+	Producto MostrarProducto(int i);
+	
+	/// Agregar un producto a la tienda y guardarlo en el .dat
+	void AgregarProducto(Producto A);
+	
+	/// Cuántos productos hay en la tienda
+	int CantidadProductos();
+	
+	/// Métodos para actualizar el carrito de compras
 	
 };
+
 /// Diferentes criterios de comparacion para ordenar el vector de productos.
 bool orden_alfabetico(Producto a1,Producto a2);
 

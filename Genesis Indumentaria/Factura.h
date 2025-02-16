@@ -6,13 +6,13 @@ using namespace std;
 class Producto;
 
 class Factura {
-public:
-	Factura(vector<pair<Producto,int>> items, float total);
-	void ImprimirFactura();
 private:
 	
 	vector<pair<Producto,int>> productosComprados;
 	float totalVenta;
+public:
+	Factura(vector<pair<Producto,int>> items, float total);
+	void ImprimirFactura();
 };
 
 #endif
