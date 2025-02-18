@@ -34,7 +34,7 @@ class ventanuli : public wxFrame
 	protected:
 		wxTextCtrl* BarraBusqueda;
 		wxButton* BotonBuscar;
-		wxGrid* grilla;
+		wxGrid* Grilla_Productos;
 		wxButton* VerCarro;
 		wxButton* VerFiltros;
 		
@@ -47,7 +47,7 @@ class ventanuli : public wxFrame
 	
 	public:
 		
-		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("T"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 599,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Lista de productos"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 530,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		
 		~ventanuli();
 	

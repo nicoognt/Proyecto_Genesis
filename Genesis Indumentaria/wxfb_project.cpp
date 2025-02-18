@@ -44,40 +44,38 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 	
-	grilla = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	Grilla_Productos = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
-	grilla->CreateGrid( 5, 4 );
-	grilla->EnableEditing( false );
-	grilla->EnableGridLines( true );
-	grilla->EnableDragGridSize( false );
-	grilla->SetMargins( 0, 0 );
+	Grilla_Productos->CreateGrid( 0, 3 );
+	Grilla_Productos->EnableEditing( false );
+	Grilla_Productos->EnableGridLines( true );
+	Grilla_Productos->EnableDragGridSize( false );
+	Grilla_Productos->SetMargins( 0, 0 );
 	
 	// Columns
-	grilla->SetColSize( 0, 168 );
-	grilla->SetColSize( 1, 103 );
-	grilla->SetColSize( 2, 80 );
-	grilla->SetColSize( 3, 80 );
-	grilla->EnableDragColMove( false );
-	grilla->EnableDragColSize( true );
-	grilla->SetColLabelSize( 30 );
-	grilla->SetColLabelValue( 0, wxT("Nombre") );
-	grilla->SetColLabelValue( 1, wxT("Categoria") );
-	grilla->SetColLabelValue( 2, wxT("Stock disp.") );
-	grilla->SetColLabelValue( 3, wxT("Precio p/u") );
-	grilla->SetColLabelValue( 4, wxEmptyString );
-	grilla->SetColLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
+	Grilla_Productos->SetColSize( 0, 205 );
+	Grilla_Productos->SetColSize( 1, 120 );
+	Grilla_Productos->SetColSize( 2, 94 );
+	Grilla_Productos->EnableDragColMove( false );
+	Grilla_Productos->EnableDragColSize( true );
+	Grilla_Productos->SetColLabelSize( 30 );
+	Grilla_Productos->SetColLabelValue( 0, wxT("Nombre") );
+	Grilla_Productos->SetColLabelValue( 1, wxT("Stock disp.") );
+	Grilla_Productos->SetColLabelValue( 2, wxT("Precio p/u") );
+	Grilla_Productos->SetColLabelValue( 3, wxEmptyString );
+	Grilla_Productos->SetColLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
 	
 	// Rows
-	grilla->EnableDragRowSize( true );
-	grilla->SetRowLabelSize( 80 );
-	grilla->SetRowLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
+	Grilla_Productos->EnableDragRowSize( true );
+	Grilla_Productos->SetRowLabelSize( 80 );
+	Grilla_Productos->SetRowLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
 	
 	// Label Appearance
 	
 	// Cell Defaults
-	grilla->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
-	bSizer4->Add( grilla, 1, wxALL|wxEXPAND, 5 );
+	Grilla_Productos->SetDefaultCellAlignment( wxALIGN_LEFT, wxALIGN_TOP );
+	bSizer4->Add( Grilla_Productos, 1, wxALL|wxEXPAND, 5 );
 	
 	
 	bSizer3->Add( bSizer4, 1, wxEXPAND, 5 );
@@ -102,7 +100,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	// Connect Events
 	BotonBuscar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_buscar ), NULL, this );
-	grilla->Connect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
+	Grilla_Productos->Connect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
 	VerCarro->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 }
@@ -111,7 +109,7 @@ ventanuli::~ventanuli()
 {
 	// Disconnect Events
 	BotonBuscar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_buscar ), NULL, this );
-	grilla->Disconnect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
+	Grilla_Productos->Disconnect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
 	VerCarro->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 	

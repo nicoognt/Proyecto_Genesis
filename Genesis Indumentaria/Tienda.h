@@ -23,7 +23,7 @@ private:
 public:
 	
 	/// El constructor recibe un nombre para abrir el archivo donde se encuentren los datos
-	Tienda(string nom);
+	Tienda(string nom="Productos_Genesis.dat");
 	
 	/// Retornar un elemento cuando se lo muestre en la interfaz
 	Producto MostrarProducto(int i);
