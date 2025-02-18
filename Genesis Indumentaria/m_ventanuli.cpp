@@ -3,6 +3,8 @@
 #include <wx/regex.h>
 #include <wx/wx.h>
 #include <string>
+#include <iomanip>
+#include <sstream>
 
 #include "Tienda.h"
 #include "Producto.h"
@@ -24,7 +26,9 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 		Grilla_Productos->SetCellValue(i,1,text);
 		text.Clear();
 		
-		text<<"$"<<a.VerPrecio();
+		stringstream ss;
+		ss<<fixed<<setprecision(2)<<a.VerPrecio();
+		text<<"$"<<ss.str();
 		Grilla_Productos->SetCellValue(i,2,text);
 		text.Clear();
 		
@@ -32,12 +36,12 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	
 }
 
-void m_ventanuli::m_buscar( wxCommandEvent& event )  {
+void m_ventanuli::m_buscar( wxCommandEvent& event ){
 	/// wxString para obtener lo que hay en la barra de busqueda
 	wxString texto=BarraBusqueda->GetValue();
 	
 	/// Patron regular para filtrar texto válido o no
-	wxRegEx _reg("^[a-zA-Z0-9]*$]");
+	wxRegEx _reg("^[a-zA-Z0-9]*$");
 	
 	if(!_reg.Matches(texto)){
 		wxMessageBox("Los caracteres especiales (¡!,&,@...) no están permitidos.","Advertencia",wxOK|wxICON_WARNING);
@@ -54,24 +58,27 @@ void m_ventanuli::m_buscar( wxCommandEvent& event )  {
 			}
 		}
 		
-		for(size_t i=0;i<aux.size();i++){
-			wxString string_celda;
-			
-			/// Seteo el nombre, stock disponible y precio p/u de c/producto
-			string_celda<<aux[i].VerNombre();
-			Grilla_Productos->SetCellValue(i,0,string_celda);
-			string_celda.Clear();
-			
-			string_celda<<(aux[i].VerTalleS()+aux[i].VerTalleM()+aux[i].VerTalleL())<<" unidades";
-			Grilla_Productos->SetCellValue(i,1,string_celda);
-			string_celda.Clear();
-			
-			string_celda<<"$"<<aux[i].VerPrecio();
-			Grilla_Productos->SetCellValue(i,2,string_celda);
-			string_celda.Clear();
+		if(aux.empty()){
+			wxMessageBox("No se encontró el producto en la tienda","Algo fue mal...",wxOK|wxICON_INFORMATION);
+		}else{
+			for(size_t i=0;i<aux.size();i++){
+				wxString string_celda;
+				
+				/// Seteo el nombre, stock disponible y precio p/u de c/producto
+				string_celda<<aux[i].VerNombre();
+				Grilla_Productos->SetCellValue(i,0,string_celda);
+				string_celda.Clear();
+				
+				string_celda<<(aux[i].VerTalleS()+aux[i].VerTalleM()+aux[i].VerTalleL())<<" unidades";
+				Grilla_Productos->SetCellValue(i,1,string_celda);
+				string_celda.Clear();
+				
+				string_celda<<"$"<<aux[i].VerPrecio();
+				Grilla_Productos->SetCellValue(i,2,string_celda);
+				string_celda.Clear();
+			}
 		}
 	}
-
 }
 
 void m_ventanuli::Casilla_ClicDerecho( wxGridEvent& event )  {

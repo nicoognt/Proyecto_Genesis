@@ -6,8 +6,10 @@
 #include "CarritoDeCompras.h"
 #include <string>
 using namespace std;
+void cargar_prueba(string n);
 
 Tienda::Tienda(string nom){
+	cargar_prueba(nom);
 	file_name=nom;
 	ifstream datos(file_name.c_str(),ios::binary|ios::ate);
 	if(datos.is_open()){
