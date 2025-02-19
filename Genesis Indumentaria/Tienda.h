@@ -15,7 +15,7 @@ private:
 	*	así como el vector contenedor con lo que se va a laburar
 	**/
 	string file_name;
-	vector<Producto> vector_base;vector<Producto> vector_filtros;
+	vector<Producto> vector_base; vector<Producto> vector_filtros;
 	
 	/// ¡La tienda tiene un carrito ahora! :0
 	CarritoDeCompras carrito;
@@ -34,8 +34,8 @@ public:
 	/// Cuántos productos hay en la tienda
 	int CantidadProductos();
 	
-	/// Métodos para actualizar el carrito de compras
-	
+	/// Método para ordenar el vector
+	void OrdenarVector();
 };
 
 /// Diferentes criterios de comparacion para ordenar el vector de productos.
@@ -46,4 +46,8 @@ bool orden_precioAsc(Producto a1,Producto a2);
 bool orden_precioDes(Producto a1,Producto a2);
 
 #endif
+
+
+
+
 

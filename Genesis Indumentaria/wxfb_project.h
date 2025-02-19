@@ -34,20 +34,21 @@ class ventanuli : public wxFrame
 	protected:
 		wxTextCtrl* BarraBusqueda;
 		wxButton* BotonBuscar;
+		wxButton* BotonRefrescar;
 		wxGrid* Grilla_Productos;
 		wxButton* VerCarro;
 		wxButton* VerFiltros;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void m_buscar( wxCommandEvent& event ) { event.Skip(); }
-		virtual void Casilla_ClicDerecho( wxGridEvent& event ) { event.Skip(); }
+		virtual void m_recargar( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerCarro( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
 		
-		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Lista de productos"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 530,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Lista de productos"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 606,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		
 		~ventanuli();
 	

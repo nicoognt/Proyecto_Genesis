@@ -30,10 +30,13 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer5->Add( bSizer6, 1, wxEXPAND, 5 );
 	
 	wxBoxSizer* bSizer8;
-	bSizer8 = new wxBoxSizer( wxVERTICAL );
+	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
 	
 	BotonBuscar = new wxButton( this, wxID_ANY, wxT("Buscar"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer8->Add( BotonBuscar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	BotonRefrescar = new wxButton( this, wxID_ANY, wxT("Recargar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer8->Add( BotonRefrescar, 0, wxALL, 5 );
 	
 	
 	bSizer5->Add( bSizer8, 0, wxEXPAND, 5 );
@@ -47,23 +50,24 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	Grilla_Productos = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
 	
 	// Grid
-	Grilla_Productos->CreateGrid( 0, 3 );
+	Grilla_Productos->CreateGrid( 0, 4 );
 	Grilla_Productos->EnableEditing( false );
 	Grilla_Productos->EnableGridLines( true );
 	Grilla_Productos->EnableDragGridSize( false );
 	Grilla_Productos->SetMargins( 0, 0 );
 	
 	// Columns
-	Grilla_Productos->SetColSize( 0, 205 );
+	Grilla_Productos->SetColSize( 0, 198 );
 	Grilla_Productos->SetColSize( 1, 120 );
 	Grilla_Productos->SetColSize( 2, 94 );
+	Grilla_Productos->SetColSize( 3, 92 );
 	Grilla_Productos->EnableDragColMove( false );
 	Grilla_Productos->EnableDragColSize( true );
 	Grilla_Productos->SetColLabelSize( 30 );
 	Grilla_Productos->SetColLabelValue( 0, wxT("Nombre") );
 	Grilla_Productos->SetColLabelValue( 1, wxT("Stock disp.") );
 	Grilla_Productos->SetColLabelValue( 2, wxT("Precio p/u") );
-	Grilla_Productos->SetColLabelValue( 3, wxEmptyString );
+	Grilla_Productos->SetColLabelValue( 3, wxT("ID") );
 	Grilla_Productos->SetColLabelAlignment( wxALIGN_CENTRE, wxALIGN_CENTRE );
 	
 	// Rows
@@ -100,7 +104,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	// Connect Events
 	BotonBuscar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_buscar ), NULL, this );
-	Grilla_Productos->Connect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
+	BotonRefrescar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_recargar ), NULL, this );
 	VerCarro->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 }
@@ -109,7 +113,7 @@ ventanuli::~ventanuli()
 {
 	// Disconnect Events
 	BotonBuscar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_buscar ), NULL, this );
-	Grilla_Productos->Disconnect( wxEVT_GRID_CELL_RIGHT_CLICK, wxGridEventHandler( ventanuli::Casilla_ClicDerecho ), NULL, this );
+	BotonRefrescar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_recargar ), NULL, this );
 	VerCarro->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 	

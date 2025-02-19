@@ -33,6 +33,9 @@ Producto Tienda::MostrarProducto(int i){
 
 void Tienda::AgregarProducto(Producto A){
 	vector_base.push_back(A);
+}
+
+void Tienda::OrdenarVector ( ) {
 	sort(vector_base.begin(),vector_base.end(),orden_alfabetico);
 }
 
