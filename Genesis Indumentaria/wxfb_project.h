@@ -65,17 +65,17 @@ class dialogo : public wxDialog
 	
 	protected:
 		wxStaticText* m_staticText1;
-		wxTextCtrl* m_textCtrl2;
+		wxTextCtrl* barra_Nombre;
 		wxStaticText* m_staticText6;
-		wxTextCtrl* m_textCtrl6;
+		wxTextCtrl* barra_Categoria;
 		wxStaticText* m_staticText3;
-		wxTextCtrl* m_textCtrl3;
+		wxTextCtrl* barra_TalleS;
 		wxStaticText* m_staticText4;
-		wxTextCtrl* m_textCtrl4;
+		wxTextCtrl* barra_TalleM;
 		wxStaticText* m_staticText5;
-		wxTextCtrl* m_textCtrl5;
+		wxTextCtrl* barra_TalleL;
 		wxStaticText* m_staticText7;
-		wxTextCtrl* m_textCtrl7;
+		wxTextCtrl* barra_Precio;
 	
 	public:
 		

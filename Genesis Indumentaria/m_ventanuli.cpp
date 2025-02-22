@@ -9,6 +9,7 @@
 #include "Tienda.h"
 #include "Producto.h"
 #include <algorithm>
+#include "dialogo.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
@@ -176,10 +177,17 @@ void m_ventanuli::OnEliminar (wxCommandEvent & event) {
 	wxMessageBox("Opcion de eliminar seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
 void m_ventanuli::OnModificar (wxCommandEvent & event) {
-	wxMessageBox("Opcion de editar seleccionada","Epico",wxOK|wxICON_INFORMATION);
+	wxMessageBox("Opcion de modificar seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
 void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
-	wxMessageBox("Opcion de ver stock seleccionada","Epico",wxOK|wxICON_INFORMATION);
+	
+	int fila = Grilla_Productos->GetGridCursorRow();
+	if(fila==-1) return;
+	
+	d_Detalles* dlg = new d_Detalles(this,genesis->MostrarProducto(fila));
+	dlg->ShowModal();
+	dlg->Destroy();
+	
 }
 void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	wxMessageBox("Opcion de agregar seleccionada","Epico",wxOK|wxICON_INFORMATION);}

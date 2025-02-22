@@ -134,22 +134,23 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	m_staticText1->Wrap( -1 );
 	bSizer8->Add( m_staticText1, 0, wxALL, 5 );
 	
-	m_textCtrl2 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl2->Enable( false );
-	m_textCtrl2->SetMinSize( wxSize( 300,25 ) );
-	m_textCtrl2->SetMaxSize( wxSize( 300,25 ) );
+	barra_Nombre = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_Nombre->Enable( false );
+	barra_Nombre->SetMinSize( wxSize( 300,25 ) );
+	barra_Nombre->SetMaxSize( wxSize( 300,25 ) );
 	
-	bSizer8->Add( m_textCtrl2, 0, wxALL, 5 );
+	bSizer8->Add( barra_Nombre, 0, wxALL, 5 );
 	
 	m_staticText6 = new wxStaticText( this, wxID_ANY, wxT("Categoría:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText6->Wrap( -1 );
 	bSizer8->Add( m_staticText6, 0, wxALL, 5 );
 	
-	m_textCtrl6 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl6->Enable( false );
-	m_textCtrl6->SetMinSize( wxSize( 150,25 ) );
+	barra_Categoria = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_Categoria->Enable( false );
+	barra_Categoria->SetMinSize( wxSize( 300,25 ) );
+	barra_Categoria->SetMaxSize( wxSize( 300,25 ) );
 	
-	bSizer8->Add( m_textCtrl6, 0, wxALL, 5 );
+	bSizer8->Add( barra_Categoria, 0, wxALL, 5 );
 	
 	
 	bSizer7->Add( bSizer8, 0, wxEXPAND, 5 );
@@ -164,12 +165,12 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	m_staticText3->Wrap( -1 );
 	bSizer10->Add( m_staticText3, 0, wxALL, 5 );
 	
-	m_textCtrl3 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl3->Enable( false );
-	m_textCtrl3->SetMinSize( wxSize( -1,25 ) );
-	m_textCtrl3->SetMaxSize( wxSize( -1,25 ) );
+	barra_TalleS = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleS->Enable( false );
+	barra_TalleS->SetMinSize( wxSize( -1,25 ) );
+	barra_TalleS->SetMaxSize( wxSize( -1,25 ) );
 	
-	bSizer10->Add( m_textCtrl3, 0, wxALL, 5 );
+	bSizer10->Add( barra_TalleS, 0, wxALL, 5 );
 	
 	
 	bSizer9->Add( bSizer10, 1, 0, 5 );
@@ -181,12 +182,12 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	m_staticText4->Wrap( -1 );
 	bSizer11->Add( m_staticText4, 0, wxALL, 5 );
 	
-	m_textCtrl4 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl4->Enable( false );
-	m_textCtrl4->SetMinSize( wxSize( -1,25 ) );
-	m_textCtrl4->SetMaxSize( wxSize( -1,25 ) );
+	barra_TalleM = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleM->Enable( false );
+	barra_TalleM->SetMinSize( wxSize( -1,25 ) );
+	barra_TalleM->SetMaxSize( wxSize( -1,25 ) );
 	
-	bSizer11->Add( m_textCtrl4, 0, wxALL, 5 );
+	bSizer11->Add( barra_TalleM, 0, wxALL, 5 );
 	
 	
 	bSizer9->Add( bSizer11, 1, 0, 5 );
@@ -198,12 +199,12 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	m_staticText5->Wrap( -1 );
 	bSizer12->Add( m_staticText5, 0, wxALL, 5 );
 	
-	m_textCtrl5 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl5->Enable( false );
-	m_textCtrl5->SetMinSize( wxSize( -1,25 ) );
-	m_textCtrl5->SetMaxSize( wxSize( -1,25 ) );
+	barra_TalleL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleL->Enable( false );
+	barra_TalleL->SetMinSize( wxSize( -1,25 ) );
+	barra_TalleL->SetMaxSize( wxSize( -1,25 ) );
 	
-	bSizer12->Add( m_textCtrl5, 0, wxALL, 5 );
+	bSizer12->Add( barra_TalleL, 0, wxALL, 5 );
 	
 	
 	bSizer9->Add( bSizer12, 1, 0, 5 );
@@ -218,12 +219,10 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	m_staticText7->Wrap( -1 );
 	bSizer13->Add( m_staticText7, 0, wxALL, 5 );
 	
-	m_textCtrl7 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl7->Enable( false );
-	m_textCtrl7->SetMinSize( wxSize( 150,25 ) );
-	m_textCtrl7->SetMaxSize( wxSize( 150,25 ) );
+	barra_Precio = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_Precio->Enable( false );
 	
-	bSizer13->Add( m_textCtrl7, 0, wxALL, 5 );
+	bSizer13->Add( barra_Precio, 0, wxALL, 5 );
 	
 	
 	bSizer7->Add( bSizer13, 1, wxEXPAND, 5 );
