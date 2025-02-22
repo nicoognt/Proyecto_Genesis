@@ -15,9 +15,10 @@ protected:
 	void Clic_VerCarro( wxCommandEvent& event )  override;
 	void Clic_VerFiltros( wxCommandEvent& event )  override;
 	void OnRightClick( wxGridEvent& event );
+	void OnVerDetalles( wxCommandEvent& event );
+	void OnAgregar( wxCommandEvent& event );
+	void OnModificar( wxCommandEvent& event );
 	void OnEliminar( wxCommandEvent& event );
-	void OnEditar( wxCommandEvent& event );
-	void OnVerStock( wxCommandEvent& event );
 	
 public:
 	m_ventanuli(wxWindow *parent=NULL);
@@ -25,11 +26,3 @@ public:
 };
 
 #endif
-
-
-
-
-
-
-
-

@@ -20,6 +20,8 @@
 #include <wx/button.h>
 #include <wx/grid.h>
 #include <wx/frame.h>
+#include <wx/stattext.h>
+#include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +53,34 @@ class ventanuli : public wxFrame
 		ventanuli( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Lista de productos"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 606,477 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 		
 		~ventanuli();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class dialogo
+///////////////////////////////////////////////////////////////////////////////
+class dialogo : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText1;
+		wxTextCtrl* m_textCtrl2;
+		wxStaticText* m_staticText6;
+		wxTextCtrl* m_textCtrl6;
+		wxStaticText* m_staticText3;
+		wxTextCtrl* m_textCtrl3;
+		wxStaticText* m_staticText4;
+		wxTextCtrl* m_textCtrl4;
+		wxStaticText* m_staticText5;
+		wxTextCtrl* m_textCtrl5;
+		wxStaticText* m_staticText7;
+		wxTextCtrl* m_textCtrl7;
+	
+	public:
+		
+		dialogo( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Detalles del producto"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 468,333 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~dialogo();
 	
 };
 

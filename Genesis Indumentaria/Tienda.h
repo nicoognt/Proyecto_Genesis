@@ -17,8 +17,6 @@ private:
 	string file_name;
 	vector<Producto> vector_base; vector<Producto> vector_filtros;
 	
-	/// ¡La tienda tiene un carrito ahora! :0
-	CarritoDeCompras carrito;
 	
 public:
 	

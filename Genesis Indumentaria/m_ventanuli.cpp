@@ -156,14 +156,17 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 	
 	/// Crear un menú emergente (contextual)
 	wxMenu menuContextual;
-	menuContextual.Append(1001, "Editar");
-	menuContextual.Append(1002, "Eliminar");
-	menuContextual.Append(1003, "Ver stock");
+	
+	menuContextual.Append(1001, "Agregar al carrito");
+	menuContextual.Append(1002, "Ver detalles");
+	menuContextual.Append(1003, "Modificar stock");
+	menuContextual.Append(1004, "Eliminar");
 	
 	/// Conectar eventos a los ítems del menú
-	Bind(wxEVT_MENU, &m_ventanuli::OnEditar, this, 1001);
-	Bind(wxEVT_MENU, &m_ventanuli::OnEliminar, this, 1002);
-	Bind(wxEVT_MENU, &m_ventanuli::OnVerStock, this, 1003);
+	Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
+	Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
+	Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
+	Bind(wxEVT_MENU, &m_ventanuli::OnEliminar, this, 1004);
 	
 	/// Mostrar el menú en la posición del cursor
 	PopupMenu(&menuContextual);
@@ -172,14 +175,14 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 void m_ventanuli::OnEliminar (wxCommandEvent & event) {
 	wxMessageBox("Opcion de eliminar seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
-
-void m_ventanuli::OnEditar (wxCommandEvent & event) {
+void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	wxMessageBox("Opcion de editar seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
-
-void m_ventanuli::OnVerStock (wxCommandEvent & event) {
+void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 	wxMessageBox("Opcion de ver stock seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
+void m_ventanuli::OnAgregar (wxCommandEvent & event) {
+	wxMessageBox("Opcion de agregar seleccionada","Epico",wxOK|wxICON_INFORMATION);}
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	event.Skip();
