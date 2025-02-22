@@ -39,7 +39,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer8->Add( BotonRefrescar, 0, wxALL, 5 );
 	
 	
-	bSizer5->Add( bSizer8, 0, wxEXPAND, 5 );
+	bSizer5->Add( bSizer8, 0, 0, 5 );
 	
 	
 	bSizer3->Add( bSizer5, 0, wxEXPAND, 5 );
