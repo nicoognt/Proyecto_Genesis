@@ -17,6 +17,10 @@ dialogo2::dialogo2(wxWindow *parent,CarritoDeCompras* c,Producto* a) : d_Carrito
 		Close();
 	}
 	
+	m_staticText11->SetLabel("Talles S ("+prod->VerTalleS+" disponibles):";
+	m_staticText12->SetLabel("Talles M ("+prod->VerTalleM+" disponibles):";
+	m_staticText13->SetLabel("Talles L ("+prod->VerTalleL+" disponibles):";
+	
 	wxTextValidator v(wxFILTER_NUMERIC);
 	barra_TS->SetValidator(v);
 	barra_TM->SetValidator(v);
