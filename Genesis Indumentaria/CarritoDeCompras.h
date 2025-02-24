@@ -18,7 +18,8 @@ public:
 	
 	/// Método para ver si hay productos en el carrito.
 	bool EstaVacio();
-	vector<Producto>& ObtenerProductos();
+	int CantProductos();
+	Producto ObtenerProducto(int i);
 	
 	/// Agregar o eliminar productos al carrito, y modificar el stock original
 	/// de la tienda.

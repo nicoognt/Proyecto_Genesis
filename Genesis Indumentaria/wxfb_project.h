@@ -22,6 +22,7 @@
 #include <wx/frame.h>
 #include <wx/stattext.h>
 #include <wx/dialog.h>
+#include <wx/listctrl.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -102,13 +103,39 @@ class d_Carrito : public wxDialog
 		wxButton* boton_dial_OK;
 		
 		// Virtual event handlers, overide them in your derived class
-		virtual void clic_OK_carrito( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnOK( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
 		
-		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,315 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~d_Carrito();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_Compras
+///////////////////////////////////////////////////////////////////////////////
+class d_Compras : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxListCtrl* listaCompras;
+		wxButton* m_Compra;
+		wxButton* m_Vaciar;
+		wxStaticText* m_textoPrecio;
+		wxTextCtrl* m_ValorPrecio;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnComprar( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnVaciar( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		d_Compras( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Carrito de compras"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 490,346 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_Compras();
 	
 };
 

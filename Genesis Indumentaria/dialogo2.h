@@ -13,7 +13,9 @@ private:
 	CarritoDeCompras* carrito;
 	
 protected:
-	void clic_OK_carrito( wxCommandEvent& event )  override;
+	
+	void OnOK( wxCommandEvent& event )  override;
+	void OnClose( wxCloseEvent& event );
 	
 public:
 	
@@ -23,4 +25,7 @@ public:
 };
 
 #endif
+
+
+
 

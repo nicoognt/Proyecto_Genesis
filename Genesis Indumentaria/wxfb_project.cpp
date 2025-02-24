@@ -173,7 +173,7 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	bSizer10->Add( barra_TalleS, 0, wxALL, 5 );
 	
 	
-	bSizer9->Add( bSizer10, 1, 0, 5 );
+	bSizer9->Add( bSizer10, 1, wxEXPAND, 5 );
 	
 	wxBoxSizer* bSizer11;
 	bSizer11 = new wxBoxSizer( wxVERTICAL );
@@ -190,7 +190,7 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	bSizer11->Add( barra_TalleM, 0, wxALL, 5 );
 	
 	
-	bSizer9->Add( bSizer11, 1, 0, 5 );
+	bSizer9->Add( bSizer11, 1, wxEXPAND, 5 );
 	
 	wxBoxSizer* bSizer12;
 	bSizer12 = new wxBoxSizer( wxVERTICAL );
@@ -207,7 +207,7 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	bSizer12->Add( barra_TalleL, 0, wxALL, 5 );
 	
 	
-	bSizer9->Add( bSizer12, 1, 0, 5 );
+	bSizer9->Add( bSizer12, 1, wxEXPAND, 5 );
 	
 	
 	bSizer7->Add( bSizer9, 1, wxEXPAND, 5 );
@@ -274,7 +274,7 @@ d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer15->Add( barra_TL, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
 	boton_dial_OK = new wxButton( this, wxID_ANY, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer15->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT, 5 );
+	bSizer15->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
 	
 	
 	bSizer14->Add( bSizer15, 1, wxEXPAND, 5 );
@@ -286,12 +286,74 @@ d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	boton_dial_OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::clic_OK_carrito ), NULL, this );
+	boton_dial_OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::OnOK ), NULL, this );
 }
 
 d_Carrito::~d_Carrito()
 {
 	// Disconnect Events
-	boton_dial_OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::clic_OK_carrito ), NULL, this );
+	boton_dial_OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::OnOK ), NULL, this );
+	
+}
+
+d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer16;
+	bSizer16 = new wxBoxSizer( wxVERTICAL );
+	
+	listaCompras = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxSize( 425,210 ), wxLC_REPORT|wxLC_SINGLE_SEL );
+	bSizer16->Add( listaCompras, 1, wxALL|wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer19;
+	bSizer19 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer18;
+	bSizer18 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_Compra = new wxButton( this, wxID_ANY, wxT("Comprar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_Compra, 0, wxALL, 5 );
+	
+	m_Vaciar = new wxButton( this, wxID_ANY, wxT("Vaciar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_Vaciar, 0, wxALL, 5 );
+	
+	
+	bSizer19->Add( bSizer18, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer17;
+	bSizer17 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_textoPrecio = new wxStaticText( this, wxID_ANY, wxT("Precio final:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_textoPrecio->Wrap( -1 );
+	bSizer17->Add( m_textoPrecio, 0, wxALL|wxALIGN_BOTTOM, 5 );
+	
+	m_ValorPrecio = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_ValorPrecio->Enable( false );
+	
+	bSizer17->Add( m_ValorPrecio, 0, wxALL|wxALIGN_BOTTOM, 5 );
+	
+	
+	bSizer19->Add( bSizer17, 0, 0, 5 );
+	
+	
+	bSizer16->Add( bSizer19, 0, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( bSizer16 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_Compra->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnComprar ), NULL, this );
+	m_Vaciar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
+}
+
+d_Compras::~d_Compras()
+{
+	// Disconnect Events
+	m_Compra->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnComprar ), NULL, this );
+	m_Vaciar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
 	
 }

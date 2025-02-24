@@ -11,6 +11,7 @@
 #include "Producto.h"
 #include "dialogo.h"
 #include "dialogo2.h"
+#include "dialogo3.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
@@ -205,17 +206,17 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	int seleccion = filasSeleccionadas[0]; 
 	Producto* pr = genesis->Mostrarptr(seleccion);
 	
-	dialogo2* dlg = new dialogo2(this, car, pr);
-	if (dlg->ShowModal() == wxID_OK) {
-		dlg->Destroy();
-	} else {
-		wxMessageBox("Hubo un problema con la ventana de diálogo.", "Error", wxOK | wxICON_ERROR);
-	}
+	dialogo2* dlg = new dialogo2(this,car,pr);
+
+	dlg->ShowModal();
+	dlg->Destroy();
 	
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
-	event.Skip();
+	dialogo3* dlg = new dialogo3(this,car);
+	dlg->ShowModal();
+	dlg->Destroy();
 }
 
 void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {

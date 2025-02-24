@@ -8,14 +8,20 @@ CarritoDeCompras::CarritoDeCompras(){
 }
 
 void CarritoDeCompras::Agregar(Producto a){
-	
+	compras.push_back(a);
 }
 
 bool CarritoDeCompras::EstaVacio(){
 	return compras.empty();
 }
 
-vector<Producto>& CarritoDeCompras::ObtenerProductos(){return compras;}
+int CarritoDeCompras::CantProductos ( ) {
+	return compras.size();
+}
+
+Producto CarritoDeCompras::ObtenerProducto (int i) {
+	return compras[i];
+}
 
 /*void CarritoDeCompras::Eliminar(int id,Tienda& t){
 	for(size_t i=0;i<compras.size();i++) { 
