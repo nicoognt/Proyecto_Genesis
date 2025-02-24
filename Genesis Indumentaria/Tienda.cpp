@@ -30,7 +30,9 @@ Tienda::Tienda(string nom){
 Producto Tienda::MostrarProducto(int i){
 	return vector_base[i];
 }
-
+Producto * Tienda::Mostrarptr(int i) {
+	return &vector_base[i];
+}
 void Tienda::AgregarProducto(Producto A){
 	vector_base.push_back(A);
 }

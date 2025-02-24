@@ -5,15 +5,16 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+#include <algorithm>
 
 #include "Tienda.h"
 #include "Producto.h"
-#include <algorithm>
 #include "dialogo.h"
 #include "dialogo2.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
+	Grilla_Productos->SetSelectionMode(wxGrid::wxGridSelectRows);
 	car=new CarritoDeCompras();
 	
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
@@ -192,12 +193,25 @@ void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 	
 }
 void m_ventanuli::OnAgregar (wxCommandEvent & event) {
-	int seleccion=Grilla_Productos->GetSelectedRows()[0];
-	Producto pr = (genesis->MostrarProducto(seleccion));
 	
-	dialogo2* dlg = new dialogo2(this,car,pr);
-	dlg->ShowModal();
-	delete dlg;
+	Grilla_Productos->SetFocus();
+	
+	wxArrayInt filasSeleccionadas = Grilla_Productos->GetSelectedRows();
+	if (filasSeleccionadas.IsEmpty()) {
+		wxMessageBox("Por favor, selecciona un producto.", "Error", wxOK | wxICON_ERROR);
+		return;
+	}
+	
+	int seleccion = filasSeleccionadas[0]; 
+	Producto* pr = genesis->Mostrarptr(seleccion);
+	
+	dialogo2* dlg = new dialogo2(this, car, pr);
+	if (dlg->ShowModal() == wxID_OK) {
+		dlg->Destroy();
+	} else {
+		wxMessageBox("Hubo un problema con la ventana de diálogo.", "Error", wxOK | wxICON_ERROR);
+	}
+	
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {

@@ -25,6 +25,7 @@ public:
 	
 	/// Retornar un elemento cuando se lo muestre en la interfaz
 	Producto MostrarProducto(int i);
+	Producto* Mostrarptr(int i);
 	
 	/// Agregar un producto a la tienda y guardarlo en el .dat
 	void AgregarProducto(Producto A);
@@ -44,8 +45,5 @@ bool orden_precioAsc(Producto a1,Producto a2);
 bool orden_precioDes(Producto a1,Producto a2);
 
 #endif
-
-
-
 
 
