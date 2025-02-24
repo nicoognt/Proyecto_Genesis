@@ -10,9 +10,11 @@
 #include "Producto.h"
 #include <algorithm>
 #include "dialogo.h"
+#include "dialogo2.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
+	car=new CarritoDeCompras();
 	
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
 	
@@ -190,7 +192,13 @@ void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 	
 }
 void m_ventanuli::OnAgregar (wxCommandEvent & event) {
-	wxMessageBox("Opcion de agregar seleccionada","Epico",wxOK|wxICON_INFORMATION);}
+	int seleccion=Grilla_Productos->GetSelectedRows()[0];
+	Producto pr = (genesis->MostrarProducto(seleccion));
+	
+	dialogo2* dlg = new dialogo2(this,car,pr);
+	dlg->ShowModal();
+	delete dlg;
+}
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	event.Skip();
@@ -198,6 +206,10 @@ void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 
 void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 	event.Skip();
+}
+
+CarritoDeCompras * m_ventanuli::DevolverCarrito ( ) {
+	return car;
 }
 
 m_ventanuli::~m_ventanuli() {

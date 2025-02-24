@@ -84,4 +84,32 @@ class dialogo : public wxDialog
 	
 };
 
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_Carrito
+///////////////////////////////////////////////////////////////////////////////
+class d_Carrito : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText7;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* barra_TS;
+		wxStaticText* m_staticText12;
+		wxTextCtrl* barra_TM;
+		wxStaticText* m_staticText13;
+		wxTextCtrl* barra_TL;
+		wxButton* boton_dial_OK;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void clic_OK_carrito( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_Carrito();
+	
+};
+
 #endif //__WXFB_PROJECT_H__

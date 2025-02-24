@@ -237,3 +237,61 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 dialogo::~dialogo()
 {
 }
+
+d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer14;
+	bSizer14 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer15;
+	bSizer15 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText7 = new wxStaticText( this, wxID_ANY, wxT("¿Cuántas unidades p/talle desesa llevar?"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText7->Wrap( -1 );
+	bSizer15->Add( m_staticText7, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	m_staticText11 = new wxStaticText( this, wxID_ANY, wxT("Talles S:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11->Wrap( -1 );
+	bSizer15->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	barra_TS = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer15->Add( barra_TS, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	m_staticText12 = new wxStaticText( this, wxID_ANY, wxT("Talles M:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText12->Wrap( -1 );
+	bSizer15->Add( m_staticText12, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	barra_TM = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer15->Add( barra_TM, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	m_staticText13 = new wxStaticText( this, wxID_ANY, wxT("Talles L:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText13->Wrap( -1 );
+	bSizer15->Add( m_staticText13, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	barra_TL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer15->Add( barra_TL, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	boton_dial_OK = new wxButton( this, wxID_ANY, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer15->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	
+	bSizer14->Add( bSizer15, 1, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( bSizer14 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	boton_dial_OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::clic_OK_carrito ), NULL, this );
+}
+
+d_Carrito::~d_Carrito()
+{
+	// Disconnect Events
+	boton_dial_OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::clic_OK_carrito ), NULL, this );
+	
+}

@@ -3,22 +3,31 @@
 #include "wxfb_project.h"
 
 #include "Tienda.h"
+#include "CarritoDeCompras.h"
 
 class m_ventanuli : public ventanuli {
 	
 private:
+	
 	Tienda* genesis;
+	CarritoDeCompras* car;
 	
 protected:
+	CarritoDeCompras* DevolverCarrito();
+	
 	void m_recargar( wxCommandEvent& event )  override;
 	void m_buscar( wxCommandEvent& event )  override;
 	void Clic_VerCarro( wxCommandEvent& event )  override;
 	void Clic_VerFiltros( wxCommandEvent& event )  override;
+	
+	/// Apartado del menú contextual
 	void OnRightClick( wxGridEvent& event );
 	void OnVerDetalles( wxCommandEvent& event );
 	void OnAgregar( wxCommandEvent& event );
 	void OnModificar( wxCommandEvent& event );
 	void OnEliminar( wxCommandEvent& event );
+	
+	
 	
 public:
 	m_ventanuli(wxWindow *parent=NULL);
@@ -26,3 +35,5 @@ public:
 };
 
 #endif
+
+
