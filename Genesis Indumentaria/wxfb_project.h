@@ -139,4 +139,28 @@ class d_Compras : public wxDialog
 	
 };
 
+///////////////////////////////////////////////////////////////////////////////
+/// Class MyDialog4
+///////////////////////////////////////////////////////////////////////////////
+class MyDialog4 : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText12;
+		wxStaticText* m_staticText13;
+		wxTextCtrl* m_NuevaCant;
+		wxButton* m_Confirmar;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void ClicConfirmar( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		MyDialog4( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar cantidad"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 329,204 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~MyDialog4();
+	
+};
+
 #endif //__WXFB_PROJECT_H__

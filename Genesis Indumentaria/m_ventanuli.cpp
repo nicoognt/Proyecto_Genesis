@@ -222,9 +222,11 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
-	dialogo3* dlg = new dialogo3(this,car);
+	dialogo3* dlg = new dialogo3(this,car,genesis);
 	dlg->ShowModal();
 	dlg->Destroy();
+	
+	this->RefrescarGrilla();
 }
 
 void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {

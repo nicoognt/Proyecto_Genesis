@@ -25,10 +25,12 @@ public:
 	
 	/// Retornar un elemento cuando se lo muestre en la interfaz
 	Producto MostrarProducto(int i);
+	Producto* MostrarConId(int id);
 	Producto* Mostrarptr(int i);
 	
 	/// Agregar un producto a la tienda y guardarlo en el .dat
 	void AgregarProducto(Producto A);
+	void RestaurarStock(Producto a);
 	
 	/// Cuántos productos hay en la tienda
 	int CantidadProductos();

@@ -52,6 +52,7 @@ public:
 	int Ver_id();
 	float VerPrecio();
 	
+	int VerTalle();
 	/// Método para importar desde un archivo binario
 	void CargarDesdeBin(ifstream& archivo);
 	/// Método para exportar a un archivo binario

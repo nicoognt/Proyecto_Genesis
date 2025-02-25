@@ -37,6 +37,18 @@ string Producto::VerGen(){return genero;}
 int Producto::Ver_id(){return id;}
 float Producto::VerPrecio(){return precio;}
 
+int Producto::VerTalle(){
+	if(this->VerTalleS() > 0 && this->VerTalleM() == 0 && this->VerTalleL() == 0){
+		return 1;
+	}
+	if(this->VerTalleM() > 0 && this->VerTalleS() == 0 && this->VerTalleL() == 0){
+		return 2;
+	}
+	if(this->VerTalleL() > 0 && this->VerTalleS() == 0 && this->VerTalleM() == 0){
+		return 3;
+	}
+}
+
 /// Leer y escribir en un archivo binario.
 void Producto::CargarDesdeBin(ifstream& m_file){
 	producto_con_char pr;

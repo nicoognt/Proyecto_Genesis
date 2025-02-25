@@ -2,13 +2,21 @@
 #include "CarritoDeCompras.h"
 #include "Producto.h"
 #include <wx/msgdlg.h>
+#include <wx/utils.h>
+#include <wx/log.h>
+#include "dialogo4.h"
+#include <wx/menu.h>
 
-dialogo3::dialogo3(wxWindow *parent, CarritoDeCompras *c) : d_Compras(parent), crt(c) {
+dialogo3::dialogo3(wxWindow *parent, CarritoDeCompras *c, Tienda *_t) : d_Compras(parent), crt(c), t(_t) {
+	if(!t) {
+		wxMessageBox("No se recibió una tienda válida","Error", wxOK | wxICON_EXCLAMATION);
+	}
 	
 	listaCompras->InsertColumn(0,"Producto y Detalle",wxLIST_FORMAT_LEFT,300);
 	listaCompras->InsertColumn(1,"Precio Total",wxLIST_FORMAT_RIGHT,100);
 	m_Vaciar->Bind(wxEVT_BUTTON, &dialogo3::OnVaciar, this);
 	
+	listaCompras->Bind(wxEVT_LIST_ITEM_RIGHT_CLICK, &dialogo3::OnRightClick, this);
 	CargarProductos();
 	
 }
@@ -67,16 +75,30 @@ void dialogo3::OnComprar( wxCommandEvent& event )  {
 }
 
 void dialogo3::OnVaciar( wxCommandEvent& event )  {
-	if(wxMessageBox("¿Desea vaciar el carrito de compras?","Confirmación",wxYES_NO | wxICON_QUESTION) == wxID_YES){
+	int respuesta = wxMessageBox("¿Desea vaciar el carrito?","Confirmación", wxYES_NO | wxICON_QUESTION);
+	
+	if(respuesta == wxYES){
+		if(!t) {
+			wxMessageBox("No se pudo acceder a la tienda","Error", wxOK | wxICON_ERROR);
+			return;
+		}
+		
+		/// Primero vacio el vector
+		for (int i = 0;i<crt->CantProductos();i++){
+			t->RestaurarStock(crt->ObtenerProducto(i));
+		}
+		
 		crt->Vaciar();
 		
+		/// Deleteo los objetos de la lista y actualizo gráficamente
+		/// la misma
 		listaCompras->DeleteAllItems();
 		listaCompras->Refresh();
 		listaCompras->Update();
 		
+		/// Establezco el controlador de texto en $0.00
 		m_ValorPrecio->SetValue("$0.00");
 	}
-	
 }
 
 void dialogo3::OnSumarPrecio ( ) {
@@ -98,5 +120,41 @@ void dialogo3::OnSumarPrecio ( ) {
 	}
 	wxString precioStr = wxString::Format("$ %.2f", precioTotal);
 	m_ValorPrecio->SetValue(precioStr);
+}
+
+void dialogo3::OnRightClick (wxListEvent & event) {
+	wxMenu menu;
+	m_indice = event.GetIndex();
+	if(m_indice == wxNOT_FOUND) return;
+	
+	menu.Append(1001, "Modificar");
+	menu.Append(1002, "Eliminar del carrito");
+	
+	/// Conectar eventos a los ítems del menú
+	Bind(wxEVT_MENU, &dialogo3::OnModificarCantidad, this, 1001);
+	Bind(wxEVT_MENU, &dialogo3::OnEliminar, this, 1002);
+	
+	/// Mostrar el menú en la posición del cursor
+	PopupMenu(&menu);
+}
+
+void dialogo3::OnModificarCantidad (wxCommandEvent & event) {
+	long index = listaCompras->GetNextItem(-1,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
+	if(index != -1){
+		
+		wxUIntPtr item = listaCompras->GetItemData(index);
+		Producto* pr = reinterpret_cast<Producto*>(item);
+		
+		dialogo4* dlg = new dialogo4(this,pr,t);
+		dlg->ShowModal();
+		dlg->Destroy();
+	} else {
+		cout << "algo mal está andando mal";
+	}
+	
+}
+
+void dialogo3::OnEliminar (wxCommandEvent & event) {
+	event.Skip();
 }
 

@@ -33,8 +33,22 @@ Producto Tienda::MostrarProducto(int i){
 Producto * Tienda::Mostrarptr(int i) {
 	return &vector_base[i];
 }
+Producto * Tienda::MostrarConId (int id) {
+	for(size_t i=0;i<vector_base.size();i++) { 
+		if (vector_base[i].Ver_id() == id) return &vector_base[i];
+	}
+}
+
 void Tienda::AgregarProducto(Producto A){
 	vector_base.push_back(A);
+}
+
+void Tienda::RestaurarStock (Producto a) {
+	for(size_t i=0;i<vector_base.size();i++) { 
+		if(vector_base[i].Ver_id() == a.Ver_id()){
+			vector_base[i] = vector_base[i] + a;
+		}
+	}
 }
 
 void Tienda::OrdenarVector ( ) {
