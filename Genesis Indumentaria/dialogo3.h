@@ -13,6 +13,7 @@ private:
 protected:
 	void OnComprar( wxCommandEvent& event )  override;
 	void OnVaciar( wxCommandEvent& event )  override;
+	void OnSumarPrecio();
 	
 public:
 	dialogo3(wxWindow *parent=NULL,CarritoDeCompras* c=nullptr);
@@ -21,4 +22,6 @@ public:
 };
 
 #endif
+
+
 

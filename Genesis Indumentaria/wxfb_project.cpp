@@ -273,11 +273,11 @@ d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, co
 	barra_TL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer15->Add( barra_TL, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	boton_dial_OK = new wxButton( this, wxID_ANY, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer15->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
-	
 	
 	bSizer14->Add( bSizer15, 1, wxEXPAND, 5 );
+	
+	boton_dial_OK = new wxButton( this, wxID_ANY, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer14->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
 	
 	
 	this->SetSizer( bSizer14 );

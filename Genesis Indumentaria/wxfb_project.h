@@ -108,7 +108,7 @@ class d_Carrito : public wxDialog
 	
 	public:
 		
-		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,315 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,342 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~d_Carrito();
 	
 };

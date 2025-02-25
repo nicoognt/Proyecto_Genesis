@@ -62,3 +62,19 @@ void Producto::SubirEnBin(ofstream& _file){
 	pr.precio=precio;
 	_file.write((char*)&pr,sizeof(pr));
 }
+
+Producto Producto::operator+ (Producto a) {
+	return Producto (this->VerNombre(), this->VerCategoria(), this->VerGen(), 
+					 this->VerTalleS()+ a.VerTalleS(), 
+					 this->VerTalleM()+ a.VerTalleM(), 
+					 this->VerTalleL()+ a.VerTalleL(), 
+					 this->Ver_id(), this->VerPrecio());
+}
+
+Producto Producto::operator- (Producto a) {
+	return Producto (this->VerNombre(), this->VerCategoria(), this->VerGen(), 
+					 this->VerTalleS()- a.VerTalleS(), 
+					 this->VerTalleM()- a.VerTalleM(), 
+					 this->VerTalleL()- a.VerTalleL(), 
+					 this->Ver_id(), this->VerPrecio());
+}

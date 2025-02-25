@@ -7,6 +7,7 @@ dialogo3::dialogo3(wxWindow *parent, CarritoDeCompras *c) : d_Compras(parent), c
 	
 	listaCompras->InsertColumn(0,"Producto y Detalle",wxLIST_FORMAT_LEFT,300);
 	listaCompras->InsertColumn(1,"Precio Total",wxLIST_FORMAT_RIGHT,100);
+	m_Vaciar->Bind(wxEVT_BUTTON, &dialogo3::OnVaciar, this);
 	
 	CargarProductos();
 	
@@ -46,6 +47,7 @@ void dialogo3::CargarProductos ( ) {
 			listaCompras->SetItem(index,1,precioStr);
 		}
 	}
+	this->OnSumarPrecio();
 }
 
 dialogo3::~dialogo3() {
@@ -58,11 +60,43 @@ void dialogo3::OnComprar( wxCommandEvent& event )  {
 		this->CargarProductos();
 		
 		wxMessageBox("La compra se realizó con éxito","Compra realizada",wxOK);
+	} else {
+		cout << "No está funcando bien";
 	}
 
 }
 
 void dialogo3::OnVaciar( wxCommandEvent& event )  {
-	event.Skip();
+	if(wxMessageBox("¿Desea vaciar el carrito de compras?","Confirmación",wxYES_NO | wxICON_QUESTION) == wxID_YES){
+		crt->Vaciar();
+		
+		listaCompras->DeleteAllItems();
+		listaCompras->Refresh();
+		listaCompras->Update();
+		
+		m_ValorPrecio->SetValue("$0.00");
+	}
+	
+}
+
+void dialogo3::OnSumarPrecio ( ) {
+	long fila = -1;
+	float precioTotal = 0.0;
+	
+	while ((fila = listaCompras->GetNextItem(fila, wxLIST_NEXT_ALL, wxLIST_STATE_DONTCARE)) != wxNOT_FOUND) {
+		wxListItem item;
+		item.SetId(fila);
+		item.SetColumn(1); 
+		item.SetMask(wxLIST_MASK_TEXT);
+		
+		if (listaCompras->GetItem(item)) {
+			wxString precioTexto = item.GetText();
+			precioTexto.Replace("$","");
+			
+			precioTotal += wxAtof(precioTexto);
+		}
+	}
+	wxString precioStr = wxString::Format("$ %.2f", precioTotal);
+	m_ValorPrecio->SetValue(precioStr);
 }
 

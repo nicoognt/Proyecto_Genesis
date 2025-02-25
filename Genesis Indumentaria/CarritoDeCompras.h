@@ -29,14 +29,12 @@ public:
 	/// Método para vaciar el vector de carrito.
 	void Vaciar();
 	
-	/// Aumentar o disminuir cuántas unidades se llevan de c/talle.
-	void Aumentar(int pos);
-	void Disminuir (int pos);
-	
 	Producto VerProducto(int id);
 	float CalcularTotal();
 	
 };
 
 #endif
+
+
 

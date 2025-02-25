@@ -20,12 +20,16 @@ protected:
 	void Clic_VerCarro( wxCommandEvent& event )  override;
 	void Clic_VerFiltros( wxCommandEvent& event )  override;
 	
+	/// Método para cargar la grilla
+	void CreaGrilla();
+	/// Método para REcargar la grilla
+	void RefrescarGrilla();
+	
 	/// Apartado del menú contextual
 	void OnRightClick( wxGridEvent& event );
 	void OnVerDetalles( wxCommandEvent& event );
 	void OnAgregar( wxCommandEvent& event );
 	void OnModificar( wxCommandEvent& event );
-	void OnEliminar( wxCommandEvent& event );
 	
 	
 	
@@ -35,5 +39,9 @@ public:
 };
 
 #endif
+
+
+
+
 
 

@@ -57,7 +57,14 @@ public:
 	/// Método para exportar a un archivo binario
 	void SubirEnBin(ofstream& archivo);
 	
+	/// Sobrecargas útiles
+	Producto operator+(Producto a);
+	Producto operator-(Producto a);
+	
 };
 
 #endif
+
+
+
 

@@ -15,6 +15,7 @@
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
+	
 	Grilla_Productos->SetSelectionMode(wxGrid::wxGridSelectRows);
 	car=new CarritoDeCompras();
 	
@@ -22,6 +23,12 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	
 	genesis=new Tienda();
 	genesis->OrdenarVector();
+	
+	this->CreaGrilla();
+	
+}
+
+void m_ventanuli::CreaGrilla ( ) {
 	
 	for(int i=0;i<genesis->CantidadProductos();i++){
 		
@@ -50,7 +57,11 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	}
 	
 }
-
+void m_ventanuli::RefrescarGrilla ( ) {
+	Grilla_Productos->ClearGrid();
+	Grilla_Productos->DeleteRows(0,genesis->CantidadProductos());
+	this->CreaGrilla();
+}
 void m_ventanuli::m_buscar( wxCommandEvent& event ){
 	
 	/// wxString para obtener lo que hay en la barra de busqueda
@@ -165,21 +176,16 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 	menuContextual.Append(1001, "Agregar al carrito");
 	menuContextual.Append(1002, "Ver detalles");
 	menuContextual.Append(1003, "Modificar stock");
-	menuContextual.Append(1004, "Eliminar");
 	
 	/// Conectar eventos a los ítems del menú
 	Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
 	Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
 	Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
-	Bind(wxEVT_MENU, &m_ventanuli::OnEliminar, this, 1004);
 	
 	/// Mostrar el menú en la posición del cursor
 	PopupMenu(&menuContextual);
 }
 
-void m_ventanuli::OnEliminar (wxCommandEvent & event) {
-	wxMessageBox("Opcion de eliminar seleccionada","Epico",wxOK|wxICON_INFORMATION);
-}
 void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	wxMessageBox("Opcion de modificar seleccionada","Epico",wxOK|wxICON_INFORMATION);
 }
@@ -210,6 +216,8 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 
 	dlg->ShowModal();
 	dlg->Destroy();
+	
+	this->RefrescarGrilla();
 	
 }
 
