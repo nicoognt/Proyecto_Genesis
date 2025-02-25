@@ -33,7 +33,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
 	
 	BotonBuscar = new wxButton( this, wxID_ANY, wxT("Buscar"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer8->Add( BotonBuscar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	bSizer8->Add( BotonBuscar, 0, wxALL, 5 );
 	
 	BotonRefrescar = new wxButton( this, wxID_ANY, wxT("Recargar"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer8->Add( BotonRefrescar, 0, wxALL, 5 );
@@ -406,4 +406,102 @@ MyDialog4::~MyDialog4()
 	// Disconnect Events
 	m_Confirmar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog4::ClicConfirmar ), NULL, this );
 	
+}
+
+d_Filtros::d_Filtros( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer23;
+	bSizer23 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer24;
+	bSizer24 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText14 = new wxStaticText( this, wxID_ANY, wxT("Género:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText14->Wrap( -1 );
+	bSizer24->Add( m_staticText14, 1, wxALL, 5 );
+	
+	m_staticText15 = new wxStaticText( this, wxID_ANY, wxT("Categoría:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText15->Wrap( -1 );
+	bSizer24->Add( m_staticText15, 1, wxALL, 5 );
+	
+	m_staticText16 = new wxStaticText( this, wxID_ANY, wxT("Orden:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText16->Wrap( -1 );
+	bSizer24->Add( m_staticText16, 1, wxALL, 5 );
+	
+	
+	bSizer23->Add( bSizer24, 0, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer25;
+	bSizer25 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxString choiceGeneroChoices[] = { wxT("Todos"), wxT("Hombre"), wxT("Mujer") };
+	int choiceGeneroNChoices = sizeof( choiceGeneroChoices ) / sizeof( wxString );
+	choiceGenero = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choiceGeneroNChoices, choiceGeneroChoices, 0 );
+	choiceGenero->SetSelection( 0 );
+	bSizer25->Add( choiceGenero, 1, wxALL, 5 );
+	
+	wxString choiceCategoriaChoices[] = { wxT("Todas"), wxT("Deportivo"), wxT("Formal"), wxT("Urbano") };
+	int choiceCategoriaNChoices = sizeof( choiceCategoriaChoices ) / sizeof( wxString );
+	choiceCategoria = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choiceCategoriaNChoices, choiceCategoriaChoices, 0 );
+	choiceCategoria->SetSelection( 0 );
+	bSizer25->Add( choiceCategoria, 1, wxALL, 5 );
+	
+	wxString choiceOrdenChoices[] = { wxT("Alfabético"), wxT("Precio ascendente"), wxT("Precio descendente"), wxEmptyString };
+	int choiceOrdenNChoices = sizeof( choiceOrdenChoices ) / sizeof( wxString );
+	choiceOrden = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choiceOrdenNChoices, choiceOrdenChoices, 0 );
+	choiceOrden->SetSelection( 0 );
+	bSizer25->Add( choiceOrden, 0, wxALL, 5 );
+	
+	
+	bSizer23->Add( bSizer25, 0, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer26;
+	bSizer26 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer27;
+	bSizer27 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText17 = new wxStaticText( this, wxID_ANY, wxT("Precio máximo: "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText17->Wrap( -1 );
+	bSizer27->Add( m_staticText17, 0, wxALL, 5 );
+	
+	m_staticText18 = new wxStaticText( this, wxID_ANY, wxT("Precio mínimo: "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText18->Wrap( -1 );
+	bSizer27->Add( m_staticText18, 0, wxALL, 5 );
+	
+	
+	bSizer26->Add( bSizer27, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer28;
+	bSizer28 = new wxBoxSizer( wxVERTICAL );
+	
+	m_pMax = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer28->Add( m_pMax, 0, wxALL, 5 );
+	
+	m_pMin = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer28->Add( m_pMin, 0, wxALL, 5 );
+	
+	
+	bSizer26->Add( bSizer28, 1, wxEXPAND, 5 );
+	
+	
+	bSizer23->Add( bSizer26, 1, wxEXPAND, 5 );
+	
+	m_fAceptar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer23->Add( m_fAceptar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	m_fReestablecer = new wxButton( this, wxID_ANY, wxT("Reestablecer"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer23->Add( m_fReestablecer, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	
+	this->SetSizer( bSizer23 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+}
+
+d_Filtros::~d_Filtros()
+{
 }

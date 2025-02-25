@@ -28,31 +28,31 @@ void dialogo3::CargarProductos ( ) {
 	for(int i=0;i<crt->CantProductos();i++) { 
 		
 		/// Obtengo el producto y veo cómo insertarlo en la lista
-		Producto a = crt->ObtenerProducto(i);
+		Producto* a = crt->ObtenerProductoPtr(i);
 		
-		if(a.VerTalleS() > 0){
-			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a.VerNombre(), "S", a.VerTalleS());
-			wxString precioStr = wxString::Format(" $%.2f",(a.VerTalleS() * a.VerPrecio()));
-			
+		if(a && a->VerTalleS() > 0){
+			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a->VerNombre(), "S", a->VerTalleS());
+			wxString precioStr = wxString::Format(" $%.2f",(a->VerTalleS() * a->VerPrecio()));
 			
 			long index = listaCompras->InsertItem(i,descripcion);
 			listaCompras->SetItem(index,1,precioStr);
+			listaCompras->SetItemData(index,reinterpret_cast<wxUIntPtr>(&a));
 		}
-		if(a.VerTalleM() > 0){
-			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a.VerNombre(), "M", a.VerTalleM());
-			wxString precioStr = wxString::Format(" $%.2f",(a.VerTalleM() * a.VerPrecio()));
-			
+		if(a && a->VerTalleM() > 0){
+			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a->VerNombre(), "M", a->VerTalleM());
+			wxString precioStr = wxString::Format(" $%.2f",(a->VerTalleM() * a->VerPrecio()));
 			
 			long index = listaCompras->InsertItem(i,descripcion);
 			listaCompras->SetItem(index,1,precioStr);
+			listaCompras->SetItemData(index,reinterpret_cast<wxUIntPtr>(&a));
 		}
-		if(a.VerTalleL() > 0){
-			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a.VerNombre(), "L", a.VerTalleL());
-			wxString precioStr = wxString::Format(" $%.2f",(a.VerTalleL() * a.VerPrecio()));
-			
+		if(a && a->VerTalleL() > 0){
+			wxString descripcion = wxString::Format("%s - Talle %s (x%d)", a->VerNombre(), "L", a->VerTalleL());
+			wxString precioStr = wxString::Format(" $%.2f",(a->VerTalleL() * a->VerPrecio()));
 			
 			long index = listaCompras->InsertItem(i,descripcion);
 			listaCompras->SetItem(index,1,precioStr);
+			listaCompras->SetItemData(index,reinterpret_cast<wxUIntPtr>(&a));
 		}
 	}
 	this->OnSumarPrecio();
@@ -141,17 +141,15 @@ void dialogo3::OnRightClick (wxListEvent & event) {
 void dialogo3::OnModificarCantidad (wxCommandEvent & event) {
 	long index = listaCompras->GetNextItem(-1,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
 	if(index != -1){
+		Producto* pr = crt->ObtenerProductoPtr(index);
 		
-		wxUIntPtr item = listaCompras->GetItemData(index);
-		Producto* pr = reinterpret_cast<Producto*>(item);
-		
-		dialogo4* dlg = new dialogo4(this,pr,t);
-		dlg->ShowModal();
-		dlg->Destroy();
-	} else {
-		cout << "algo mal está andando mal";
-	}
-	
+		if(pr){
+			dialogo4* dlg = new dialogo4(this,pr,t);
+			dlg->ShowModal();
+			dlg->Destroy();
+			this->CargarProductos();
+		} else wxMessageBox("Producto no válido","Error", wxOK | wxICON_ERROR);
+	} else wxMessageBox("Índice no válido","Error", wxOK | wxICON_ERROR);
 }
 
 void dialogo3::OnEliminar (wxCommandEvent & event) {

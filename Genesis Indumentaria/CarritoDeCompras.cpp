@@ -30,6 +30,9 @@ int CarritoDeCompras::CantProductos ( ) {
 Producto CarritoDeCompras::ObtenerProducto (int i) {
 	return compras[i];
 }
+Producto * CarritoDeCompras::ObtenerProductoPtr (int i) {
+	return &compras[i];
+}
 Producto CarritoDeCompras::VerProducto(int id){
 	for(Producto pr : compras) { 
 		if(pr.Ver_id()==id) return pr;

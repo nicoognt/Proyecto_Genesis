@@ -23,6 +23,7 @@
 #include <wx/stattext.h>
 #include <wx/dialog.h>
 #include <wx/listctrl.h>
+#include <wx/choice.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -160,6 +161,34 @@ class MyDialog4 : public wxDialog
 		
 		MyDialog4( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar cantidad"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 329,204 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~MyDialog4();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_Filtros
+///////////////////////////////////////////////////////////////////////////////
+class d_Filtros : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText14;
+		wxStaticText* m_staticText15;
+		wxStaticText* m_staticText16;
+		wxChoice* choiceGenero;
+		wxChoice* choiceCategoria;
+		wxChoice* choiceOrden;
+		wxStaticText* m_staticText17;
+		wxStaticText* m_staticText18;
+		wxTextCtrl* m_pMax;
+		wxTextCtrl* m_pMin;
+		wxButton* m_fAceptar;
+		wxButton* m_fReestablecer;
+	
+	public:
+		
+		d_Filtros( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Filtros de búsqueda"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 399,273 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_Filtros();
 	
 };
 

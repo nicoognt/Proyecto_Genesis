@@ -38,13 +38,13 @@ int Producto::Ver_id(){return id;}
 float Producto::VerPrecio(){return precio;}
 
 int Producto::VerTalle(){
-	if(this->VerTalleS() > 0 && this->VerTalleM() == 0 && this->VerTalleL() == 0){
+	if(talle_s > 0 && talle_m == 0 && talle_l == 0){
 		return 1;
 	}
-	if(this->VerTalleM() > 0 && this->VerTalleS() == 0 && this->VerTalleL() == 0){
+	if(talle_m > 0 && talle_s == 0 && talle_l == 0){
 		return 2;
 	}
-	if(this->VerTalleL() > 0 && this->VerTalleS() == 0 && this->VerTalleM() == 0){
+	if(talle_l > 0 && talle_s == 0 && talle_m == 0){
 		return 3;
 	}
 }

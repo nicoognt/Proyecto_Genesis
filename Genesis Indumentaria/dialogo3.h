@@ -9,7 +9,7 @@ class dialogo3 : public d_Compras {
 	
 private:
 	
-	int m_indice;S
+	int m_indice;
 	CarritoDeCompras *crt;
 	Tienda *t;
 	

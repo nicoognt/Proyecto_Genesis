@@ -20,6 +20,7 @@ public:
 	bool EstaVacio();
 	int CantProductos();
 	Producto ObtenerProducto(int i);
+	Producto* ObtenerProductoPtr(int i);
 	
 	/// Agregar o eliminar productos al carrito, y modificar el stock original
 	/// de la tienda.
@@ -35,6 +36,8 @@ public:
 };
 
 #endif
+
+
 
 
 
