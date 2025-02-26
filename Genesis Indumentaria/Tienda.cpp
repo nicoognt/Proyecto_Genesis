@@ -24,11 +24,15 @@ Tienda::Tienda(string nom){
 		datos.close();
 		
 	}
+	vector_filtros = vector_base;
 }
 
 
 Producto Tienda::MostrarProducto(int i){
-	return vector_base[i];
+	return vector_filtros[i];
+}
+Producto Tienda::MostrarProductoFiltro(int i){
+	return vector_filtros[i];
 }
 Producto * Tienda::Mostrarptr(int i) {
 	return &vector_base[i];
@@ -53,6 +57,40 @@ void Tienda::RestaurarStock (Producto a) {
 
 void Tienda::OrdenarVector ( ) {
 	sort(vector_base.begin(),vector_base.end(),orden_alfabetico);
+	sort(vector_filtros.begin(),vector_filtros.end(),orden_alfabetico);
+}
+
+void Tienda::AplicarFiltros (const wxString& genero,const wxString& categoria, const wxString& orden, float precioMin, float precioMax) {
+	/// Limpio el vector para actualizarlo
+	vector_filtros.erase(vector_filtros.begin(),vector_filtros.end());
+	
+	/// Aplico filtros para renovar el vector
+	for(auto& producto : vector_base){
+		if((genero == "Todos" || producto.VerGen() == genero) && (categoria == "Todas" || producto.VerCategoria() == categoria) && 
+			(producto.VerPrecio() >= precioMin && producto.VerPrecio() <= precioMax)){
+			vector_filtros.push_back(producto);
+		}
+	}
+	
+	/// Veo qué formato de orden se seleccionó
+	if (orden == "Alfabético"){
+		sort(vector_base.begin(),vector_base.end(),orden_alfabetico);
+		sort(vector_filtros.begin(),vector_filtros.end(),orden_alfabetico);
+	} else if (orden == "Precio ascendente"){
+		sort(vector_base.begin(),vector_base.end(),orden_precioAsc);
+		sort(vector_filtros.begin(),vector_filtros.end(),orden_precioAsc);
+	} else {
+		sort(vector_base.begin(),vector_base.end(),orden_precioDes);
+		sort(vector_filtros.begin(),vector_filtros.end(),orden_precioDes);
+	}
+	
+}
+const vector<Producto> & Tienda::ObtenerFiltros ( ) {
+	return vector_filtros;
+}
+
+void Tienda::ReestablecerFiltros ( ) {
+	vector_filtros = vector_base;
 }
 
 int Tienda::CantidadProductos(){return vector_base.size();}

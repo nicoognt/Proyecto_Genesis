@@ -9,10 +9,13 @@ class m_ventanuli : public ventanuli {
 	
 private:
 	
+	int filaSeleccionada;
+	int columnaSeleccionada;
 	Tienda* genesis;
 	CarritoDeCompras* car;
 	
 protected:
+	
 	CarritoDeCompras* DevolverCarrito();
 	
 	void m_recargar( wxCommandEvent& event )  override;
@@ -22,7 +25,6 @@ protected:
 	
 	/// Método para cargar la grilla
 	void CreaGrilla();
-	/// Método para REcargar la grilla
 	void RefrescarGrilla();
 	
 	/// Apartado del menú contextual
@@ -31,17 +33,13 @@ protected:
 	void OnAgregar( wxCommandEvent& event );
 	void OnModificar( wxCommandEvent& event );
 	
-	
-	
 public:
+	
 	m_ventanuli(wxWindow *parent=NULL);
 	~m_ventanuli();
+	
 };
 
 #endif
-
-
-
-
 
 

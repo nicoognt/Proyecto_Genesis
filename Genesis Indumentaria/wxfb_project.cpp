@@ -152,6 +152,26 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	
 	bSizer8->Add( barra_Categoria, 0, wxALL, 5 );
 	
+	m_staticText19 = new wxStaticText( this, wxID_ANY, wxT("Género:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText19->Wrap( -1 );
+	bSizer8->Add( m_staticText19, 0, wxALL, 5 );
+	
+	barra_Genero = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_Genero->Enable( false );
+	barra_Genero->SetMinSize( wxSize( 300,25 ) );
+	barra_Genero->SetMaxSize( wxSize( 300,25 ) );
+	
+	bSizer8->Add( barra_Genero, 0, wxALL, 5 );
+	
+	m_staticText20 = new wxStaticText( this, wxID_ANY, wxT("ID:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText20->Wrap( -1 );
+	bSizer8->Add( m_staticText20, 0, wxALL, 5 );
+	
+	barra_ID = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_ID->Enable( false );
+	
+	bSizer8->Add( barra_ID, 0, wxALL, 5 );
+	
 	
 	bSizer7->Add( bSizer8, 0, wxEXPAND, 5 );
 	
@@ -277,7 +297,7 @@ d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer14->Add( bSizer15, 1, wxEXPAND, 5 );
 	
 	boton_dial_OK = new wxButton( this, wxID_ANY, wxT("OK"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer14->Add( boton_dial_OK, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
+	bSizer14->Add( boton_dial_OK, 0, wxALIGN_RIGHT|wxALL, 5 );
 	
 	
 	this->SetSizer( bSizer14 );
@@ -492,16 +512,19 @@ d_Filtros::d_Filtros( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_fAceptar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer23->Add( m_fAceptar, 0, wxALL|wxALIGN_RIGHT, 5 );
 	
-	m_fReestablecer = new wxButton( this, wxID_ANY, wxT("Reestablecer"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer23->Add( m_fReestablecer, 0, wxALL|wxALIGN_RIGHT, 5 );
-	
 	
 	this->SetSizer( bSizer23 );
 	this->Layout();
 	
 	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_fAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Filtros::OnAceptarf ), NULL, this );
 }
 
 d_Filtros::~d_Filtros()
 {
+	// Disconnect Events
+	m_fAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Filtros::OnAceptarf ), NULL, this );
+	
 }

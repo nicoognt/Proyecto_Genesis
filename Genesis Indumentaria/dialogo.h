@@ -12,7 +12,7 @@ private:
 protected:
 	
 public:
-	d_Detalles(wxWindow *parent=NULL,Producto x=Producto());
+	d_Detalles(wxWindow *parent=NULL,Producto x =Producto());
 	void CargarDatos();
 	~d_Detalles();
 };

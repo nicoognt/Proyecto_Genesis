@@ -65,7 +65,6 @@ void dialogo2::OnOK( wxCommandEvent& event )  {
 		wxMessageBox("Error: Producto inválido.", "Error", wxOK | wxICON_ERROR);
 		
 	}
-	
 }
 
 void dialogo2::OnClose (wxCloseEvent & event) {

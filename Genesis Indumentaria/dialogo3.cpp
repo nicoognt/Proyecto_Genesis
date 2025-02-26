@@ -63,15 +63,16 @@ dialogo3::~dialogo3() {
 }
 
 void dialogo3::OnComprar( wxCommandEvent& event )  {
+	
 	if(wxMessageBox("¿Confirmar compra?","Mensaje de confirmación",wxYES_NO | wxICON_QUESTION) == wxID_YES){
+		
 		crt->Vaciar();
 		this->CargarProductos();
 		
 		wxMessageBox("La compra se realizó con éxito","Compra realizada",wxOK);
-	} else {
-		cout << "No está funcando bien";
+		
 	}
-
+	
 }
 
 void dialogo3::OnVaciar( wxCommandEvent& event )  {

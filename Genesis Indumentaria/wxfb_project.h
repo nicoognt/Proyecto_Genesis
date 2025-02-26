@@ -70,6 +70,10 @@ class dialogo : public wxDialog
 		wxTextCtrl* barra_Nombre;
 		wxStaticText* m_staticText6;
 		wxTextCtrl* barra_Categoria;
+		wxStaticText* m_staticText19;
+		wxTextCtrl* barra_Genero;
+		wxStaticText* m_staticText20;
+		wxTextCtrl* barra_ID;
 		wxStaticText* m_staticText3;
 		wxTextCtrl* barra_TalleS;
 		wxStaticText* m_staticText4;
@@ -81,7 +85,7 @@ class dialogo : public wxDialog
 	
 	public:
 		
-		dialogo( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Detalles del producto"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 468,333 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		dialogo( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Detalles del producto"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 468,459 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~dialogo();
 	
 };
@@ -183,7 +187,10 @@ class d_Filtros : public wxDialog
 		wxTextCtrl* m_pMax;
 		wxTextCtrl* m_pMin;
 		wxButton* m_fAceptar;
-		wxButton* m_fReestablecer;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnAceptarf( wxCommandEvent& event ) { event.Skip(); }
+		
 	
 	public:
 		

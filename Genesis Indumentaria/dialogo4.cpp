@@ -7,25 +7,25 @@ dialogo4::dialogo4(wxWindow *parent, Producto* p, Tienda* _t) : MyDialog4(parent
 	Producto * pt = t->MostrarConId(pr->Ver_id());
 	int talle = pr->VerTalle();
 	int tope;
-	string talle;
+	string letra_talle;
 	switch (talle){
 	case 1:
 		tope = pt->VerTalleS() + pr->VerTalleS();
-		talle=S;
+		letra_talle="S";
 		break;
 	case 2:
 		tope = pt->VerTalleM() + pr->VerTalleM();
-		talle=M;
+		letra_talle="M";
 		break;
 	case 3:
 		tope = pt->VerTalleL() + pr->VerTalleL();
-		talle=L;
+		letra_talle="L";
 		break;
 	default:
 		wxMessageBox("Error inesperado con los talles","Algo anduvo mal...", wxOK | wxICON_ERROR);
 	}
 	
-	m_staticText13->SetLabel(pr->VerNombre()+"- talle "+ talle + " " + (+to_string(tope))+ " disponibles)");
+	m_staticText13->SetLabel(pr->VerNombre()+"- talle "+ letra_talle + " (" + (to_string(tope))+ " disponibles)");
 	
 }
 

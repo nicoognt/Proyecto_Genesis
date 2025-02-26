@@ -12,14 +12,17 @@
 #include "dialogo.h"
 #include "dialogo2.h"
 #include "dialogo3.h"
+#include "dialogo5.h"
+#include <wx/msgdlg.h>
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	
-	Grilla_Productos->SetSelectionMode(wxGrid::wxGridSelectRows);
-	car=new CarritoDeCompras();
-	
+	filaSeleccionada=-1;
+	columnaSeleccionada=-1;
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
+	
+	car=new CarritoDeCompras();
 	
 	genesis=new Tienda();
 	genesis->OrdenarVector();
@@ -29,39 +32,44 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 }
 
 void m_ventanuli::CreaGrilla ( ) {
+	// Obtener los productos filtrados
+	const vector<Producto>& productosFiltrados = genesis->ObtenerFiltros();
 	
-	for(int i=0;i<genesis->CantidadProductos();i++){
+	// Mostrar los productos filtrados en la grilla
+	for (size_t i = 0; i < productosFiltrados.size(); i++) {
+		Producto a = productosFiltrados[i];
 		
-		wxString text;
-		Producto a = genesis->MostrarProducto(i);
 		Grilla_Productos->AppendRows(1);
 		
-		text<<a.VerNombre();
-		Grilla_Productos->SetCellValue(i,0,text);
+		wxString text;
+		text << a.VerNombre();
+		Grilla_Productos->SetCellValue(i, 0, text);
 		text.Clear();
 		
-		text<<(a.VerTalleS()+a.VerTalleM()+a.VerTalleL())<<" unidades";
-		Grilla_Productos->SetCellValue(i,1,text);
+		text << (a.VerTalleS() + a.VerTalleM() + a.VerTalleL()) << " unidades";
+		Grilla_Productos->SetCellValue(i, 1, text);
 		text.Clear();
 		
 		stringstream ss;
-		ss<<fixed<<setprecision(2)<<a.VerPrecio();
-		text<<"$"<<ss.str();
-		Grilla_Productos->SetCellValue(i,2,text);
+		ss << fixed << setprecision(2) << a.VerPrecio();
+		text << "$" << ss.str();
+		Grilla_Productos->SetCellValue(i, 2, text);
 		text.Clear();
 		
-		text<<a.Ver_id();
-		Grilla_Productos->SetCellValue(i,3,text);
+		text << a.Ver_id();
+		Grilla_Productos->SetCellValue(i, 3, text);
 		text.Clear();
-		
 	}
-	
 }
+
 void m_ventanuli::RefrescarGrilla ( ) {
+	
 	Grilla_Productos->ClearGrid();
-	Grilla_Productos->DeleteRows(0,genesis->CantidadProductos());
-	this->CreaGrilla();
+	Grilla_Productos->DeleteRows(0,Grilla_Productos->GetNumberRows());
+	
+	CreaGrilla();
 }
+
 void m_ventanuli::m_buscar( wxCommandEvent& event ){
 	
 	/// wxString para obtener lo que hay en la barra de busqueda
@@ -133,57 +141,30 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 }
 
 void m_ventanuli::m_recargar( wxCommandEvent& event )  {
-	Grilla_Productos->ClearGrid();
-	Grilla_Productos->DeleteRows(0,Grilla_Productos->GetNumberRows());
-	
-	genesis->OrdenarVector();
-	
-	for(int i=0;i<genesis->CantidadProductos();i++){
-		
-		wxString text;
-		Producto a = genesis->MostrarProducto(i);
-		Grilla_Productos->AppendRows(1);
-		
-		text<<a.VerNombre();
-		Grilla_Productos->SetCellValue(i,0,text);
-		text.Clear();
-		
-		text<<(a.VerTalleS()+a.VerTalleM()+a.VerTalleL())<<" unidades";
-		Grilla_Productos->SetCellValue(i,1,text);
-		text.Clear();
-		
-		stringstream ss;
-		ss<<fixed<<setprecision(2)<<a.VerPrecio();
-		text<<"$"<<ss.str();
-		Grilla_Productos->SetCellValue(i,2,text);
-		text.Clear();
-		
-		text<<a.Ver_id();
-		Grilla_Productos->SetCellValue(i,3,text);
-		text.Clear();
-		
-	}
+	genesis->ReestablecerFiltros();
+	RefrescarGrilla();
 }
 
 void m_ventanuli::OnRightClick (wxGridEvent & event) {
 	/// Obtengo la fila y columna donde se clickeo
-	int fila = event.GetRow();
-	int columna = event.GetCol();
+	filaSeleccionada = event.GetRow(); columnaSeleccionada = event.GetCol();
 	
 	/// Crear un menú emergente (contextual)
-	wxMenu menuContextual;
-	
-	menuContextual.Append(1001, "Agregar al carrito");
-	menuContextual.Append(1002, "Ver detalles");
-	menuContextual.Append(1003, "Modificar stock");
-	
-	/// Conectar eventos a los ítems del menú
-	Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
-	Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
-	Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
-	
-	/// Mostrar el menú en la posición del cursor
-	PopupMenu(&menuContextual);
+	if(filaSeleccionada != -1 && columnaSeleccionada != -1){
+		wxMenu menuContextual;
+		
+		menuContextual.Append(1001, "Agregar al carrito");
+		menuContextual.Append(1002, "Ver detalles");
+		menuContextual.Append(1003, "Modificar stock");
+		
+		/// Conectar eventos a los ítems del menú
+		Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
+		Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
+		Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
+		
+		/// Mostrar el menú en la posición del cursor
+		PopupMenu(&menuContextual);
+	}
 }
 
 void m_ventanuli::OnModificar (wxCommandEvent & event) {
@@ -191,46 +172,49 @@ void m_ventanuli::OnModificar (wxCommandEvent & event) {
 }
 void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 	
-	int fila = Grilla_Productos->GetGridCursorRow();
-	if(fila==-1) return;
+	if(filaSeleccionada == -1 || columnaSeleccionada == -1) {
+		wxMessageBox("Por favor, seleccione una celda válida","Atención", wxOK | wxICON_INFORMATION);
+		return;
+	}
 	
-	d_Detalles* dlg = new d_Detalles(this,genesis->MostrarProducto(fila));
+	d_Detalles* dlg = new d_Detalles(this,genesis->MostrarProductoFiltro(filaSeleccionada));
 	dlg->ShowModal();
 	dlg->Destroy();
 	
 }
 void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	
-	Grilla_Productos->SetFocus();
+	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
+	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
 	
-	wxArrayInt filasSeleccionadas = Grilla_Productos->GetSelectedRows();
-	if (filasSeleccionadas.IsEmpty()) {
-		wxMessageBox("Por favor, selecciona un producto.", "Error", wxOK | wxICON_ERROR);
-		return;
-	}
-	
-	int seleccion = filasSeleccionadas[0]; 
-	Producto* pr = genesis->Mostrarptr(seleccion);
-	
-	dialogo2* dlg = new dialogo2(this,car,pr);
+	dialogo2* dlg = new dialogo2(this,car,p_original);
 
 	dlg->ShowModal();
 	dlg->Destroy();
 	
-	this->RefrescarGrilla();
-	
+	genesis->ReestablecerFiltros();
+	RefrescarGrilla();
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	dialogo3* dlg = new dialogo3(this,car,genesis);
+	
 	dlg->ShowModal();
 	dlg->Destroy();
 	
-	this->RefrescarGrilla();
+	genesis->ReestablecerFiltros();
+	RefrescarGrilla();
 }
 
 void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
-	event.Skip();
+	dialogo5* dlg = new dialogo5(this,genesis);
+	
+	if(dlg->ShowModal() == wxID_OK){
+		RefrescarGrilla();
+	}
+	
+	dlg->Destroy();
+	
 }
 
 CarritoDeCompras * m_ventanuli::DevolverCarrito ( ) {
