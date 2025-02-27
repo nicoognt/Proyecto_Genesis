@@ -16,7 +16,7 @@ tab_use_spaces=0
 explorer_path=.
 inspection_improving_template=wxString|>printf "%ls",${EXP}.m_impl._M_data()
 inherits_from=
-current_source=m_ventanuli.cpp
+current_source=dialogo6.cpp
 path_char=\
 [source]
 path=Application.cpp
@@ -35,13 +35,12 @@ cursor=46:42
 [source]
 path=Tienda.cpp
 cursor=39:33
-open=true
 [source]
 path=CarritoDeCompras.cpp
 cursor=51:1
 [source]
 path=m_ventanuli.cpp
-cursor=185:1
+cursor=179:2
 open=true
 [source]
 path=Utility.cpp
@@ -61,6 +60,9 @@ cursor=27:76
 [source]
 path=dialogo5.cpp
 cursor=32:1
+[source]
+path=dialogo6.cpp
+cursor=0:0
 open=true
 [header]
 path=Application.h
@@ -101,6 +103,10 @@ cursor=18:38
 [header]
 path=dialogo5.h
 cursor=14:52
+[header]
+path=dialogo6.h
+cursor=0:0
+open=true
 [other]
 path=wxfb_project.fbp
 cursor=-1:0

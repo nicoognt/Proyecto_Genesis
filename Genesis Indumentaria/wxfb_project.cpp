@@ -528,3 +528,132 @@ d_Filtros::~d_Filtros()
 	m_fAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Filtros::OnAceptarf ), NULL, this );
 	
 }
+
+d_Modificar::d_Modificar( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer29;
+	bSizer29 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer30;
+	bSizer30 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer32;
+	bSizer32 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText21 = new wxStaticText( this, wxID_ANY, wxT("Talles S existentes:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText21->Wrap( -1 );
+	bSizer32->Add( m_staticText21, 0, wxALL, 5 );
+	
+	barra_TalleS = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleS->Enable( false );
+	
+	bSizer32->Add( barra_TalleS, 0, wxALL, 5 );
+	
+	
+	bSizer30->Add( bSizer32, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer33;
+	bSizer33 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText22 = new wxStaticText( this, wxID_ANY, wxT("Nueva cantidad:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText22->Wrap( -1 );
+	bSizer33->Add( m_staticText22, 0, wxALL, 5 );
+	
+	barra_NuevoS = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer33->Add( barra_NuevoS, 0, wxALL, 5 );
+	
+	
+	bSizer30->Add( bSizer33, 1, wxEXPAND, 5 );
+	
+	
+	bSizer29->Add( bSizer30, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer31;
+	bSizer31 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer34;
+	bSizer34 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText23 = new wxStaticText( this, wxID_ANY, wxT("Talles M existentes:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText23->Wrap( -1 );
+	bSizer34->Add( m_staticText23, 0, wxALL, 5 );
+	
+	barra_TalleM = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleM->Enable( false );
+	
+	bSizer34->Add( barra_TalleM, 0, wxALL, 5 );
+	
+	
+	bSizer31->Add( bSizer34, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer35;
+	bSizer35 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText24 = new wxStaticText( this, wxID_ANY, wxT("Nueva cantidad:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText24->Wrap( -1 );
+	bSizer35->Add( m_staticText24, 0, wxALL, 5 );
+	
+	barra_NuevoM = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer35->Add( barra_NuevoM, 0, wxALL, 5 );
+	
+	
+	bSizer31->Add( bSizer35, 1, wxEXPAND, 5 );
+	
+	
+	bSizer29->Add( bSizer31, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer36;
+	bSizer36 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer37;
+	bSizer37 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText25 = new wxStaticText( this, wxID_ANY, wxT("Talles L existentes:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText25->Wrap( -1 );
+	bSizer37->Add( m_staticText25, 0, wxALL, 5 );
+	
+	barra_TalleL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_TalleL->Enable( false );
+	
+	bSizer37->Add( barra_TalleL, 0, wxALL, 5 );
+	
+	
+	bSizer36->Add( bSizer37, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer38;
+	bSizer38 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText26 = new wxStaticText( this, wxID_ANY, wxT("Nueva cantidad:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText26->Wrap( -1 );
+	bSizer38->Add( m_staticText26, 0, wxALL, 5 );
+	
+	barra_NuevoL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer38->Add( barra_NuevoL, 0, wxALL, 5 );
+	
+	
+	bSizer36->Add( bSizer38, 1, wxEXPAND, 5 );
+	
+	
+	bSizer29->Add( bSizer36, 1, wxEXPAND, 5 );
+	
+	boton_Modificar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer29->Add( boton_Modificar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	
+	this->SetSizer( bSizer29 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	boton_Modificar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Modificar::Modificar_Stock ), NULL, this );
+}
+
+d_Modificar::~d_Modificar()
+{
+	// Disconnect Events
+	boton_Modificar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Modificar::Modificar_Stock ), NULL, this );
+	
+}
