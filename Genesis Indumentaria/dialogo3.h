@@ -9,12 +9,13 @@ class dialogo3 : public d_Compras {
 	
 private:
 	
+	vector<Factura>* facts;
 	int m_indice;
 	CarritoDeCompras *crt;
 	Tienda *t;
 	
 protected:
-	void OnComprar( wxCommandEvent& event )  override;
+	void OnVender( wxCommandEvent& event )  override;
 	void OnVaciar( wxCommandEvent& event )  override;
 	void OnSumarPrecio();
 	
@@ -23,7 +24,7 @@ protected:
 	void OnEliminar( wxCommandEvent& event );
 	
 public:
-	dialogo3(wxWindow *parent=NULL,CarritoDeCompras* c=nullptr,Tienda* t=nullptr);
+	dialogo3(wxWindow *parent=NULL,CarritoDeCompras* c=nullptr,Tienda* t=nullptr,vector<Factura>* f=nullptr);
 	void CargarProductos();
 	~dialogo3();
 };

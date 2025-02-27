@@ -5,12 +5,18 @@
 #include "Factura.h"
 #include "CarritoDeCompras.h"
 #include <string>
+#include <sys/stat.h>
 using namespace std;
 void cargar_prueba(string n);
 
 Tienda::Tienda(string nom){
-	cargar_prueba(nom);
 	file_name=nom;
+	
+	struct stat buffer;
+	if(stat(file_name.c_str(),&buffer) != 0){
+		cargar_prueba(file_name);
+	}
+	
 	ifstream datos(file_name.c_str(),ios::binary|ios::ate);
 	if(datos.is_open()){
 		
@@ -91,6 +97,17 @@ const vector<Producto> & Tienda::ObtenerFiltros ( ) {
 
 void Tienda::ReestablecerFiltros ( ) {
 	vector_filtros = vector_base;
+}
+
+void Tienda::ActualizarBinario ( ) {
+	ofstream file(file_name,ios::binary);
+	
+	if(file.is_open()){
+		for (auto p : vector_base) {
+			p.SubirEnBin(file);
+		}
+	}
+	
 }
 
 int Tienda::CantidadProductos(){return vector_base.size();}

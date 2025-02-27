@@ -1,12 +1,12 @@
 #include "Factura.h"
 #include <vector>
-#include "Producto.h"
 #include <fstream>
+#include "Producto.h"
 using namespace std;
 
-Factura::Factura(vector<pair<Producto,int>> items,float total) {
+Factura::Factura(vector<Producto> items,string n) {
 	productosComprados = items;
-	totalVenta = total;
+	fecha_venta = n;
 }
 
 void Factura::ImprimirFactura(){

@@ -26,7 +26,9 @@ void Producto::Modificar_M(int cantidad){
 void Producto::Modificar_L(int cantidad){
 	talle_l += cantidad;
 }
-
+void Producto::ModificarPrecio (float nuevoPrecio) {
+	precio = nuevoPrecio;
+}
 /// Métodos que devuelven todos los datos de un producto.
 string Producto::VerNombre(){return nombre;}
 string Producto::VerCategoria(){return categoria;}

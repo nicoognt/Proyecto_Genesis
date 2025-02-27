@@ -93,6 +93,9 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	VerFiltros = new wxButton( this, wxID_ANY, wxT("Ver filtros"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer9->Add( VerFiltros, 0, wxALL, 5 );
 	
+	boton_Ventas = new wxButton( this, wxID_ANY, wxT("Ventas"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer9->Add( boton_Ventas, 0, wxALL, 5 );
+	
 	
 	bSizer3->Add( bSizer9, 0, wxEXPAND, 5 );
 	
@@ -107,6 +110,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	BotonRefrescar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_recargar ), NULL, this );
 	VerCarro->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
+	boton_Ventas->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::clicVentas ), NULL, this );
 }
 
 ventanuli::~ventanuli()
@@ -116,6 +120,7 @@ ventanuli::~ventanuli()
 	BotonRefrescar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::m_recargar ), NULL, this );
 	VerCarro->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
+	boton_Ventas->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::clicVentas ), NULL, this );
 	
 }
 
@@ -332,8 +337,8 @@ d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer18;
 	bSizer18 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_Compra = new wxButton( this, wxID_ANY, wxT("Comprar"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer18->Add( m_Compra, 0, wxALL, 5 );
+	m_Vender = new wxButton( this, wxID_ANY, wxT("Vender"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_Vender, 0, wxALL, 5 );
 	
 	m_Vaciar = new wxButton( this, wxID_ANY, wxT("Vaciar"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer18->Add( m_Vaciar, 0, wxALL, 5 );
@@ -366,14 +371,14 @@ d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	m_Compra->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnComprar ), NULL, this );
+	m_Vender->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVender ), NULL, this );
 	m_Vaciar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
 }
 
 d_Compras::~d_Compras()
 {
 	// Disconnect Events
-	m_Compra->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnComprar ), NULL, this );
+	m_Vender->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVender ), NULL, this );
 	m_Vaciar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
 	
 }
@@ -406,7 +411,7 @@ MyDialog4::MyDialog4( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer21 = new wxBoxSizer( wxVERTICAL );
 	
 	m_Confirmar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer21->Add( m_Confirmar, 0, wxALL|wxALIGN_RIGHT|wxALIGN_BOTTOM, 5 );
+	bSizer21->Add( m_Confirmar, 0, wxALIGN_RIGHT|wxALL, 5 );
 	
 	
 	bSizer20->Add( bSizer21, 0, wxEXPAND|wxALIGN_RIGHT, 5 );
@@ -638,6 +643,40 @@ d_Modificar::d_Modificar( wxWindow* parent, wxWindowID id, const wxString& title
 	
 	bSizer29->Add( bSizer36, 1, wxEXPAND, 5 );
 	
+	wxBoxSizer* bSizer41;
+	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer42;
+	bSizer42 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText27 = new wxStaticText( this, wxID_ANY, wxT("Precio actual:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText27->Wrap( -1 );
+	bSizer42->Add( m_staticText27, 0, wxALL, 5 );
+	
+	barra_PrecioAct = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_PrecioAct->Enable( false );
+	
+	bSizer42->Add( barra_PrecioAct, 0, wxALL, 5 );
+	
+	
+	bSizer41->Add( bSizer42, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer43;
+	bSizer43 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText28 = new wxStaticText( this, wxID_ANY, wxT("Nuevo precio:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText28->Wrap( -1 );
+	bSizer43->Add( m_staticText28, 0, wxALL, 5 );
+	
+	barra_PrecioNue = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer43->Add( barra_PrecioNue, 0, wxALL, 5 );
+	
+	
+	bSizer41->Add( bSizer43, 1, wxEXPAND, 5 );
+	
+	
+	bSizer29->Add( bSizer41, 1, wxEXPAND, 5 );
+	
 	boton_Modificar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer29->Add( boton_Modificar, 0, wxALL|wxALIGN_RIGHT, 5 );
 	
@@ -655,5 +694,56 @@ d_Modificar::~d_Modificar()
 {
 	// Disconnect Events
 	boton_Modificar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Modificar::Modificar_Stock ), NULL, this );
+	
+}
+
+d_Facturas::d_Facturas( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer39;
+	bSizer39 = new wxBoxSizer( wxVERTICAL );
+	
+	listaVentas = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_ICON );
+	bSizer39->Add( listaVentas, 1, wxALL|wxEXPAND, 5 );
+	
+	
+	this->SetSizer( bSizer39 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+}
+
+d_Facturas::~d_Facturas()
+{
+}
+
+d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer40;
+	bSizer40 = new wxBoxSizer( wxVERTICAL );
+	
+	listaDetalles = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_ICON );
+	bSizer40->Add( listaDetalles, 1, wxALL|wxEXPAND, 5 );
+	
+	botonDescargar = new wxButton( this, wxID_ANY, wxT("Descargar comprobante"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer40->Add( botonDescargar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	
+	this->SetSizer( bSizer40 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	botonDescargar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_DetalleVenta::ClicDescargar ), NULL, this );
+}
+
+d_DetalleVenta::~d_DetalleVenta()
+{
+	// Disconnect Events
+	botonDescargar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_DetalleVenta::ClicDescargar ), NULL, this );
 	
 }

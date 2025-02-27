@@ -42,12 +42,14 @@ class ventanuli : public wxFrame
 		wxGrid* Grilla_Productos;
 		wxButton* VerCarro;
 		wxButton* VerFiltros;
+		wxButton* boton_Ventas;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void m_buscar( wxCommandEvent& event ) { event.Skip(); }
 		virtual void m_recargar( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerCarro( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
+		virtual void clicVentas( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
@@ -127,13 +129,13 @@ class d_Compras : public wxDialog
 	
 	protected:
 		wxListCtrl* listaCompras;
-		wxButton* m_Compra;
+		wxButton* m_Vender;
 		wxButton* m_Vaciar;
 		wxStaticText* m_textoPrecio;
 		wxTextCtrl* m_ValorPrecio;
 		
 		// Virtual event handlers, overide them in your derived class
-		virtual void OnComprar( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnVender( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnVaciar( wxCommandEvent& event ) { event.Skip(); }
 		
 	
@@ -219,6 +221,10 @@ class d_Modificar : public wxDialog
 		wxTextCtrl* barra_TalleL;
 		wxStaticText* m_staticText26;
 		wxTextCtrl* barra_NuevoL;
+		wxStaticText* m_staticText27;
+		wxTextCtrl* barra_PrecioAct;
+		wxStaticText* m_staticText28;
+		wxTextCtrl* barra_PrecioNue;
 		wxButton* boton_Modificar;
 		
 		// Virtual event handlers, overide them in your derived class
@@ -227,8 +233,47 @@ class d_Modificar : public wxDialog
 	
 	public:
 		
-		d_Modificar( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar stock"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 355,319 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		d_Modificar( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar stock"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 355,361 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~d_Modificar();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_Facturas
+///////////////////////////////////////////////////////////////////////////////
+class d_Facturas : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxListCtrl* listaVentas;
+	
+	public:
+		
+		d_Facturas( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Registro de ventas"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 590,393 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_Facturas();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_DetalleVenta
+///////////////////////////////////////////////////////////////////////////////
+class d_DetalleVenta : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxListCtrl* listaDetalles;
+		wxButton* botonDescargar;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void ClicDescargar( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		d_DetalleVenta( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 454,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_DetalleVenta();
 	
 };
 

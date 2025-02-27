@@ -2,6 +2,11 @@
 #include "Producto.h"
 #include "Tienda.h"
 #include <vector>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include "Factura.h"
+#include <sstream>
 using namespace std;
 
 CarritoDeCompras::CarritoDeCompras(){
@@ -18,6 +23,19 @@ void CarritoDeCompras::Eliminar (int id) {
 		}
 	}
 }
+
+Factura CarritoDeCompras::Vender ( ) {
+	auto now = chrono::system_clock::now();
+	time_t now_time_t = chrono::system_clock::to_time_t(now);
+	tm now_tm = *localtime(&now_time_t);
+	
+	stringstream ss;
+	ss << put_time(&now_tm, "%d/%m/%Y - %H:%M");
+	Factura a(compras,ss.str());
+	compras.clear();
+	return a;
+}
+
 
 bool CarritoDeCompras::EstaVacio(){
 	return compras.empty();

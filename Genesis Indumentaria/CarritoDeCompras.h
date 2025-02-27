@@ -5,6 +5,7 @@ using namespace std;
 
 class Producto;
 class Tienda;
+class Factura;
 
 class CarritoDeCompras {
 private:
@@ -26,6 +27,7 @@ public:
 	/// de la tienda.
 	void Agregar(Producto a);
 	void Eliminar(int id);
+	Factura Vender();
 	
 	/// Método para vaciar el vector de carrito.
 	void Vaciar();
@@ -36,6 +38,7 @@ public:
 };
 
 #endif
+
 
 
 

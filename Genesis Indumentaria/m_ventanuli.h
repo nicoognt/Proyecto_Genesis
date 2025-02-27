@@ -4,6 +4,7 @@
 
 #include "Tienda.h"
 #include "CarritoDeCompras.h"
+#include "Factura.h"
 
 class m_ventanuli : public ventanuli {
 	
@@ -13,8 +14,11 @@ private:
 	int columnaSeleccionada;
 	Tienda* genesis;
 	CarritoDeCompras* car;
+	vector<Factura> facturas;
+	float PrecioFinal = 0.0f;
 	
 protected:
+	void clicVentas( wxCommandEvent& event )  override;
 	
 	CarritoDeCompras* DevolverCarrito();
 	
@@ -34,12 +38,13 @@ protected:
 	void OnModificar( wxCommandEvent& event );
 	
 public:
-	
+	void SetPrecio(float p);
+	float GetPrecio();
+	vector<Factura>* PasarVector();
 	m_ventanuli(wxWindow *parent=NULL);
 	~m_ventanuli();
 	
 };
 
 #endif
-
 

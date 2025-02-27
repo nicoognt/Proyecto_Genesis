@@ -2,7 +2,7 @@
 #define PRODUCTO_H
 #include <iostream>
 #include <string>
-#include "Tienda.h"
+//#include "Tienda.h"
 using namespace std;
 
 struct producto_con_char{
@@ -41,6 +41,7 @@ public:
 	void Modificar_S(int cantidad);
 	void Modificar_M(int cantidad);
 	void Modificar_L(int cantidad);
+	void ModificarPrecio(float nuevoPrecio);
 	
 	/// Métodos que devuelven todos los datos de un producto
 	string VerNombre();
@@ -65,6 +66,8 @@ public:
 };
 
 #endif
+
+
 
 
 

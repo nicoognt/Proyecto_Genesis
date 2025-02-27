@@ -15,6 +15,7 @@
 #include "dialogo5.h"
 #include <wx/msgdlg.h>
 #include "dialogo6.h"
+#include "dialogo7.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
@@ -177,7 +178,9 @@ void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	if(dlg->ShowModal() == wxID_OK){
 		genesis->ReestablecerFiltros();
 		RefrescarGrilla();
+		genesis->ActualizarBinario();
 	}
+	
 	dlg->Destroy();
 }
 void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
@@ -207,7 +210,7 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
-	dialogo3* dlg = new dialogo3(this,car,genesis);
+	dialogo3* dlg = new dialogo3(this,car,genesis,PasarVector());
 	
 	dlg->ShowModal();
 	dlg->Destroy();
@@ -227,14 +230,30 @@ void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 	
 }
 
+void m_ventanuli::clicVentas( wxCommandEvent& event )  {
+	dialogo7* dlg = new dialogo7(this,facturas);
+	dlg->ShowModal();
+	dlg->Destroy();
+
+}
+
 CarritoDeCompras * m_ventanuli::DevolverCarrito ( ) {
 	return car;
+}
+
+vector<Factura> * m_ventanuli::PasarVector ( ) {
+	return &facturas;
+}
+
+void m_ventanuli::SetPrecio (float p) {
+	PrecioFinal = p;
+}
+
+float m_ventanuli::GetPrecio ( ) {
+	return PrecioFinal;
 }
 
 m_ventanuli::~m_ventanuli() {
 	
 }
-
-
-
 
