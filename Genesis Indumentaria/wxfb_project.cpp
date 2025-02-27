@@ -704,7 +704,7 @@ d_Facturas::d_Facturas( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* bSizer39;
 	bSizer39 = new wxBoxSizer( wxVERTICAL );
 	
-	listaVentas = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_ICON );
+	listaVentas = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT );
 	bSizer39->Add( listaVentas, 1, wxALL|wxEXPAND, 5 );
 	
 	

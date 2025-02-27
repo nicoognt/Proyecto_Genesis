@@ -15,3 +15,7 @@ void Factura::ImprimirFactura(){
 	guardar << "compra numero tanto";
 	guardar.close();
 }
+
+string Factura::ObtenerFecha ( ) {
+	return fecha_venta;
+}

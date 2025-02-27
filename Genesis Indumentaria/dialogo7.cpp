@@ -25,9 +25,17 @@ void dialogo7::OnDobleClic (wxListEvent & event) {
 void dialogo7::CargarFacturas ( ) {
 	m_ventanuli* mainWin = dynamic_cast<m_ventanuli*>(GetParent());
 	if (mainWin) {
-		float total = mainWin->GetPrecio();
-		wxString totalStr = wxString::Format("Total: %.2f", total);
-		listaVentas->InsertItem(0, totalStr);
+		for(size_t i=0;i<facturas.size();i++) { 
+			float total = mainWin->GetPrecio();
+			wxString fecha;
+			fecha << facturas[i].ObtenerFecha();
+			wxString totalStr = wxString::Format("Total: %.2f", total);
+			
+			long index = listaVentas->InsertItem(i, fecha); 
+			
+			listaVentas->SetItem(index, 1, totalStr);
+		}
+		
 	}
 }
 

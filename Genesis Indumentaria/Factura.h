@@ -15,9 +15,13 @@ private:
 public:
 	
 	Factura(vector<Producto> items, string n="");
+	string ObtenerFecha();
 	void ImprimirFactura();
 	
 };
 
 #endif
+
+
+
 
