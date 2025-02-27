@@ -199,4 +199,37 @@ class d_Filtros : public wxDialog
 	
 };
 
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_Modificar
+///////////////////////////////////////////////////////////////////////////////
+class d_Modificar : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText21;
+		wxTextCtrl* barra_TalleS;
+		wxStaticText* m_staticText22;
+		wxTextCtrl* barra_NuevoS;
+		wxStaticText* m_staticText23;
+		wxTextCtrl* barra_TalleM;
+		wxStaticText* m_staticText24;
+		wxTextCtrl* barra_NuevoM;
+		wxStaticText* m_staticText25;
+		wxTextCtrl* barra_TalleL;
+		wxStaticText* m_staticText26;
+		wxTextCtrl* barra_NuevoL;
+		wxButton* boton_Modificar;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void Modificar_Stock( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		d_Modificar( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar stock"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 355,319 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_Modificar();
+	
+};
+
 #endif //__WXFB_PROJECT_H__

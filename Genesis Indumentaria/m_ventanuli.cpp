@@ -14,6 +14,7 @@
 #include "dialogo3.h"
 #include "dialogo5.h"
 #include <wx/msgdlg.h>
+#include "dialogo6.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
@@ -168,7 +169,16 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 }
 
 void m_ventanuli::OnModificar (wxCommandEvent & event) {
-	wxMessageBox("Opcion de modificar seleccionada","Epico",wxOK|wxICON_INFORMATION);
+	
+	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
+	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
+	
+	dialogo6* dlg = new dialogo6(this,p_original);
+	if(dlg->ShowModal() == wxID_OK){
+		genesis->ReestablecerFiltros();
+		RefrescarGrilla();
+	}
+	dlg->Destroy();
 }
 void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 	
