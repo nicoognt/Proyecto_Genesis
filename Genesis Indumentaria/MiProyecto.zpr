@@ -16,14 +16,15 @@ tab_use_spaces=0
 explorer_path=.
 inspection_improving_template=wxString|>printf "%ls",${EXP}.m_impl._M_data()
 inherits_from=
-current_source=dialogo3.cpp
+current_source=dialogo7.cpp
 path_char=\
 [source]
 path=Application.cpp
 cursor=8:35
 [source]
 path=Factura.cpp
-cursor=6:34
+cursor=47:58
+open=true
 [source]
 path=wxfb_project.cpp
 readonly=1
@@ -40,7 +41,7 @@ path=CarritoDeCompras.cpp
 cursor=32:43
 [source]
 path=m_ventanuli.cpp
-cursor=246:13
+cursor=245:72
 open=true
 [source]
 path=Utility.cpp
@@ -53,8 +54,7 @@ path=dialogo2.cpp
 cursor=39:59
 [source]
 path=dialogo3.cpp
-cursor=156:64
-open=true
+cursor=158:87
 [source]
 path=dialogo4.cpp
 cursor=5:97
@@ -67,10 +67,9 @@ cursor=10:46
 [source]
 path=dialogo8.cpp
 cursor=9:15
-open=true
 [source]
 path=dialogo7.cpp
-cursor=20:43
+cursor=25:41
 open=true
 [source]
 path=dialogo9.cpp
@@ -80,7 +79,8 @@ path=Application.h
 cursor=11:0
 [header]
 path=Factura.h
-cursor=19:32
+cursor=18:34
+open=true
 [header]
 path=wxfb_project.h
 readonly=1
@@ -98,6 +98,7 @@ cursor=36:1
 [header]
 path=m_ventanuli.h
 cursor=15:57
+open=true
 [header]
 path=dialogo.h
 cursor=9:9
@@ -119,10 +120,9 @@ cursor=0:0
 [header]
 path=dialogo8.h
 cursor=19:20
-open=true
 [header]
 path=dialogo7.h
-cursor=12:12
+cursor=6:14
 open=true
 [header]
 path=dialogo9.h

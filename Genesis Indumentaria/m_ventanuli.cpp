@@ -243,8 +243,12 @@ void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 }
 
 void m_ventanuli::clicVentas( wxCommandEvent& event )  {
+	if (facturas.empty()) cout << "no hay facturas por mostrar :p" << endl;
 	dialogo7* dlg = new dialogo7(this,facturas);
-	dlg->Show();
+	if(dlg->ShowModal() == wxID_OK){
+		dlg->GuardarFac_Bin(facturas,"facturas.dat");
+	}
+	dlg->Destroy();
 
 }
 

@@ -10,13 +10,18 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/string.h>
-#include <wx/textctrl.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/statbmp.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/string.h>
+#include <wx/textctrl.h>
 #include <wx/sizer.h>
+#include <wx/bmpbuttn.h>
 #include <wx/button.h>
 #include <wx/grid.h>
 #include <wx/frame.h>
@@ -36,20 +41,21 @@ class ventanuli : public wxFrame
 	private:
 	
 	protected:
+		wxStaticBitmap* m_bitmap1;
 		wxTextCtrl* BarraBusqueda;
-		wxButton* BotonBuscar;
-		wxButton* BotonRefrescar;
+		wxBitmapButton* BotonBuscar;
+		wxBitmapButton* VerFiltros;
+		wxBitmapButton* BotonRefrescar;
 		wxGrid* Grilla_Productos;
-		wxButton* VerCarro;
-		wxButton* VerFiltros;
-		wxButton* boton_Ventas;
+		wxBitmapButton* VerCarro;
+		wxBitmapButton* boton_Ventas;
 		wxButton* m_AgregarP;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void m_buscar( wxCommandEvent& event ) { event.Skip(); }
+		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
 		virtual void m_recargar( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerCarro( wxCommandEvent& event ) { event.Skip(); }
-		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
 		virtual void clicVentas( wxCommandEvent& event ) { event.Skip(); }
 		virtual void ClicAgregarPNuevo( wxCommandEvent& event ) { event.Skip(); }
 		
@@ -266,7 +272,7 @@ class d_DetalleVenta : public wxDialog
 	
 	protected:
 		wxListCtrl* listaDetalles;
-		wxButton* botonDescargar;
+		wxBitmapButton* botonDescargar;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void ClicDescargar( wxCommandEvent& event ) { event.Skip(); }

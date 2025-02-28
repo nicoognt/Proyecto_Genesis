@@ -2,6 +2,7 @@
 #define FACTURA_H
 #include <vector>
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Producto;
@@ -15,15 +16,19 @@ private:
 	
 public:
 	
-	Factura(vector<Producto> items, string n="");
+	Factura(vector<Producto> items={}, string n="");
+	
 	string ObtenerFecha();
 	vector<Producto> getProductos();
-	void ImprimirFactura();
+	
 	void setTotal(float t);
 	float getTotal();
 	
+	void GuardarEnBin(ofstream& file);
+	void CargarDesdeBin(ifstream& file);
 };
 
 #endif
+
 
 

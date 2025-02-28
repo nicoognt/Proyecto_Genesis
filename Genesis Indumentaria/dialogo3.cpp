@@ -157,7 +157,6 @@ void dialogo3::OnVender( wxCommandEvent& event )  {
 		wxMessageBox ("Agregue productos al carrito","Aviso"); return;
 	}
 	if(wxMessageBox("¿Confirmar venta?","Atención", wxYES_NO | wxICON_QUESTION) == wxYES){
-		
 		Factura a = crt->Vender();
 		facts->push_back(a);
 		
@@ -168,6 +167,6 @@ void dialogo3::OnVender( wxCommandEvent& event )  {
 		t->ActualizarBinario();
 		
 		wxMessageBox("Se realizó la venta con éxito","Exito");
-	} else cout << "Hay algo mal que anda mal";
+	}
 }
 
