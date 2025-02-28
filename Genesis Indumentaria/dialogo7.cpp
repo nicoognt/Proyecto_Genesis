@@ -31,6 +31,7 @@ void dialogo7::OnDobleClic (wxListEvent & event) {
 	if (indice != -1) {
 		vector<Producto> productosVendidos = facturas[indice].getProductos();
 		dialogo8* dlg = new dialogo8(this,productosVendidos);
+		dlg->ShowModal();
 	}
 	event.Skip();
 }
@@ -72,6 +73,7 @@ void dialogo7::GuardarDatos() {
 	}
 	
 	int filas = listaVentas->GetItemCount();
+	archivo.Clear();
 	
 	for (int i = 0; i < filas; i++) {
 		wxString fecha = listaVentas->GetItemText(i, 0);
@@ -93,7 +95,6 @@ void dialogo7::CargarDatos(){
 	if (!archivo.Exists()) return; // Verificar si el archivo existe
 	
 	archivo.Open();
-	cout << archivo.GetLineCount();
 	listaVentas->DeleteAllItems(); // Limpiar la lista antes de cargar
 	
 	for (size_t i = 0; i < archivo.GetLineCount(); i++) {

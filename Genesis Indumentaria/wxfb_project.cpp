@@ -733,7 +733,7 @@ d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString&
 	wxBoxSizer* bSizer40;
 	bSizer40 = new wxBoxSizer( wxVERTICAL );
 	
-	listaDetalles = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_ICON );
+	listaDetalles = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT );
 	bSizer40->Add( listaDetalles, 1, wxALL|wxEXPAND, 5 );
 	
 	botonDescargar = new wxButton( this, wxID_ANY, wxT("Descargar comprobante"), wxDefaultPosition, wxDefaultSize, 0 );

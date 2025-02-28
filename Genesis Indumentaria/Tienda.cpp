@@ -11,13 +11,12 @@ void cargar_prueba(string n);
 
 Tienda::Tienda(string nom){
 	file_name=nom;
-	
-	struct stat buffer;
-	if(stat(file_name.c_str(),&buffer) != 0){
+	// Reviso si el archivo ya existe
+	if(!(archivoExiste(file_name))){
 		cargar_prueba(file_name);
 	}
 	
-	ifstream datos(file_name.c_str(),ios::binary|ios::ate);
+	ifstream datos(file_name,ios::binary|ios::ate);
 	if(datos.is_open()){
 		
 		int prod_am=datos.tellg()/sizeof(producto_con_char);
@@ -120,5 +119,9 @@ bool orden_precioAsc(Producto a1,Producto a2){
 }
 bool orden_precioDes(Producto a1,Producto a2){
 	return (a1.VerPrecio()>a2.VerPrecio());
+}
+bool archivoExiste(const string & n) {
+	ifstream file(n,ios::binary);
+	return file.good();
 }
 

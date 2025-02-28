@@ -54,6 +54,10 @@ bool orden_precioAsc(Producto a1,Producto a2);
 
 bool orden_precioDes(Producto a1,Producto a2);
 
+bool archivoExiste(const string& n);
+
 #endif
+
+
 
 

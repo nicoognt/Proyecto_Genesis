@@ -16,8 +16,12 @@ void Factura::ImprimirFactura(){
 	guardar.close();
 }
 
-string Factura::ObtenerFecha ( ) {return fecha_venta;}
-vector<Producto> Factura::getProductos(){return productosComprados;}
+string Factura::ObtenerFecha ( ) {
+	return fecha_venta;
+}
+vector<Producto> Factura::getProductos(){
+	return productosComprados;
+}
 void Factura::setTotal (float t) {total = t;}
 float Factura::getTotal ( ) {return total;}
 

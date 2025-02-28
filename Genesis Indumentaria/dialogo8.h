@@ -17,9 +17,13 @@ protected:
 	void ClicDescargar( wxCommandEvent& event )  override;
 	
 public:
+	void CargarProductos();
 	dialogo8(wxWindow *parent=NULL,vector<Producto> a={});
 	~dialogo8();
 };
 
 #endif
+
+
+
 

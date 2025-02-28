@@ -244,8 +244,7 @@ void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 
 void m_ventanuli::clicVentas( wxCommandEvent& event )  {
 	dialogo7* dlg = new dialogo7(this,facturas);
-	dlg->ShowModal();
-	dlg->Destroy();
+	dlg->Show();
 
 }
 
