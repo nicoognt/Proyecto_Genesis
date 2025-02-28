@@ -21,7 +21,6 @@ using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	
-	
 	filaSeleccionada=-1;
 	columnaSeleccionada=-1;
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
@@ -70,10 +69,14 @@ void m_ventanuli::CreaGrilla ( ) {
 
 void m_ventanuli::RefrescarGrilla ( ) {
 	// Limpio la grilla y la vuelvo a crear
-	Grilla_Productos->ClearGrid();
-	Grilla_Productos->DeleteRows(0,Grilla_Productos->GetNumberRows());
-	
-	CreaGrilla();
+	if(Grilla_Productos->GetNumberRows() == 0){
+		CreaGrilla();
+	} else {
+		Grilla_Productos->ClearGrid();
+		Grilla_Productos->DeleteRows(0,Grilla_Productos->GetNumberRows());
+		
+		CreaGrilla();
+	}
 }
 
 void m_ventanuli::m_buscar( wxCommandEvent& event ){

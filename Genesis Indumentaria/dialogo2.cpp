@@ -37,6 +37,10 @@ void dialogo2::OnOK( wxCommandEvent& event )  {
 	int ta_l = wxAtoi(barra_TL->GetValue());
 	
 	if (prod) {
+		if ((ta_s == 0 || ta_s < 0) && (ta_m == 0 || ta_m < 0) && (ta_l == 0 || ta_l < 0)) {
+			wxMessageBox("No se agregó ningún producto, las cantidades de los talles son 0 o negativas","Advertencia", wxOK | wxICON_EXCLAMATION);
+			return;
+		}
 		
 		if(ta_s <= prod->VerTalleS() && ta_m <= prod->VerTalleM() && ta_l <= prod->VerTalleL()){
 			

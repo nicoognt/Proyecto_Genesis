@@ -17,6 +17,7 @@ public:
 	
 	Factura(vector<Producto> items, string n="");
 	string ObtenerFecha();
+	vector<Producto> getProductos;
 	void ImprimirFactura();
 	void setTotal(float t);
 	float getTotal();

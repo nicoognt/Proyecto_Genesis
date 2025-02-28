@@ -14,22 +14,28 @@ using namespace std;
 
 dialogo7::dialogo7(wxWindow *parent,vector<Factura> f) : d_Facturas(parent), facturas(f) {
 	
-	listaVentas->InsertColumn(0,"Fecha y hora de venta", wxLIST_FORMAT_LEFT,150);
-	listaVentas->InsertColumn(1,"Ganancia",wxLIST_FORMAT_RIGHT,100);
+	// Títulos de las columnas
+	listaVentas->InsertColumn(0,"Fecha y hora de venta", wxLIST_FORMAT_LEFT,200);
+	listaVentas->InsertColumn(1,"Ganancia",wxLIST_FORMAT_RIGHT,150);
 	
+	// Cargo los datos antiguos y los actuales
+	CargarDatos();
 	CargarFacturas();
+	
+	// Enlazo el doble clic a la listCtrl
+	listaVentas->Bind(wxEVT_LIST_ITEM_ACTIVATED, &dialogo7::OnDobleClic, this);
 }
 
 void dialogo7::OnDobleClic (wxListEvent & event) {
-//	indice = event.GetIndex();
-//	if (indice != -1) {
-//		dialogo8* dlg = new dialogo8(this);
-//	}
+	indice = event.GetIndex();
+	if (indice != -1) {
+		vector<Producto> productosVendidos = facturas[indice].getProductos();
+		dialogo8* dlg = new dialogo8(this,productosVendidos);
+	}
 	event.Skip();
 }
 
 void dialogo7::CargarFacturas ( ) {
-	CargarDatos();
 	
 	for(size_t i=0;i<facturas.size();i++) { 
 		wxString fecha;
@@ -87,7 +93,7 @@ void dialogo7::CargarDatos(){
 	if (!archivo.Exists()) return; // Verificar si el archivo existe
 	
 	archivo.Open();
-	
+	cout << archivo.GetLineCount();
 	listaVentas->DeleteAllItems(); // Limpiar la lista antes de cargar
 	
 	for (size_t i = 0; i < archivo.GetLineCount(); i++) {
