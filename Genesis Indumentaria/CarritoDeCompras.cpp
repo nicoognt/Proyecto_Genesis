@@ -31,7 +31,9 @@ Factura CarritoDeCompras::Vender ( ) {
 	
 	stringstream ss;
 	ss << put_time(&now_tm, "%d/%m/%Y - %H:%M");
+	float total = CalcularTotal();
 	Factura a(compras,ss.str());
+	a.setTotal(total);
 	compras.clear();
 	return a;
 }

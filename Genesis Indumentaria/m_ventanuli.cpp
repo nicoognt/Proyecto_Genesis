@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <wx/msgdlg.h>
 
 #include "Tienda.h"
 #include "Producto.h"
@@ -13,12 +14,13 @@
 #include "dialogo2.h"
 #include "dialogo3.h"
 #include "dialogo5.h"
-#include <wx/msgdlg.h>
 #include "dialogo6.h"
 #include "dialogo7.h"
+#include "dialogo9.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
+	
 	
 	filaSeleccionada=-1;
 	columnaSeleccionada=-1;
@@ -41,8 +43,10 @@ void m_ventanuli::CreaGrilla ( ) {
 	for (size_t i = 0; i < productosFiltrados.size(); i++) {
 		Producto a = productosFiltrados[i];
 		
+		// Agrego una fila por cada producto en la lista
 		Grilla_Productos->AppendRows(1);
 		
+		// Escribo el nombre, las unidades, precio por unidad y el ID
 		wxString text;
 		text << a.VerNombre();
 		Grilla_Productos->SetCellValue(i, 0, text);
@@ -65,7 +69,7 @@ void m_ventanuli::CreaGrilla ( ) {
 }
 
 void m_ventanuli::RefrescarGrilla ( ) {
-	
+	// Limpio la grilla y la vuelvo a crear
 	Grilla_Productos->ClearGrid();
 	Grilla_Productos->DeleteRows(0,Grilla_Productos->GetNumberRows());
 	
@@ -90,19 +94,23 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 		/// Vector auxiliar para tener los productos a mostrar
 		vector<Producto> aux;
 		
-		/// Busco la coincidencia entre texto y Producto
+		/* Busco un producto en la tienda por:
+			- coincidencia en el nombre.
+			- ID exacto.
+		*/
 		for(int i=0;i<genesis->CantidadProductos();i++){
 			Producto a=genesis->MostrarProducto(i);
-			if(a.VerNombre().find(texto)!=string::npos){
+			stringstream ss; ss << a.Ver_id();
+			if((a.VerNombre().find(texto)!=string::npos) || (ss.str()) == b){
 				aux.push_back(a);
 			}
 		}
 		
-		if(aux.empty()){
+		if(aux.empty()){ // Si el vector está vacío, es porque el producto no se encontró
 			
 			wxMessageBox("No se encontró el producto en la tienda","Algo fue mal...",wxOK|wxICON_INFORMATION);
 			
-		}else{
+		} else { // Si hay algo, se ordena alfabeticamente y se los muestra
 			
 			sort(aux.begin(),aux.end(),orden_alfabetico);
 			
@@ -116,7 +124,7 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 			for(size_t i=0;i<aux.size();i++){
 				wxString string_celda;
 				
-				/// Seteo el nombre, stock disponible y precio p/u de c/producto
+				// Seteo el nombre, stock disponible, precio por unidad e ID de c/producto
 				string_celda<<aux[i].VerNombre();
 				Grilla_Productos->SetCellValue(i,0,string_celda);
 				string_celda.Clear();
@@ -155,16 +163,17 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 	if(filaSeleccionada != -1 && columnaSeleccionada != -1){
 		wxMenu menuContextual;
 		
+		// Defino las opciones del menú
 		menuContextual.Append(1001, "Agregar al carrito");
 		menuContextual.Append(1002, "Ver detalles");
 		menuContextual.Append(1003, "Modificar stock");
 		
-		/// Conectar eventos a los ítems del menú
+		// Conectar eventos a los ítems del menú
 		Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
 		Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
 		Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
 		
-		/// Mostrar el menú en la posición del cursor
+		// Mostrar el menú en la posición del cursor
 		PopupMenu(&menuContextual);
 	}
 }
@@ -245,15 +254,18 @@ vector<Factura> * m_ventanuli::PasarVector ( ) {
 	return &facturas;
 }
 
-void m_ventanuli::SetPrecio (float p) {
-	PrecioFinal = p;
-}
-
-float m_ventanuli::GetPrecio ( ) {
-	return PrecioFinal;
-}
-
 m_ventanuli::~m_ventanuli() {
 	
+}
+
+void m_ventanuli::ClicAgregarPNuevo( wxCommandEvent& event )  {
+	dialogo9* dlg = new dialogo9(this,genesis);
+	if (dlg->ShowModal() == wxID_OK){
+		genesis->ReestablecerFiltros();
+		genesis->OrdenarVector();
+		RefrescarGrilla();
+		genesis->ActualizarBinario();
+	}
+	event.Skip();
 }
 

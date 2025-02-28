@@ -97,6 +97,12 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer9->Add( boton_Ventas, 0, wxALL, 5 );
 	
 	
+	bSizer9->Add( 0, 0, 1, wxEXPAND, 5 );
+	
+	m_AgregarP = new wxButton( this, wxID_ANY, wxT("Agregar Producto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer9->Add( m_AgregarP, 0, wxALL, 5 );
+	
+	
 	bSizer3->Add( bSizer9, 0, wxEXPAND, 5 );
 	
 	
@@ -111,6 +117,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	VerCarro->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 	boton_Ventas->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::clicVentas ), NULL, this );
+	m_AgregarP->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::ClicAgregarPNuevo ), NULL, this );
 }
 
 ventanuli::~ventanuli()
@@ -121,6 +128,7 @@ ventanuli::~ventanuli()
 	VerCarro->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerCarro ), NULL, this );
 	VerFiltros->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::Clic_VerFiltros ), NULL, this );
 	boton_Ventas->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::clicVentas ), NULL, this );
+	m_AgregarP->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ventanuli::ClicAgregarPNuevo ), NULL, this );
 	
 }
 
@@ -745,5 +753,139 @@ d_DetalleVenta::~d_DetalleVenta()
 {
 	// Disconnect Events
 	botonDescargar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_DetalleVenta::ClicDescargar ), NULL, this );
+	
+}
+
+d_AgregarP::d_AgregarP( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer44;
+	bSizer44 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText29 = new wxStaticText( this, wxID_ANY, wxT("Nombre del producto:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText29->Wrap( -1 );
+	bSizer44->Add( m_staticText29, 0, wxALL, 5 );
+	
+	barra_Nom = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	barra_Nom->SetMinSize( wxSize( 250,30 ) );
+	barra_Nom->SetMaxSize( wxSize( 250,30 ) );
+	
+	bSizer44->Add( barra_Nom, 0, wxALL, 5 );
+	
+	wxBoxSizer* bSizer49;
+	bSizer49 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer50;
+	bSizer50 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText30 = new wxStaticText( this, wxID_ANY, wxT("Categoría:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText30->Wrap( -1 );
+	bSizer50->Add( m_staticText30, 0, wxALL, 5 );
+	
+	wxString choice_CatChoices[] = { wxT("Todas"), wxT("Urbano"), wxT("Deportivo"), wxT("Formal") };
+	int choice_CatNChoices = sizeof( choice_CatChoices ) / sizeof( wxString );
+	choice_Cat = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choice_CatNChoices, choice_CatChoices, 0 );
+	choice_Cat->SetSelection( 0 );
+	bSizer50->Add( choice_Cat, 0, wxALL, 5 );
+	
+	
+	bSizer49->Add( bSizer50, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer51;
+	bSizer51 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText37 = new wxStaticText( this, wxID_ANY, wxT("Género:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText37->Wrap( -1 );
+	bSizer51->Add( m_staticText37, 0, wxALL, 5 );
+	
+	wxString choice_GenChoices[] = { wxT("Todos"), wxT("Hombre"), wxT("Mujer") };
+	int choice_GenNChoices = sizeof( choice_GenChoices ) / sizeof( wxString );
+	choice_Gen = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choice_GenNChoices, choice_GenChoices, 0 );
+	choice_Gen->SetSelection( 0 );
+	bSizer51->Add( choice_Gen, 0, wxALL, 5 );
+	
+	
+	bSizer49->Add( bSizer51, 1, wxEXPAND, 5 );
+	
+	
+	bSizer44->Add( bSizer49, 0, wxEXPAND, 5 );
+	
+	m_staticText31 = new wxStaticText( this, wxID_ANY, wxT("ID: "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText31->Wrap( -1 );
+	bSizer44->Add( m_staticText31, 0, wxALL, 5 );
+	
+	barra_ID = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer44->Add( barra_ID, 0, wxALL, 5 );
+	
+	wxBoxSizer* bSizer45;
+	bSizer45 = new wxBoxSizer( wxHORIZONTAL );
+	
+	wxBoxSizer* bSizer46;
+	bSizer46 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText32 = new wxStaticText( this, wxID_ANY, wxT("Talles S:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32->Wrap( -1 );
+	bSizer46->Add( m_staticText32, 0, wxALL, 5 );
+	
+	barra_TS = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer46->Add( barra_TS, 0, wxALL, 5 );
+	
+	
+	bSizer45->Add( bSizer46, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer47;
+	bSizer47 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText33 = new wxStaticText( this, wxID_ANY, wxT("Talles M:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText33->Wrap( -1 );
+	bSizer47->Add( m_staticText33, 0, wxALL, 5 );
+	
+	barra_TM = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer47->Add( barra_TM, 0, wxALL, 5 );
+	
+	
+	bSizer45->Add( bSizer47, 1, wxEXPAND, 5 );
+	
+	wxBoxSizer* bSizer48;
+	bSizer48 = new wxBoxSizer( wxVERTICAL );
+	
+	m_staticText34 = new wxStaticText( this, wxID_ANY, wxT("Talles L:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText34->Wrap( -1 );
+	bSizer48->Add( m_staticText34, 0, wxALL, 5 );
+	
+	barra_TL = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer48->Add( barra_TL, 0, wxALL, 5 );
+	
+	
+	bSizer45->Add( bSizer48, 1, wxEXPAND, 5 );
+	
+	
+	bSizer44->Add( bSizer45, 0, wxEXPAND, 5 );
+	
+	m_staticText35 = new wxStaticText( this, wxID_ANY, wxT("Precio por unidad:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35->Wrap( -1 );
+	bSizer44->Add( m_staticText35, 0, wxALL, 5 );
+	
+	barra_Precio = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer44->Add( barra_Precio, 0, wxALL, 5 );
+	
+	m_botonAceptar = new wxButton( this, wxID_ANY, wxT("Aceptar"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer44->Add( m_botonAceptar, 0, wxALL|wxALIGN_RIGHT, 5 );
+	
+	
+	this->SetSizer( bSizer44 );
+	this->Layout();
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_botonAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_AgregarP::ClicAceptarPNuevo ), NULL, this );
+}
+
+d_AgregarP::~d_AgregarP()
+{
+	// Disconnect Events
+	m_botonAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_AgregarP::ClicAceptarPNuevo ), NULL, this );
 	
 }

@@ -43,6 +43,7 @@ class ventanuli : public wxFrame
 		wxButton* VerCarro;
 		wxButton* VerFiltros;
 		wxButton* boton_Ventas;
+		wxButton* m_AgregarP;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void m_buscar( wxCommandEvent& event ) { event.Skip(); }
@@ -50,6 +51,7 @@ class ventanuli : public wxFrame
 		virtual void Clic_VerCarro( wxCommandEvent& event ) { event.Skip(); }
 		virtual void Clic_VerFiltros( wxCommandEvent& event ) { event.Skip(); }
 		virtual void clicVentas( wxCommandEvent& event ) { event.Skip(); }
+		virtual void ClicAgregarPNuevo( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
@@ -250,7 +252,7 @@ class d_Facturas : public wxDialog
 	
 	public:
 		
-		d_Facturas( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Registro de ventas"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 590,393 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		d_Facturas( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Registro de ventas"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 394,393 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~d_Facturas();
 	
 };
@@ -274,6 +276,43 @@ class d_DetalleVenta : public wxDialog
 		
 		d_DetalleVenta( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 454,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~d_DetalleVenta();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class d_AgregarP
+///////////////////////////////////////////////////////////////////////////////
+class d_AgregarP : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStaticText* m_staticText29;
+		wxTextCtrl* barra_Nom;
+		wxStaticText* m_staticText30;
+		wxChoice* choice_Cat;
+		wxStaticText* m_staticText37;
+		wxChoice* choice_Gen;
+		wxStaticText* m_staticText31;
+		wxTextCtrl* barra_ID;
+		wxStaticText* m_staticText32;
+		wxTextCtrl* barra_TS;
+		wxStaticText* m_staticText33;
+		wxTextCtrl* barra_TM;
+		wxStaticText* m_staticText34;
+		wxTextCtrl* barra_TL;
+		wxStaticText* m_staticText35;
+		wxTextCtrl* barra_Precio;
+		wxButton* m_botonAceptar;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void ClicAceptarPNuevo( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		d_AgregarP( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Especificar características"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 410,434 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~d_AgregarP();
 	
 };
 

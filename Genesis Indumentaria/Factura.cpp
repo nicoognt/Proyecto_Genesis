@@ -19,3 +19,10 @@ void Factura::ImprimirFactura(){
 string Factura::ObtenerFecha ( ) {
 	return fecha_venta;
 }
+void Factura::setTotal (float t) {
+	total = t;
+}
+float Factura::getTotal ( ) {
+	return total;
+}
+

@@ -155,20 +155,16 @@ void dialogo3::OnEliminar (wxCommandEvent & event) {
 void dialogo3::OnVender( wxCommandEvent& event )  {
 	if(wxMessageBox("¿Confirmar venta?","Atención", wxYES_NO | wxICON_QUESTION) == wxYES){
 		
-		m_ventanuli* mainWin = dynamic_cast<m_ventanuli*>(GetParent());
-		if (mainWin) {
-			float p = (float)(wxAtof(m_ValorPrecio->GetValue()));
-			mainWin->SetPrecio(p);
-		}
-		
 		Factura a = crt->Vender();
 		facts->push_back(a);
 		
 		listaCompras->DeleteAllItems();
 		listaCompras->Refresh();
 		listaCompras->Update();
-		wxMessageBox("Venta realizada con éxito","Aviso", wxOK | wxICON_INFORMATION);
 		
+		t->ActualizarBinario();
+		
+		wxMessageBox("Se realizó la venta con éxito","Exito");
 	} else cout << "Hay algo mal que anda mal";
 }
 
