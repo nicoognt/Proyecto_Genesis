@@ -153,6 +153,9 @@ void dialogo3::OnEliminar (wxCommandEvent & event) {
 }
 
 void dialogo3::OnVender( wxCommandEvent& event )  {
+	if (crt->CantProductos() == 0){
+		wxMessageBox ("Agregue productos al carrito","Aviso"); return;
+	}
 	if(wxMessageBox("¿Confirmar venta?","Atención", wxYES_NO | wxICON_QUESTION) == wxYES){
 		
 		Factura a = crt->Vender();
