@@ -1,6 +1,7 @@
 #include "dialogo8.h"
+#include "Producto.h"
 
-dialogo8::dialogo8(wxWindow *parent) : d_DetalleVenta(parent) {
+dialogo8::dialogo8(wxWindow *parent,vector<Producto> a) : d_DetalleVenta(parent), productosVendidos(a) {
 	
 }
 

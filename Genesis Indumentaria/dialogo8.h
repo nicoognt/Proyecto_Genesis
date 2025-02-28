@@ -4,6 +4,8 @@
 #include <vector>
 using namespace std;
 
+class Producto;
+
 class dialogo8 : public d_DetalleVenta {
 	
 private:
@@ -15,7 +17,7 @@ protected:
 	void ClicDescargar( wxCommandEvent& event )  override;
 	
 public:
-	dialogo8(wxWindow *parent=NULL);
+	dialogo8(wxWindow *parent=NULL,vector<Producto> a={});
 	~dialogo8();
 };
 
