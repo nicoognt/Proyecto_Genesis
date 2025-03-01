@@ -126,7 +126,7 @@
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
                                         <property name="bg"></property>
-                                        <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Genesis_Indumentaria_1.png</property>
+                                        <property name="bitmap">Load From File; D:\IMPRIMIR\Genesis_Indumentaria_1.png</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>
@@ -309,7 +309,7 @@
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
                                         <property name="bg"></property>
-                                        <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_2.png</property>
+                                        <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage_2.png</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>
@@ -402,7 +402,7 @@
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
                                         <property name="bg"></property>
-                                        <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_4.png</property>
+                                        <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage_4.png</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>
@@ -495,7 +495,7 @@
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
                                         <property name="bg"></property>
-                                        <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_3.png</property>
+                                        <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage_3.png</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>
@@ -755,7 +755,7 @@
                                 <property name="aui_row"></property>
                                 <property name="best_size"></property>
                                 <property name="bg"></property>
-                                <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage.png</property>
+                                <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage.png</property>
                                 <property name="caption"></property>
                                 <property name="caption_visible">1</property>
                                 <property name="center_pane">0</property>
@@ -848,7 +848,7 @@
                                 <property name="aui_row"></property>
                                 <property name="best_size"></property>
                                 <property name="bg"></property>
-                                <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_5.png</property>
+                                <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage_5.png</property>
                                 <property name="caption"></property>
                                 <property name="caption_visible">1</property>
                                 <property name="center_pane">0</property>
@@ -7436,7 +7436,7 @@
                         <property name="aui_row"></property>
                         <property name="best_size"></property>
                         <property name="bg"></property>
-                        <property name="bitmap">Load From File; ../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_1.png</property>
+                        <property name="bitmap">Load From File; D:\IMPRIMIR\Webp.net-resizeimage_1.png</property>
                         <property name="caption"></property>
                         <property name="caption_visible">1</property>
                         <property name="center_pane">0</property>

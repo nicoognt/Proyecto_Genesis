@@ -15,7 +15,7 @@
 using namespace std;
 
 dialogo7::dialogo7(wxWindow *parent,vector<Factura> f) : d_Facturas(parent), facturas(f) {
-	
+	cout << "jelooou, soy la ventana de los registros de venta. Si es la primera vez que me usas, no voy a tener ninguna factura\n";
 	// Títulos de las columnas
 	listaVentas->InsertColumn(0,"Fecha y hora de venta", wxLIST_FORMAT_LEFT,200);
 	listaVentas->InsertColumn(1,"Ganancia",wxLIST_FORMAT_RIGHT,150);
@@ -23,9 +23,22 @@ dialogo7::dialogo7(wxWindow *parent,vector<Factura> f) : d_Facturas(parent), fac
 	// Enlazo el doble clic a la listCtrl
 	listaVentas->Bind(wxEVT_LIST_ITEM_ACTIVATED, &dialogo7::OnDobleClic, this);
 	// Cargo los datos desde el binario
+	cout << "transitando el metodo GuardarFac_Bin...\n";
 	GuardarFac_Bin(facturas,"facturas.dat");
+	
+	cout << "transitando el metodo CargarFac_Bin...\n";
 	CargarFac_Bin(facturas,"facturas.dat");
+	
+	cout << "utilizando el metodo GuardarDatos()...\n";
+	GuardarDatos();
+	
+	cout << "ya casi, usando CargarDatos()...\n";
+	CargarDatos();
+	
+	cout << "finalmente, entrando a CargarFacturas...\n";
 	CargarFacturas();
+	
+	cout << "hice todo y sin problemas pa B)\n";
 	
 }
 
@@ -36,6 +49,13 @@ void dialogo7::OnDobleClic (wxListEvent & event) {
 		dialogo8* dlg = new dialogo8(this,productosVendidos);
 		dlg->ShowModal();
 	}
+}
+
+
+void dialogo7::OnClose (wxCloseEvent & event) {
+	GuardarDatos();
+	GuardarFac_Bin(facturas,"Facturas.dat");
+	EndModal(wxID_OK);
 }
 
 void dialogo7::CargarFacturas ( ) {
@@ -59,12 +79,14 @@ dialogo7::~dialogo7() {
 }
 
 void dialogo7::GuardarDatos() {
-	wxTextFile archivo("facturas.txt");
+	wxTextFile archivo("Facturas.txt");
 	
 	// Crear archivo si no existe
 	if (!archivo.Exists()) {
+		cout << "el archivo con las fechas y los totales no está (le cambiaste el nombre)\n";
 		archivo.Create();
 	} else {
+		cout << "el archivo está vivito y culeando\n";
 		archivo.Open();
 	}
 	
@@ -88,13 +110,14 @@ void dialogo7::GuardarDatos() {
 	}
 	
 	archivo.Write();
+	cout << "termine con el guardado de datos :3\n";
 	archivo.Close();
 }
 
 void dialogo7::CargarDatos(){
-	wxTextFile archivo("facturas.txt");
+	wxTextFile archivo("Facturas.txt");
 	
-	if (!archivo.Exists()) return; // Verificar si el archivo existe
+	if (!archivo.Exists()) cout << "no encuentro el archivo uwun't\ncreo uno nuevo"; return; // Verificar si el archivo existe
 	
 	archivo.Open();
 	listaVentas->DeleteAllItems(); // Limpiar la lista antes de cargar
@@ -109,47 +132,57 @@ void dialogo7::CargarDatos(){
 		}
 	}
 	
+	cout << "termine de cargar los datos :0\n";
 	archivo.Close();
 }
 
-void dialogo7::GuardarFac_Bin (const vector<Factura> facturas, string file_name) {
+void dialogo7::GuardarFac_Bin (vector<Factura> facturas, string file_name) {
 	ofstream file(file_name,ios::binary);
-	cout << "si ves true, se abrio bien el archivo/existe, lo contrario si es false :p\n";
-	if (file.good()) cout << "true";
-	else cout << "false";
+	cout << "TRUE = archivo existiendo y abierto\nFALSE = archivo no existiendo\n";
+	if (file.good()) cout << "TRUE\n";
+	else cout << "FALSE\n";
 	if(!file.is_open()) {
 		wxMessageBox("Error al abrir el archivo para guardar las facturas","Error", wxOK | wxICON_ERROR);
 		return;
 	}
 	
-	size_t numFacturas = facturas.size();
+	size_t numFacturas = facturas.size(); cout << numFacturas << " facturas existentes\n";
 	file.write(reinterpret_cast<const char*>(&numFacturas), sizeof(numFacturas));
 	
-	for (auto factura : facturas) {
-		factura.GuardarEnBin(file);
+	for (size_t i=0;i<facturas.size();i++) {
+		facturas[i].GuardarEnBin(file);
 	}
-	
+	cout << "termine con el metodo :)\n";
 	file.close();
 }
 
-void dialogo7::CargarFac_Bin (vector<Factura> & facturas, string file_n) {
-	ifstream file(file_n,ios::binary);
+void dialogo7::CargarFac_Bin (vector<Factura>  facturas, string file_n) {
+	ifstream file(file_n,ios::binary|ios::ate);
 	
 	if (!file.is_open()){
 		wxMessageBox("Error al abrir el archivo para cargar las facturas, se creará uno nuevo","Error", wxOK | wxICON_ERROR);
+		ofstream file1(file_n,ios::binary);
+		if(!file1.is_open()){
+			wxMessageBox("Error al crear el nuevo archivo","Error", wxOK | wxICON_ERROR);
+		}
+		size_t numFacts = 0;
+		file1.write(reinterpret_cast<const char*>(&numFacts),sizeof(numFacts));
+		file1.close();
+		return;
 	}
-	
+	cout << "actualmente tengo " << file.tellg() << " bits\n"; file.seekg(0,ios::beg);
 	size_t numFacturas;
 	file.read(reinterpret_cast<char*>(&numFacturas),sizeof(numFacturas));
 	cout << "facts existentes: " << numFacturas << endl;
-	cout << "tamaño del vector actual: " << facturas.size() << endl;
+	cout << "tamanio del vector actual: " << facturas.size() << endl;
 	facturas.resize(numFacturas);
-	cout << "nuevo tamaño: " << facturas.size() << endl;
+	cout << "nuevo tamanio: " << facturas.size() << endl;
 	
 	for(size_t i=0;i<numFacturas;i++){
 		facturas[i].CargarDesdeBin(file);
 	}
 	
+	cout << "termine con el metodo :D\n";
 	file.close();
 }
 

@@ -23,7 +23,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer6;
 	bSizer6 = new wxBoxSizer( wxVERTICAL );
 	
-	m_bitmap1 = new wxStaticBitmap( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Genesis_Indumentaria_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap1 = new wxStaticBitmap( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Genesis_Indumentaria_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer6->Add( m_bitmap1, 0, wxALL, 5 );
 	
 	BarraBusqueda = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 450,20 ), 0 );
@@ -35,13 +35,13 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
 	
-	BotonBuscar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_2.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	BotonBuscar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_2.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( BotonBuscar, 0, wxALL, 5 );
 	
-	VerFiltros = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_4.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	VerFiltros = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_4.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( VerFiltros, 0, wxALL, 5 );
 	
-	BotonRefrescar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_3.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	BotonRefrescar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_3.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( BotonRefrescar, 0, wxALL, 5 );
 	
 	
@@ -93,10 +93,10 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
 	
-	VerCarro = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	VerCarro = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer9->Add( VerCarro, 0, wxALL, 5 );
 	
-	boton_Ventas = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_5.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	boton_Ventas = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_5.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer9->Add( boton_Ventas, 0, wxALL, 5 );
 	
 	
@@ -739,7 +739,7 @@ d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString&
 	listaDetalles = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT );
 	bSizer40->Add( listaDetalles, 1, wxALL|wxEXPAND, 5 );
 	
-	botonDescargar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("../../../../../Downloads/Imágenes proyecto/Webp.net-resizeimage_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	botonDescargar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer40->Add( botonDescargar, 0, wxALL|wxALIGN_RIGHT, 5 );
 	
 	

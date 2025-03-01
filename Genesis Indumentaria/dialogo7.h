@@ -16,21 +16,21 @@ private:
 protected:
 	
 	void OnDobleClic( wxListEvent& event ) ;
+	void OnClose( wxCloseEvent& event ) ;
 	
 public:
+	// Mostrar las facturas en la lista
+	void CargarFacturas();
 	// Mantener los registros viejos
 	void GuardarDatos();
 	void CargarDatos();
 	// Guardar las facturas en un binario
-	void GuardarFac_Bin(const vector<Factura> facturas,string file_name);
-	void CargarFac_Bin(vector<Factura>& facturas,string file_n);
-	void CargarFacturas();
+	void GuardarFac_Bin(vector<Factura> facturas,string file_name);
+	void CargarFac_Bin(vector<Factura> facturas,string file_n);
+	
 	dialogo7(wxWindow *parent=NULL,vector<Factura> f={});
 	~dialogo7();
 };
 
 #endif
-
-
-
 

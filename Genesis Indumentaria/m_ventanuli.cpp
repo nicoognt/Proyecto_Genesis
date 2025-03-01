@@ -20,6 +20,7 @@
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
+	cout << "hola, soy ventanuli (:D) y tengo " << facturas.size() << " facturas que mostrar\n";
 	
 	filaSeleccionada=-1;
 	columnaSeleccionada=-1;
@@ -227,6 +228,7 @@ void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	dlg->ShowModal();
 	dlg->Destroy();
 	
+	cout << "si no vendiste, ignorame\n" << "si vendiste, tengo " << facturas.size() << " facturas para mostrar\n";
 	genesis->ReestablecerFiltros();
 	RefrescarGrilla();
 }
@@ -246,7 +248,7 @@ void m_ventanuli::clicVentas( wxCommandEvent& event )  {
 	if (facturas.empty()) cout << "no hay facturas por mostrar :p" << endl;
 	dialogo7* dlg = new dialogo7(this,facturas);
 	if(dlg->ShowModal() == wxID_OK){
-		dlg->GuardarFac_Bin(facturas,"facturas.dat");
+		dlg->GuardarFac_Bin(facturas,"Facturas.dat");
 	}
 	dlg->Destroy();
 

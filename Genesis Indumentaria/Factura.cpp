@@ -24,6 +24,7 @@ void Factura::GuardarEnBin (ofstream& file) {
 	file.write(reinterpret_cast<const char*>(&longFecha),sizeof(longFecha));
 	file.write(fecha_venta.c_str(),longFecha);
 	
+	// Tener la cantidad de productos para saber cuántas veces iterar
 	size_t cantProductos = productosComprados.size();
 	file.write(reinterpret_cast<const char*>(&cantProductos),sizeof(cantProductos));
 	for(size_t i=0;i<cantProductos;i++){
@@ -37,6 +38,7 @@ void Factura::CargarDesdeBin (ifstream & file) {
 	size_t longFecha;
 	file.read(reinterpret_cast<char*>(&longFecha),sizeof(longFecha));
 	fecha_venta.resize(longFecha);
+	file.read(reinterpret_cast<char*>(&fecha_venta),longFecha);
 	
 	size_t cantProductos;
 	file.read(reinterpret_cast<char*>(&cantProductos),sizeof(cantProductos));
