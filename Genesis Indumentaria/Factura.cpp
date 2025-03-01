@@ -22,7 +22,10 @@ void Factura::GuardarEnBin (ofstream& file) {
 	// Tener la longitud de la fecha para saber cuánto escribir
 	size_t longFecha = fecha_venta.size();
 	file.write(reinterpret_cast<const char*>(&longFecha),sizeof(longFecha));
+	cout << "tamanio de la fecha guardado: " << longFecha << endl;
+	
 	file.write(fecha_venta.c_str(),longFecha);
+	cout << "fecha guardada: " << fecha_venta << endl;
 	
 	// Tener la cantidad de productos para saber cuántas veces iterar
 	size_t cantProductos = productosComprados.size();
@@ -37,11 +40,16 @@ void Factura::GuardarEnBin (ofstream& file) {
 void Factura::CargarDesdeBin (ifstream & file) {
 	size_t longFecha;
 	file.read(reinterpret_cast<char*>(&longFecha),sizeof(longFecha));
+	if (longFecha <= 0 || longFecha > 100){
+		cout << "error, tamanio de la fecha invalido\n";
+		return;
+	}
+	
 	fecha_venta.resize(longFecha);
-	file.read(reinterpret_cast<char*>(&fecha_venta),longFecha);
+	file.read(&fecha_venta[0],longFecha); cout << "fecha de la factura: " << fecha_venta << endl;
 	
 	size_t cantProductos;
-	file.read(reinterpret_cast<char*>(&cantProductos),sizeof(cantProductos));
+	file.read(reinterpret_cast<char*>(&cantProductos),sizeof(cantProductos)); cout << "cantidad de productos: " << cantProductos << endl;
 	productosComprados.resize(cantProductos);
 	for(size_t i=0;i<cantProductos;i++){
 		productosComprados[i].CargarDesdeBin(file);

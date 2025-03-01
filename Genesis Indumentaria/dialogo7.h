@@ -10,8 +10,9 @@ class dialogo7 : public d_Facturas {
 	
 private:
 	
+	bool lo_cree_aca;
 	long indice;
-	vector<Factura> facturas;
+	vector<Factura> * facturas;
 	
 protected:
 	
@@ -25,10 +26,10 @@ public:
 	void GuardarDatos();
 	void CargarDatos();
 	// Guardar las facturas en un binario
-	void GuardarFac_Bin(vector<Factura> facturas,string file_name);
-	void CargarFac_Bin(vector<Factura> facturas,string file_n);
+	void GuardarFac_Bin(vector<Factura>* facturas,string file_name);
+	void CargarFac_Bin(vector<Factura>* facturas,string file_n);
 	
-	dialogo7(wxWindow *parent=NULL,vector<Factura> f={});
+	dialogo7(wxWindow *parent=NULL,vector<Factura>* f=nullptr);
 	~dialogo7();
 };
 
