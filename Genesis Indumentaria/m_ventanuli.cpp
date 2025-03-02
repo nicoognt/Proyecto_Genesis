@@ -10,13 +10,13 @@
 
 #include "Tienda.h"
 #include "Producto.h"
-#include "dialogo.h"
-#include "dialogo2.h"
-#include "dialogo3.h"
-#include "dialogo5.h"
-#include "dialogo6.h"
-#include "dialogo7.h"
-#include "dialogo9.h"
+#include "V_DetallesProd.h"
+#include "V_SumarCarrito.h"
+#include "V_Compras.h"
+#include "V_Filtros.h"
+#include "V_Modificar.h"
+#include "Lista_Facturas.h"
+#include "AgregarPr.h"
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
@@ -187,7 +187,7 @@ void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
 	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
 	
-	dialogo6* dlg = new dialogo6(this,p_original);
+	V_Modificar* dlg = new V_Modificar(this,p_original);
 	if(dlg->ShowModal() == wxID_OK){
 		genesis->ReestablecerFiltros();
 		RefrescarGrilla();
@@ -203,7 +203,7 @@ void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 		return;
 	}
 	
-	d_Detalles* dlg = new d_Detalles(this,genesis->MostrarProductoFiltro(filaSeleccionada));
+	V_DetallesProd* dlg = new V_DetallesProd(this,genesis->MostrarProductoFiltro(filaSeleccionada));
 	dlg->ShowModal();
 	dlg->Destroy();
 	
@@ -213,7 +213,7 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
 	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
 	
-	dialogo2* dlg = new dialogo2(this,car,p_original);
+	V_SumarCarrito* dlg = new V_SumarCarrito(this,car,p_original);
 
 	dlg->ShowModal();
 	dlg->Destroy();
@@ -223,18 +223,17 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 }
 
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
-	dialogo3* dlg = new dialogo3(this,car,genesis,PasarVector());
+	V_Compras* dlg = new V_Compras(this,car,genesis,PasarVector());
 	
 	dlg->ShowModal();
 	dlg->Destroy();
 	
-	cout << "si no vendiste, ignorame\n" << "si vendiste, tengo " << facturas.size() << " facturas para mostrar\n";
 	genesis->ReestablecerFiltros();
 	RefrescarGrilla();
 }
 
 void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
-	dialogo5* dlg = new dialogo5(this,genesis);
+	V_Filtros* dlg = new V_Filtros(this,genesis);
 	
 	if(dlg->ShowModal() == wxID_OK){
 		RefrescarGrilla();
@@ -246,7 +245,7 @@ void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 
 void m_ventanuli::clicVentas( wxCommandEvent& event )  {
 	if (facturas.empty()) cout << "no hay facturas por mostrar :p" << endl;
-	dialogo7* dlg = new dialogo7(this,&facturas);
+	Lista_Facturas* dlg = new Lista_Facturas(this,&facturas);
 	if(dlg->ShowModal() == wxID_OK){
 		dlg->GuardarFac_Bin(&facturas,"facturas.dat");
 	}
@@ -267,7 +266,7 @@ m_ventanuli::~m_ventanuli() {
 }
 
 void m_ventanuli::ClicAgregarPNuevo( wxCommandEvent& event )  {
-	dialogo9* dlg = new dialogo9(this,genesis);
+	AgregarPr* dlg = new AgregarPr(this,genesis);
 	if (dlg->ShowModal() == wxID_OK){
 		genesis->ReestablecerFiltros();
 		genesis->OrdenarVector();

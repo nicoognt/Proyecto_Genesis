@@ -27,8 +27,8 @@
 #include <wx/frame.h>
 #include <wx/stattext.h>
 #include <wx/dialog.h>
-#include <wx/listctrl.h>
 #include <wx/choice.h>
+#include <wx/listctrl.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -69,9 +69,9 @@ class ventanuli : public wxFrame
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class dialogo
+/// Class DetallesProd
 ///////////////////////////////////////////////////////////////////////////////
-class dialogo : public wxDialog 
+class DetallesProd : public wxDialog 
 {
 	private:
 	
@@ -95,15 +95,15 @@ class dialogo : public wxDialog
 	
 	public:
 		
-		dialogo( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Detalles del producto"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 468,459 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~dialogo();
+		DetallesProd( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Detalles del producto"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 468,459 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~DetallesProd();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_Carrito
+/// Class AddCarrito
 ///////////////////////////////////////////////////////////////////////////////
-class d_Carrito : public wxDialog 
+class AddCarrito : public wxDialog 
 {
 	private:
 	
@@ -123,19 +123,21 @@ class d_Carrito : public wxDialog
 	
 	public:
 		
-		d_Carrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,342 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_Carrito();
+		AddCarrito( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Agregar al carrito"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 354,342 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~AddCarrito();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_Compras
+/// Class VentanaCompras
 ///////////////////////////////////////////////////////////////////////////////
-class d_Compras : public wxDialog 
+class VentanaCompras : public wxDialog 
 {
 	private:
 	
 	protected:
+		wxStaticText* m_staticText39;
+		wxChoice* choice_Metodo;
 		wxListCtrl* listaCompras;
 		wxButton* m_Vender;
 		wxButton* m_Vaciar;
@@ -149,15 +151,15 @@ class d_Compras : public wxDialog
 	
 	public:
 		
-		d_Compras( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Carrito de compras"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 490,346 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_Compras();
+		VentanaCompras( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Carrito de compras"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 570,400 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~VentanaCompras();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class MyDialog4
+/// Class Ventana_NuevaCant
 ///////////////////////////////////////////////////////////////////////////////
-class MyDialog4 : public wxDialog 
+class Ventana_NuevaCant : public wxDialog 
 {
 	private:
 	
@@ -173,15 +175,15 @@ class MyDialog4 : public wxDialog
 	
 	public:
 		
-		MyDialog4( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar cantidad"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 329,204 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~MyDialog4();
+		Ventana_NuevaCant( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar cantidad"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 329,204 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~Ventana_NuevaCant();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_Filtros
+/// Class VentanaFiltros
 ///////////////////////////////////////////////////////////////////////////////
-class d_Filtros : public wxDialog 
+class VentanaFiltros : public wxDialog 
 {
 	private:
 	
@@ -204,15 +206,15 @@ class d_Filtros : public wxDialog
 	
 	public:
 		
-		d_Filtros( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Filtros de búsqueda"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 399,273 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_Filtros();
+		VentanaFiltros( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Filtros de búsqueda"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 399,273 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~VentanaFiltros();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_Modificar
+/// Class VentanaModificacion
 ///////////////////////////////////////////////////////////////////////////////
-class d_Modificar : public wxDialog 
+class VentanaModificacion : public wxDialog 
 {
 	private:
 	
@@ -241,15 +243,15 @@ class d_Modificar : public wxDialog
 	
 	public:
 		
-		d_Modificar( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar stock"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 355,361 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_Modificar();
+		VentanaModificacion( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Modificar stock"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 355,361 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~VentanaModificacion();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_Facturas
+/// Class VentanaFacturas
 ///////////////////////////////////////////////////////////////////////////////
-class d_Facturas : public wxDialog 
+class VentanaFacturas : public wxDialog 
 {
 	private:
 	
@@ -258,15 +260,15 @@ class d_Facturas : public wxDialog
 	
 	public:
 		
-		d_Facturas( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Registro de ventas"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 394,393 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_Facturas();
+		VentanaFacturas( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Registro de ventas"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 394,393 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~VentanaFacturas();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_DetalleVenta
+/// Class Ventana_DetalleFacts
 ///////////////////////////////////////////////////////////////////////////////
-class d_DetalleVenta : public wxDialog 
+class Ventana_DetalleFacts : public wxDialog 
 {
 	private:
 	
@@ -280,15 +282,15 @@ class d_DetalleVenta : public wxDialog
 	
 	public:
 		
-		d_DetalleVenta( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 454,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_DetalleVenta();
+		Ventana_DetalleFacts( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 454,313 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~Ventana_DetalleFacts();
 	
 };
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class d_AgregarP
+/// Class V_AgregarProd
 ///////////////////////////////////////////////////////////////////////////////
-class d_AgregarP : public wxDialog 
+class V_AgregarProd : public wxDialog 
 {
 	private:
 	
@@ -299,8 +301,6 @@ class d_AgregarP : public wxDialog
 		wxChoice* choice_Cat;
 		wxStaticText* m_staticText37;
 		wxChoice* choice_Gen;
-		wxStaticText* m_staticText31;
-		wxTextCtrl* barra_ID;
 		wxStaticText* m_staticText32;
 		wxTextCtrl* barra_TS;
 		wxStaticText* m_staticText33;
@@ -317,8 +317,8 @@ class d_AgregarP : public wxDialog
 	
 	public:
 		
-		d_AgregarP( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Especificar características"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 410,434 ), long style = wxDEFAULT_DIALOG_STYLE ); 
-		~d_AgregarP();
+		V_AgregarProd( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Especificar características"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 410,346 ), long style = wxDEFAULT_DIALOG_STYLE ); 
+		~V_AgregarProd();
 	
 };
 

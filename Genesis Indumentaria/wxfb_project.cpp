@@ -23,7 +23,7 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer6;
 	bSizer6 = new wxBoxSizer( wxVERTICAL );
 	
-	m_bitmap1 = new wxStaticBitmap( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Genesis_Indumentaria_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap1 = new wxStaticBitmap( this, wxID_ANY, wxBitmap( wxT("Imagenes/Genesis_Indumentaria_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer6->Add( m_bitmap1, 0, wxALL, 5 );
 	
 	BarraBusqueda = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 450,20 ), 0 );
@@ -35,13 +35,13 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
 	
-	BotonBuscar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_2.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	BotonBuscar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage_2.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( BotonBuscar, 0, wxALL, 5 );
 	
-	VerFiltros = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_4.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	VerFiltros = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage_4.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( VerFiltros, 0, wxALL, 5 );
 	
-	BotonRefrescar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_3.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	BotonRefrescar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage_3.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer8->Add( BotonRefrescar, 0, wxALL, 5 );
 	
 	
@@ -93,10 +93,10 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
 	
-	VerCarro = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	VerCarro = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer9->Add( VerCarro, 0, wxALL, 5 );
 	
-	boton_Ventas = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_5.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	boton_Ventas = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage_5.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer9->Add( boton_Ventas, 0, wxALL, 5 );
 	
 	
@@ -135,7 +135,7 @@ ventanuli::~ventanuli()
 	
 }
 
-dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+DetallesProd::DetallesProd( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	this->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
@@ -270,11 +270,11 @@ dialogo::dialogo( wxWindow* parent, wxWindowID id, const wxString& title, const 
 	this->Centre( wxBOTH );
 }
 
-dialogo::~dialogo()
+DetallesProd::~DetallesProd()
 {
 }
 
-d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+AddCarrito::AddCarrito( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -322,24 +322,50 @@ d_Carrito::d_Carrito( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	boton_dial_OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::OnOK ), NULL, this );
+	boton_dial_OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( AddCarrito::OnOK ), NULL, this );
 }
 
-d_Carrito::~d_Carrito()
+AddCarrito::~AddCarrito()
 {
 	// Disconnect Events
-	boton_dial_OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Carrito::OnOK ), NULL, this );
+	boton_dial_OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( AddCarrito::OnOK ), NULL, this );
 	
 }
 
-d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+VentanaCompras::VentanaCompras( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetBackgroundColour( wxColour( 194, 233, 245 ) );
 	
 	wxBoxSizer* bSizer16;
 	bSizer16 = new wxBoxSizer( wxVERTICAL );
 	
+	wxBoxSizer* bSizer52;
+	bSizer52 = new wxBoxSizer( wxHORIZONTAL );
+	
+	
+	bSizer52->Add( 0, 0, 1, wxEXPAND, 5 );
+	
+	m_staticText39 = new wxStaticText( this, wxID_ANY, wxT("Método de pago:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText39->Wrap( -1 );
+	m_staticText39->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Calibri") ) );
+	
+	bSizer52->Add( m_staticText39, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	wxString choice_MetodoChoices[] = { wxT("Efectivo"), wxT("Transferencia"), wxT("Crédito"), wxT("Débito") };
+	int choice_MetodoNChoices = sizeof( choice_MetodoChoices ) / sizeof( wxString );
+	choice_Metodo = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choice_MetodoNChoices, choice_MetodoChoices, 0 );
+	choice_Metodo->SetSelection( 0 );
+	choice_Metodo->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Calibri") ) );
+	
+	bSizer52->Add( choice_Metodo, 0, wxALL, 5 );
+	
+	
+	bSizer16->Add( bSizer52, 0, wxEXPAND, 5 );
+	
 	listaCompras = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxSize( 425,210 ), wxLC_REPORT|wxLC_SINGLE_SEL );
+	listaCompras->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Calibri") ) );
+	
 	bSizer16->Add( listaCompras, 1, wxALL|wxEXPAND, 5 );
 	
 	wxBoxSizer* bSizer19;
@@ -349,9 +375,14 @@ d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer18 = new wxBoxSizer( wxHORIZONTAL );
 	
 	m_Vender = new wxButton( this, wxID_ANY, wxT("Vender"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Vender->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Arial") ) );
+	m_Vender->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_INFOBK ) );
+	
 	bSizer18->Add( m_Vender, 0, wxALL, 5 );
 	
 	m_Vaciar = new wxButton( this, wxID_ANY, wxT("Vaciar"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Vaciar->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_INFOBK ) );
+	
 	bSizer18->Add( m_Vaciar, 0, wxALL, 5 );
 	
 	
@@ -382,19 +413,19 @@ d_Compras::d_Compras( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	m_Vender->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVender ), NULL, this );
-	m_Vaciar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
+	m_Vender->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaCompras::OnVender ), NULL, this );
+	m_Vaciar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaCompras::OnVaciar ), NULL, this );
 }
 
-d_Compras::~d_Compras()
+VentanaCompras::~VentanaCompras()
 {
 	// Disconnect Events
-	m_Vender->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVender ), NULL, this );
-	m_Vaciar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Compras::OnVaciar ), NULL, this );
+	m_Vender->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaCompras::OnVender ), NULL, this );
+	m_Vaciar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaCompras::OnVaciar ), NULL, this );
 	
 }
 
-MyDialog4::MyDialog4( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+Ventana_NuevaCant::Ventana_NuevaCant( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -434,17 +465,17 @@ MyDialog4::MyDialog4( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	m_Confirmar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog4::ClicConfirmar ), NULL, this );
+	m_Confirmar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Ventana_NuevaCant::ClicConfirmar ), NULL, this );
 }
 
-MyDialog4::~MyDialog4()
+Ventana_NuevaCant::~Ventana_NuevaCant()
 {
 	// Disconnect Events
-	m_Confirmar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog4::ClicConfirmar ), NULL, this );
+	m_Confirmar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Ventana_NuevaCant::ClicConfirmar ), NULL, this );
 	
 }
 
-d_Filtros::d_Filtros( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+VentanaFiltros::VentanaFiltros( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -535,17 +566,17 @@ d_Filtros::d_Filtros( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	m_fAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Filtros::OnAceptarf ), NULL, this );
+	m_fAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaFiltros::OnAceptarf ), NULL, this );
 }
 
-d_Filtros::~d_Filtros()
+VentanaFiltros::~VentanaFiltros()
 {
 	// Disconnect Events
-	m_fAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Filtros::OnAceptarf ), NULL, this );
+	m_fAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaFiltros::OnAceptarf ), NULL, this );
 	
 }
 
-d_Modificar::d_Modificar( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+VentanaModificacion::VentanaModificacion( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -698,17 +729,17 @@ d_Modificar::d_Modificar( wxWindow* parent, wxWindowID id, const wxString& title
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	boton_Modificar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Modificar::Modificar_Stock ), NULL, this );
+	boton_Modificar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaModificacion::Modificar_Stock ), NULL, this );
 }
 
-d_Modificar::~d_Modificar()
+VentanaModificacion::~VentanaModificacion()
 {
 	// Disconnect Events
-	boton_Modificar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_Modificar::Modificar_Stock ), NULL, this );
+	boton_Modificar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( VentanaModificacion::Modificar_Stock ), NULL, this );
 	
 }
 
-d_Facturas::d_Facturas( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+VentanaFacturas::VentanaFacturas( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -725,11 +756,11 @@ d_Facturas::d_Facturas( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 }
 
-d_Facturas::~d_Facturas()
+VentanaFacturas::~VentanaFacturas()
 {
 }
 
-d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+Ventana_DetalleFacts::Ventana_DetalleFacts( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -739,7 +770,7 @@ d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString&
 	listaDetalles = new wxListCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT );
 	bSizer40->Add( listaDetalles, 1, wxALL|wxEXPAND, 5 );
 	
-	botonDescargar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("D:\\IMPRIMIR\\Webp.net-resizeimage_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+	botonDescargar = new wxBitmapButton( this, wxID_ANY, wxBitmap( wxT("Imagenes/Webp.net-resizeimage_1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
 	bSizer40->Add( botonDescargar, 0, wxALL|wxALIGN_RIGHT, 5 );
 	
 	
@@ -749,17 +780,17 @@ d_DetalleVenta::d_DetalleVenta( wxWindow* parent, wxWindowID id, const wxString&
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	botonDescargar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_DetalleVenta::ClicDescargar ), NULL, this );
+	botonDescargar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Ventana_DetalleFacts::ClicDescargar ), NULL, this );
 }
 
-d_DetalleVenta::~d_DetalleVenta()
+Ventana_DetalleFacts::~Ventana_DetalleFacts()
 {
 	// Disconnect Events
-	botonDescargar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_DetalleVenta::ClicDescargar ), NULL, this );
+	botonDescargar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Ventana_DetalleFacts::ClicDescargar ), NULL, this );
 	
 }
 
-d_AgregarP::d_AgregarP( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+V_AgregarProd::V_AgregarProd( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
@@ -813,13 +844,6 @@ d_AgregarP::d_AgregarP( wxWindow* parent, wxWindowID id, const wxString& title, 
 	
 	
 	bSizer44->Add( bSizer49, 0, wxEXPAND, 5 );
-	
-	m_staticText31 = new wxStaticText( this, wxID_ANY, wxT("ID: "), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText31->Wrap( -1 );
-	bSizer44->Add( m_staticText31, 0, wxALL, 5 );
-	
-	barra_ID = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer44->Add( barra_ID, 0, wxALL, 5 );
 	
 	wxBoxSizer* bSizer45;
 	bSizer45 = new wxBoxSizer( wxHORIZONTAL );
@@ -883,12 +907,12 @@ d_AgregarP::d_AgregarP( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Centre( wxBOTH );
 	
 	// Connect Events
-	m_botonAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_AgregarP::ClicAceptarPNuevo ), NULL, this );
+	m_botonAceptar->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( V_AgregarProd::ClicAceptarPNuevo ), NULL, this );
 }
 
-d_AgregarP::~d_AgregarP()
+V_AgregarProd::~V_AgregarProd()
 {
 	// Disconnect Events
-	m_botonAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( d_AgregarP::ClicAceptarPNuevo ), NULL, this );
+	m_botonAceptar->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( V_AgregarProd::ClicAceptarPNuevo ), NULL, this );
 	
 }

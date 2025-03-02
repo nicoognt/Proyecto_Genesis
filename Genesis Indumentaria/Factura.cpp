@@ -17,7 +17,8 @@ vector<Producto> Factura::getProductos(){
 }
 void Factura::setTotal (float t) {total = t;}
 float Factura::getTotal ( ) {return total;}
-
+void Factura::setMetodoPago (string metodo) {metodo_pago=metodo;}
+string Factura::getMetodoPago ( ) {return metodo_pago;}
 void Factura::GuardarEnBin (ofstream& file) {
 	// Tener la longitud de la fecha para saber cuánto escribir
 	size_t longFecha = fecha_venta.size();
