@@ -21,18 +21,13 @@ void AgregarPr::ClicAceptarPNuevo( wxCommandEvent& event )  {
 	if (!reg.Matches(nombreIngresado)){
 		wxMessageBox("El nombre no puede contener números","Advertencia", wxOK | wxICON_ERROR);
 	}
-	int talleS = wxAtoi(barra_TS->GetValue()), talleM = wxAtoi(barra_TM->GetValue()), talleL = wxAtoi(barra_TL->GetValue()), id = rand()%99998+1;
+	int talleS = wxAtoi(barra_TS->GetValue()), talleM = wxAtoi(barra_TM->GetValue()), talleL = wxAtoi(barra_TL->GetValue());
 	float precio = wxAtof(barra_Precio->GetValue());
-	if (id >= 100000 || id < 1) {
-		wxMessageBox("Ingrese otro id","Error");
-	}
-	for(int i=0;i<genesis->CantidadProductos();i++){
-		Producto t = genesis->MostrarProducto(i);
-		if (t.Ver_id() == id){
-			wxMessageBox("Id coincidente con otro producto, prueba con otro","Advertencia");
-			return;
-		}
-	}
+	
+	do {
+	id = rand()%90000+10000;
+	} while (genesis->EsIgual(id));
+	
 	Producto a(nombreIngresado.ToStdString(),categoriaIngresada.ToStdString(),generoIngresado.ToStdString(),talleS,talleM,talleL,id,precio);
 	genesis->AgregarProducto(a);
 	EndModal(wxID_OK);

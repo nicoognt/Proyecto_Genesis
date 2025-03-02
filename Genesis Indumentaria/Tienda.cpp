@@ -32,6 +32,13 @@ Tienda::Tienda(string nom){
 	vector_filtros = vector_base;
 }
 
+bool Tienda:: EsIgual(int id){
+	for(size_t i=0;i<vector_base.size();i++) { 
+		if (id ==vector_base[i].Ver_id()){
+			return true;}
+	}
+	return false;
+}
 
 Producto Tienda::MostrarProducto(int i){
 	return vector_filtros[i];

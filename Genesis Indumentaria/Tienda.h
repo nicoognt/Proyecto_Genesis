@@ -29,6 +29,7 @@ public:
 	Producto MostrarProductoFiltro(int i);
 	Producto* MostrarConId(int id);
 	Producto* Mostrarptr(int i);
+	bool EsIgual(int id);
 	
 	/// Agregar un producto a la tienda y guardarlo en el .dat
 	void AgregarProducto(Producto A);
