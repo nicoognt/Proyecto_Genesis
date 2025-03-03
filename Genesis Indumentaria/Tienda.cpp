@@ -34,7 +34,7 @@ Tienda::Tienda(string nom){
 
 bool Tienda:: EsIgual(int id){
 	for(size_t i=0;i<vector_base.size();i++) { 
-		if (id ==vector_base[i].Ver_id()){
+		if (id == vector_base[i].Ver_id()){
 			return true;}
 	}
 	return false;

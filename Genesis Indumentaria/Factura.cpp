@@ -19,6 +19,7 @@ void Factura::setTotal (float t) {total = t;}
 float Factura::getTotal ( ) {return total;}
 void Factura::setMetodoPago (string metodo) {metodo_pago=metodo;}
 string Factura::getMetodoPago ( ) {return metodo_pago;}
+
 void Factura::GuardarEnBin (ofstream& file) {
 	// Tener la longitud de la fecha para saber cuánto escribir
 	size_t longFecha = fecha_venta.size();
@@ -47,10 +48,10 @@ void Factura::CargarDesdeBin (ifstream & file) {
 	}
 	
 	fecha_venta.resize(longFecha);
-	file.read(&fecha_venta[0],longFecha); cout << "fecha de la factura: " << fecha_venta << endl;
+	file.read(&fecha_venta[0],longFecha);
 	
 	size_t cantProductos;
-	file.read(reinterpret_cast<char*>(&cantProductos),sizeof(cantProductos)); cout << "cantidad de productos: " << cantProductos << endl;
+	file.read(reinterpret_cast<char*>(&cantProductos),sizeof(cantProductos));
 	productosComprados.resize(cantProductos);
 	for(size_t i=0;i<cantProductos;i++){
 		productosComprados[i].CargarDesdeBin(file);

@@ -24,9 +24,10 @@ void AgregarPr::ClicAceptarPNuevo( wxCommandEvent& event )  {
 	int talleS = wxAtoi(barra_TS->GetValue()), talleM = wxAtoi(barra_TM->GetValue()), talleL = wxAtoi(barra_TL->GetValue());
 	float precio = wxAtof(barra_Precio->GetValue());
 	
-	do {
-	id = rand()%90000+10000;
-	} while (genesis->EsIgual(id));
+	int id = rand()%90000+10000;
+	while(genesis->EsIgual(id)){
+		id = rand()%90000+10000;
+	}
 	
 	Producto a(nombreIngresado.ToStdString(),categoriaIngresada.ToStdString(),generoIngresado.ToStdString(),talleS,talleM,talleL,id,precio);
 	genesis->AgregarProducto(a);

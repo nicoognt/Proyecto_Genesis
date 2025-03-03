@@ -20,8 +20,6 @@
 using namespace std;
 
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
-	cout << "hola, soy ventanuli (:D) y tengo " << facturas.size() << " facturas que mostrar\n";
-	
 	filaSeleccionada=-1;
 	columnaSeleccionada=-1;
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
@@ -112,7 +110,7 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 		
 		if(aux.empty()){ // Si el vector está vacío, es porque el producto no se encontró
 			
-			wxMessageBox("No se encontró el producto en la tienda","Algo fue mal...",wxOK|wxICON_INFORMATION);
+			wxMessageBox("No se encontró el producto en la tienda","Algo anduvo mal...",wxOK|wxICON_INFORMATION);
 			
 		} else { // Si hay algo, se ordena alfabeticamente y se los muestra
 			
@@ -244,12 +242,10 @@ void m_ventanuli::Clic_VerFiltros( wxCommandEvent& event )  {
 }
 
 void m_ventanuli::clicVentas( wxCommandEvent& event )  {
-	if (facturas.empty()) cout << "no hay facturas por mostrar :p" << endl;
-	Lista_Facturas* dlg = new Lista_Facturas(this,&facturas);
-	if(dlg->ShowModal() == wxID_OK){
-		dlg->GuardarFac_Bin(&facturas,"facturas.dat");
-	}
+	Lista_Facturas* dlg = new Lista_Facturas(this,facturas);
+	dlg->ShowModal();
 	dlg->Destroy();
+	facturas.clear();
 
 }
 
