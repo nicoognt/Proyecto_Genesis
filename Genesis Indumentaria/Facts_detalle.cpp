@@ -4,6 +4,8 @@
 #include <wx/textfile.h>
 #include <wx/filedlg.h>
 #include <wx/msgdlg.h>
+#include <string>
+using namespace std;
 Facts_detalle::Facts_detalle (wxWindow * parent, vector<Producto> a, string fecha, string metodo) : Ventana_DetalleFacts(parent),productosVendidos(a),fecha_venta(fecha),metodo_DePago(metodo) {
 	SetLabel("Venta registrada (" + fecha_venta + ")");
 	listaDetalles->InsertColumn(0,"Productos vendidos:",wxLIST_FORMAT_CENTER,200);
@@ -13,14 +15,14 @@ Facts_detalle::Facts_detalle (wxWindow * parent, vector<Producto> a, string fech
 }
 
 void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
-	wxFileDialog saveFileDialog(this, _("Guardar factura como"), "", "","Archivos de texto (*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog archivo_guardar(this, _("Guardar factura como"), "", "","Archivos de texto (*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	
-	if (saveFileDialog.ShowModal() == wxID_CANCEL) {
+	if (archivo_guardar.ShowModal() == wxID_CANCEL) {
 		return; // El usuario canceló la operación
 	}
 	
 	// Ruta donde se guardó el archivo
-	wxString filePath = saveFileDialog.GetPath();
+	wxString filePath = archivo_guardar.GetPath();
 	
 	// Forzar la extensión .txt si no está presente
 	if (!filePath.EndsWith(".txt")) {
@@ -53,7 +55,8 @@ void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
 			file.AddLine(line);
 		}
 	}
-	file.AddLine("Metodo utilizado: " + metodo_DePago);
+	wxString linea_metodo; linea_metodo << "Metodo utilizado: "+metodo_DePago;
+	file.AddLine(linea_metodo);
 	file.Write();
 	file.Close();
 	

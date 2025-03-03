@@ -43,7 +43,7 @@ void Lista_Facturas::OnDobleClic (wxListEvent & event) {
 	indice = event.GetIndex();
 	if (indice != -1) {
 		vector<Producto> productosVendidos = facturas[indice].getProductos(); string fecha = facturas[indice].ObtenerFecha();
-		string metodo = facturas[indice].getMetodoPago();
+		string metodo = facturas[indice].getMetodoPago(); cout << metodo << endl;
 		Facts_detalle* dlg = new Facts_detalle(this,productosVendidos,fecha,metodo);
 		dlg->ShowModal();
 	}

@@ -37,6 +37,7 @@ void Factura::GuardarEnBin (ofstream& file) {
 	}
 	
 	file.write(reinterpret_cast<const char*>(&total),sizeof(total));
+	file.write(reinterpret_cast<const char*>(&metodo_pago),sizeof(metodo_pago));
 }
 
 void Factura::CargarDesdeBin (ifstream & file) {
@@ -58,4 +59,5 @@ void Factura::CargarDesdeBin (ifstream & file) {
 	}
 	
 	file.read(reinterpret_cast<char*>(&total),sizeof(total));
+	file.read(reinterpret_cast<char*>(&metodo_pago),sizeof(metodo_pago));
 }
