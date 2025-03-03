@@ -16,7 +16,7 @@ tab_use_spaces=0
 explorer_path=.
 inspection_improving_template=wxString|>printf "%ls",${EXP}.m_impl._M_data()
 inherits_from=
-current_source=Lista_Facturas.h
+current_source=Lista_Facturas.cpp
 path_char=\
 [source]
 path=Application.cpp
@@ -206,7 +206,7 @@ exec_script=
 env_vars=PATH+=;${MINGW_DIR}\wx3\bin
 wait_for_key=0
 temp_folder=debug.w32
-output_file=${TEMP_DIR}\MiProyecto.exe
+output_file=${TEMP_DIR}\Genesis.exe
 icon_file=
 manifest_file=manifest.xml
 compiling_extra=-Wno-unused-local-typedefs
@@ -238,8 +238,8 @@ exec_script=
 env_vars=PATH+=;${MINGW_DIR}\wx3\bin
 wait_for_key=0
 temp_folder=release.w32
-output_file=${TEMP_DIR}\MiProyecto.exe
-icon_file=
+output_file=${TEMP_DIR}\Genesis.exe
+icon_file=Imagenes\Logo genesis.ico
 manifest_file=manifest.xml
 compiling_extra=-Wno-unused-local-typedefs
 macros=
