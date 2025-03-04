@@ -19,7 +19,7 @@ void AgregarPr::ClicAceptarPNuevo( wxCommandEvent& event )  {
 	wxString generoIngresado = choice_Gen->GetStringSelection();
 	
 	if (!reg.Matches(nombreIngresado)){
-		wxMessageBox("El nombre no puede contener números","Advertencia", wxOK | wxICON_ERROR);
+		wxMessageBox("El nombre no puede contener números u otros caracteres","Advertencia", wxOK | wxICON_ERROR);
 	}
 	int talleS = wxAtoi(barra_TS->GetValue()), talleM = wxAtoi(barra_TM->GetValue()), talleL = wxAtoi(barra_TL->GetValue());
 	float precio = wxAtof(barra_Precio->GetValue());

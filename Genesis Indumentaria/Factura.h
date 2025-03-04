@@ -9,6 +9,7 @@ class Producto;
 
 class Factura {
 private:
+	// Datos relevantes de una factura de venta
 	float total;
 	string fecha_venta;
 	vector<Producto> productosComprados;

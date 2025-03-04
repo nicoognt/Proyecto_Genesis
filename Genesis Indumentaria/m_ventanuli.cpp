@@ -153,7 +153,7 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 }
 
 void m_ventanuli::m_recargar( wxCommandEvent& event )  {
-	genesis->ReestablecerFiltros();
+	genesis->ReestablecerListas();
 	RefrescarGrilla();
 }
 
@@ -182,12 +182,12 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 
 void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	
-	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
+	Producto pr = genesis->MostrarProducto(filaSeleccionada);
 	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
 	
 	V_Modificar* dlg = new V_Modificar(this,p_original);
 	if(dlg->ShowModal() == wxID_OK){
-		genesis->ReestablecerFiltros();
+		genesis->ReestablecerListas();
 		RefrescarGrilla();
 		genesis->ActualizarBinario();
 	}
@@ -201,14 +201,14 @@ void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
 		return;
 	}
 	
-	V_DetallesProd* dlg = new V_DetallesProd(this,genesis->MostrarProductoFiltro(filaSeleccionada));
+	V_DetallesProd* dlg = new V_DetallesProd(this,genesis->MostrarProducto(filaSeleccionada));
 	dlg->ShowModal();
 	dlg->Destroy();
 	
 }
 void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	
-	Producto pr = genesis->MostrarProductoFiltro(filaSeleccionada);
+	Producto pr = genesis->MostrarProducto(filaSeleccionada);
 	Producto* p_original = genesis->MostrarConId(pr.Ver_id());
 	
 	V_SumarCarrito* dlg = new V_SumarCarrito(this,car,p_original);
@@ -216,7 +216,7 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	dlg->ShowModal();
 	dlg->Destroy();
 	
-	genesis->ReestablecerFiltros();
+	genesis->ReestablecerListas();
 	RefrescarGrilla();
 }
 
@@ -226,7 +226,7 @@ void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	dlg->ShowModal();
 	dlg->Destroy();
 	
-	genesis->ReestablecerFiltros();
+	genesis->ReestablecerListas();
 	RefrescarGrilla();
 }
 
@@ -264,7 +264,7 @@ m_ventanuli::~m_ventanuli() {
 void m_ventanuli::ClicAgregarPNuevo( wxCommandEvent& event )  {
 	AgregarPr* dlg = new AgregarPr(this,genesis);
 	if (dlg->ShowModal() == wxID_OK){
-		genesis->ReestablecerFiltros();
+		genesis->ReestablecerListas();
 		genesis->OrdenarVector();
 		RefrescarGrilla();
 		genesis->ActualizarBinario();

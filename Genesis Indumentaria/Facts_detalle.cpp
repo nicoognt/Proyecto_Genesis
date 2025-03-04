@@ -19,10 +19,10 @@ void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
 	wxFileDialog archivo_guardar(this, _("Guardar factura como"), "", "","Archivos de texto (*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	
 	if (archivo_guardar.ShowModal() == wxID_CANCEL) {
-		return; // El usuario canceló la operación
+		return; // El usuario cancelo la operacion
 	}
 	
-	// Ruta donde se guardó el archivo
+	// Ruta donde se guardo el archivo
 	wxString filePath = archivo_guardar.GetPath();
 	
 	// Forzar la extensión .txt si no está presente
@@ -42,7 +42,7 @@ void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
 	file.AddLine("Factura de venta - " + fecha_venta);
 	file.AddLine("Productos vendidos:");
 	
-	// Para c/producto, analizo cuál talle es distinto de 0
+	// Para c/producto, analizo cual talle es distinto de 0
 	for (auto producto : productosVendidos) {
 		if (producto.VerTalleS() > 0) {
 			wxString line = wxString::Format("%s - Talle S (x%d) - $%.2f", producto.VerNombre(), producto.VerTalleS(), producto.VerTalleS() * producto.VerPrecio());

@@ -43,9 +43,6 @@ bool Tienda:: EsIgual(int id){
 Producto Tienda::MostrarProducto(int i){
 	return vector_filtros[i];
 }
-Producto Tienda::MostrarProductoFiltro(int i){
-	return vector_filtros[i];
-}
 Producto * Tienda::Mostrarptr(int i) {
 	return &vector_base[i];
 }
@@ -101,7 +98,7 @@ const vector<Producto> & Tienda::ObtenerFiltros ( ) {
 	return vector_filtros;
 }
 
-void Tienda::ReestablecerFiltros ( ) {
+void Tienda::ReestablecerListas ( ) {
 	vector_filtros = vector_base;
 }
 

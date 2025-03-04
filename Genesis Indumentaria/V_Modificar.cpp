@@ -15,6 +15,7 @@ V_Modificar::V_Modificar(wxWindow *parent,Producto *p) : VentanaModificacion(par
 void V_Modificar::Modificar_Stock( wxCommandEvent& event )  {
 	int NuevoS, NuevoM, NuevoL;
 	float NuevoP;
+	// Si alguna de las 3 barras tiene un numero negativo, aparece el mensaje de error
 	if(wxAtof(barra_NuevoS->GetValue())<0 || wxAtof(barra_NuevoM->GetValue())<0 || wxAtof(barra_NuevoL->GetValue())<0){
 		wxMessageBox("No se pueden ingresar números negativos","Error", wxOK | wxICON_ERROR);
 		return;

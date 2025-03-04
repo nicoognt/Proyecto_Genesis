@@ -5,23 +5,25 @@
 #include "Tienda.h"
 #include "CarritoDeCompras.h"
 #include "Factura.h"
-//dialogo = ventana de ver detalles
-//dialogo2 = ventana de ingresar al carrito
-//dialogo3 = ventana del carrito de compras
-//dialogo4 = ventana de modificar stock
-//dialogo5 = ventana de los filtros
-//dialogo6 = ventana de modificar el stock de un producto
-//dialogo7 = ventana de las facturas de venta
-//dialogo8 = ventana de los detalles de facturas
-//dialogo9 = ventana para agregar un producto a la tienda
+// V_DetallesProd = ventana de ver detalles
+// V_SumarCarrito = ventana de ingresar al carrito
+// V_Compras = ventana del carrito de compras
+// V_NuevaCant = ventana de modificar stock
+// V_Filtros = ventana de los filtros
+// V_Modificar = ventana de modificar el stock de un producto
+// Lista_Facturas = ventana de las facturas de venta
+// Facts_detalle = ventana de los detalles de facturas
+// AgregarPr = ventana para agregar un producto a la tienda
 class m_ventanuli : public ventanuli {
 	
 private:
-	
+	// Se guardan tanto la fila como la columna seleccionada al momento de interactuar sobre alguna celda
 	int filaSeleccionada;
 	int columnaSeleccionada;
+	// ¿Que necesita para funcionar? -> La tienda con los productos y un carrito en donde cargar los productos por vender
 	Tienda* genesis;
 	CarritoDeCompras* car;
+	// Al momento de vender, la ventana principal almacena las facturas generadas
 	vector<Factura> facturas;
 	
 protected:
@@ -50,13 +52,12 @@ public:
 	void SetPrecio(float p);
 	float GetPrecio();
 	
-	/// Compartir la lista de ventas
+	// Compartir la lista de ventas -> Usado en el carrito de compras, en el caso de vender los productos y generar una factura
 	vector<Factura>* PasarVector();
 	
-	/// Compartir el carrito de compras
+	// Compartir el carrito de compras
 	CarritoDeCompras* DevolverCarrito();
 	
-	// Propio de wxFrame
 	m_ventanuli(wxWindow *parent=NULL);
 	~m_ventanuli();
 	

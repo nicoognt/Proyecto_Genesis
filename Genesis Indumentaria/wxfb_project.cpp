@@ -444,7 +444,7 @@ Ventana_NuevaCant::Ventana_NuevaCant( wxWindow* parent, wxWindowID id, const wxS
 	bSizer22->Add( m_staticText13, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
 	m_NuevaCant = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer22->Add( m_NuevaCant, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer22->Add( m_NuevaCant, 0, wxALIGN_CENTER|wxALL, 5 );
 	
 	
 	bSizer20->Add( bSizer22, 1, wxEXPAND, 5 );

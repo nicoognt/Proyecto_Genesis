@@ -11,40 +11,43 @@ class Producto;
 
 class Tienda {
 private:
-	
-	/** Similar al ejemplo de la agenda: nombre del archivo para importar y exportar datos
-	*	así como el vector contenedor con lo que se va a laburar
-	**/
+	// Nombre del archivo donde se encuentran los datos
 	string file_name;
+	// Dos vectores: uno para conservar/modificar los datos; el otro se utiliza en la muestra de los productos
 	vector<Producto> vector_base; vector<Producto> vector_filtros;
 	
 	
 public:
 	
-	/// El constructor recibe un nombre para abrir el archivo donde se encuentren los datos
+	// El constructor recibe un nombre para abrir el archivo donde se encuentren los datos
 	Tienda(string nom="Productos_Genesis.dat");
 	
-	/// Retornar un elemento cuando se lo muestre en la interfaz
+	// Retornar un producto de la lista mostrada
 	Producto MostrarProducto(int i);
-	Producto MostrarProductoFiltro(int i);
+	// Devolver un producto de la lista base usando el id o un indice
 	Producto* MostrarConId(int id);
 	Producto* Mostrarptr(int i);
+	// Metodo utilizado en la creacion aleatoria de un id para un nuevo producto
 	bool EsIgual(int id);
 	
-	/// Agregar un producto a la tienda y guardarlo en el .dat
+	// Agregar un producto a la tienda
 	void AgregarProducto(Producto A);
+	// Buscar un producto en la tienda para sumarle el stock de otro (usado cuando se vacía el carrito de compras)
 	void RestaurarStock(Producto a);
-	
-	/// Cuántos productos hay en la tienda
+	// Cantidad de productos en la tienda
 	int CantidadProductos();
 	
-	/// Método para ordenar el vector
+	// Método para ordenar el vector
 	void OrdenarVector();
+	// Segun los valores recibidos, se usaran los criterios correspondientes para ordenar los vectores
 	void AplicarFiltros(const wxString& genero,const wxString& categoria, const wxString& orden, float precioMin, float precioMax=999999);
-	const vector<Producto>& ObtenerFiltros();
-	void ReestablecerFiltros();
 	
-	/// Actualización del archivo binario
+	// Obtener el vector de filtros para mostrarlo
+	const vector<Producto>& ObtenerFiltros();
+	// Metodo para igualar la lista base con la mostrada (en cuanto a orden)
+	void ReestablecerListas();
+	
+	// Actualizacion del binario en caso de agregar un producto nuevo
 	void ActualizarBinario();
 };
 

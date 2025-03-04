@@ -31,7 +31,7 @@ private:
 public:
 	
 	/** Se define el const. de esta forma para que existan
-	* métodos que exclusivamente importen o exporten desde
+	* métodos que exclusivamente guarden o carguen desde
 	* un archivo binario.
 	**/
 	Producto(string nom="",string cat="",string gen="",int tS=0,
