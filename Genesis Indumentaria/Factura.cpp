@@ -25,10 +25,9 @@ void Factura::GuardarEnBin (ofstream& file) {
 	// Tener la longitud de la fecha para saber cuánto escribir
 	size_t longFecha = fecha_venta.size();
 	file.write(reinterpret_cast<const char*>(&longFecha),sizeof(longFecha));
-	cout << "tamanio de la fecha guardado: " << longFecha << endl;
+	
 	// Se escribe la fecha con la longitud respectiva
 	file.write(fecha_venta.c_str(),longFecha);
-	cout << "fecha guardada: " << fecha_venta << endl;
 	
 	// Tener la cantidad de productos para saber cuántas veces iterar
 	size_t cantProductos = productosComprados.size();
@@ -37,18 +36,17 @@ void Factura::GuardarEnBin (ofstream& file) {
 		productosComprados[i].SubirEnBin(file);		// Se llama al método SubirEnBin de c/producto
 	}
 	
-	// Finalmente, se escribe el total de la venta y el metodo de pago utilizado
+	// Se escribe el total de la venta y el metodo de pago utilizado
 	file.write(reinterpret_cast<const char*>(&total),sizeof(total));
-	file.write(reinterpret_cast<const char*>(&metodo_pago),sizeof(metodo_pago));
+	
+	size_t longMetodo = metodo_pago.size();
+	file.write(reinterpret_cast<const char*>(&longMetodo),sizeof(longMetodo)); // Se guarda el largo del metodo por la misma razon que con la fecha
+	file.write(metodo_pago.c_str(),longMetodo);
 }
 
 void Factura::CargarDesdeBin (ifstream & file) {
 	size_t longFecha;
 	file.read(reinterpret_cast<char*>(&longFecha),sizeof(longFecha));
-	if (longFecha <= 0 || longFecha > 100){
-		cout << "error, tamanio de la fecha invalido\n";
-		return;
-	}
 	
 	fecha_venta.resize(longFecha);
 	file.read(&fecha_venta[0],longFecha);
@@ -61,5 +59,8 @@ void Factura::CargarDesdeBin (ifstream & file) {
 	}
 	
 	file.read(reinterpret_cast<char*>(&total),sizeof(total));
-	file.read(reinterpret_cast<char*>(&metodo_pago),sizeof(metodo_pago));
+	size_t longMetodo;
+	file.read(reinterpret_cast<char*>(&longMetodo),sizeof(longMetodo));
+	metodo_pago.resize(longMetodo);
+	file.read(&metodo_pago[0],longMetodo);
 }

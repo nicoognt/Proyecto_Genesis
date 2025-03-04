@@ -11,7 +11,7 @@
 
 ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 610,470 ), wxSize( 610,470 ) );
 	this->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_BTNHIGHLIGHT ) );
 	
 	wxBoxSizer* bSizer3;
@@ -63,10 +63,10 @@ ventanuli::ventanuli( wxWindow* parent, wxWindowID id, const wxString& title, co
 	Grilla_Productos->SetMargins( 0, 0 );
 	
 	// Columns
-	Grilla_Productos->SetColSize( 0, 198 );
+	Grilla_Productos->SetColSize( 0, 195 );
 	Grilla_Productos->SetColSize( 1, 120 );
-	Grilla_Productos->SetColSize( 2, 94 );
-	Grilla_Productos->SetColSize( 3, 92 );
+	Grilla_Productos->SetColSize( 2, 95 );
+	Grilla_Productos->SetColSize( 3, 70 );
 	Grilla_Productos->EnableDragColMove( false );
 	Grilla_Productos->EnableDragColSize( true );
 	Grilla_Productos->SetColLabelSize( 30 );
@@ -335,7 +335,7 @@ AddCarrito::~AddCarrito()
 VentanaCompras::VentanaCompras( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
-	this->SetBackgroundColour( wxColour( 194, 233, 245 ) );
+	this->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
 	
 	wxBoxSizer* bSizer16;
 	bSizer16 = new wxBoxSizer( wxVERTICAL );
@@ -376,12 +376,12 @@ VentanaCompras::VentanaCompras( wxWindow* parent, wxWindowID id, const wxString&
 	
 	m_Vender = new wxButton( this, wxID_ANY, wxT("Vender"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_Vender->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Arial") ) );
-	m_Vender->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_INFOBK ) );
+	m_Vender->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
 	
 	bSizer18->Add( m_Vender, 0, wxALL, 5 );
 	
 	m_Vaciar = new wxButton( this, wxID_ANY, wxT("Vaciar"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_Vaciar->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_INFOBK ) );
+	m_Vaciar->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOW ) );
 	
 	bSizer18->Add( m_Vaciar, 0, wxALL, 5 );
 	

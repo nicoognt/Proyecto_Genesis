@@ -20,9 +20,19 @@ void AgregarPr::ClicAceptarPNuevo( wxCommandEvent& event )  {
 	
 	if (!reg.Matches(nombreIngresado)){
 		wxMessageBox("El nombre no puede contener números u otros caracteres","Advertencia", wxOK | wxICON_ERROR);
+		return;
 	}
 	int talleS = wxAtoi(barra_TS->GetValue()), talleM = wxAtoi(barra_TM->GetValue()), talleL = wxAtoi(barra_TL->GetValue());
 	float precio = wxAtof(barra_Precio->GetValue());
+	
+	if (talleL<0 || talleM<0 || talleS<0){
+		wxMessageBox("El stock no puede contener números negativos","Error", wxOK | wxICON_ERROR);
+		return;
+	}
+	if (precio<=0){
+		wxMessageBox("Precio no válido. El precio no puede ser menor o igual a 0","Error",wxOK | wxICON_ERROR);
+		return;
+	}
 	
 	int id = rand()%90000+10000;
 	while(genesis->EsIgual(id)){

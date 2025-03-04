@@ -32,6 +32,8 @@ public:
 	
 	// Agregar un producto a la tienda
 	void AgregarProducto(Producto A);
+	// Se busca un producto por id y se lo elimina del vector base
+	void EliminarProducto(int id);
 	// Buscar un producto en la tienda para sumarle el stock de otro (usado cuando se vacía el carrito de compras)
 	void RestaurarStock(Producto a);
 	// Cantidad de productos en la tienda
@@ -61,7 +63,4 @@ bool orden_precioDes(Producto a1,Producto a2);
 bool archivoExiste(const string& n);
 
 #endif
-
-
-
 

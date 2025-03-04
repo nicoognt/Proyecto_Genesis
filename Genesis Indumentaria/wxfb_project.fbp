@@ -40,11 +40,11 @@
             <property name="font"></property>
             <property name="hidden">0</property>
             <property name="id">wxID_ANY</property>
-            <property name="maximum_size"></property>
-            <property name="minimum_size"></property>
+            <property name="maximum_size">610,470</property>
+            <property name="minimum_size">610,470</property>
             <property name="name">ventanuli</property>
             <property name="pos"></property>
-            <property name="size">606,477</property>
+            <property name="size">610,470</property>
             <property name="style">wxDEFAULT_FRAME_STYLE</property>
             <property name="subclass">; forward_declare</property>
             <property name="title">Lista de productos</property>
@@ -285,11 +285,11 @@
                                 </object>
                             </object>
                         </object>
-                        <object class="sizeritem" expanded="0">
+                        <object class="sizeritem" expanded="1">
                             <property name="border">5</property>
                             <property name="flag"></property>
                             <property name="proportion">0</property>
-                            <object class="wxBoxSizer" expanded="0">
+                            <object class="wxBoxSizer" expanded="1">
                                 <property name="minimum_size"></property>
                                 <property name="name">bSizer8</property>
                                 <property name="orient">wxHORIZONTAL</property>
@@ -581,7 +581,7 @@
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxBoxSizer" expanded="0">
+                    <object class="wxBoxSizer" expanded="1">
                         <property name="minimum_size"></property>
                         <property name="name">bSizer4</property>
                         <property name="orient">wxVERTICAL</property>
@@ -617,7 +617,7 @@
                                 <property name="col_label_values">&quot;Nombre&quot; &quot;Stock disp.&quot; &quot;Precio p/u&quot; &quot;ID&quot;</property>
                                 <property name="col_label_vert_alignment">wxALIGN_CENTRE</property>
                                 <property name="cols">4</property>
-                                <property name="column_sizes">198,120,94,92</property>
+                                <property name="column_sizes">195,120,95,70</property>
                                 <property name="context_help"></property>
                                 <property name="context_menu">1</property>
                                 <property name="default_pane">0</property>
@@ -2555,7 +2555,7 @@
                 </object>
             </object>
         </object>
-        <object class="Dialog" expanded="0">
+        <object class="Dialog" expanded="1">
             <property name="aui_managed">0</property>
             <property name="aui_manager_style">wxAUI_MGR_DEFAULT</property>
             <property name="bg"></property>
@@ -2573,7 +2573,7 @@
             <property name="minimum_size"></property>
             <property name="name">AddCarrito</property>
             <property name="pos"></property>
-            <property name="size">354,342</property>
+            <property name="size">354,320</property>
             <property name="style">wxDEFAULT_DIALOG_STYLE</property>
             <property name="subclass">; forward_declare</property>
             <property name="title">Agregar al carrito</property>
@@ -3331,7 +3331,7 @@
         <object class="Dialog" expanded="0">
             <property name="aui_managed">0</property>
             <property name="aui_manager_style">wxAUI_MGR_DEFAULT</property>
-            <property name="bg">194,233,245</property>
+            <property name="bg">wxSYS_COLOUR_WINDOW</property>
             <property name="center">wxBOTH</property>
             <property name="context_help"></property>
             <property name="context_menu">1</property>
@@ -3724,7 +3724,7 @@
                                         <property name="aui_position"></property>
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
-                                        <property name="bg">wxSYS_COLOUR_INFOBK</property>
+                                        <property name="bg">wxSYS_COLOUR_WINDOW</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>
@@ -3812,7 +3812,7 @@
                                         <property name="aui_position"></property>
                                         <property name="aui_row"></property>
                                         <property name="best_size"></property>
-                                        <property name="bg">wxSYS_COLOUR_INFOBK</property>
+                                        <property name="bg">wxSYS_COLOUR_WINDOW</property>
                                         <property name="caption"></property>
                                         <property name="caption_visible">1</property>
                                         <property name="center_pane">0</property>

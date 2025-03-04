@@ -24,7 +24,6 @@ Lista_Facturas::Lista_Facturas(wxWindow *parent,vector<Factura> f) : VentanaFact
 	listaVentas->Bind(wxEVT_LIST_ITEM_ACTIVATED, &Lista_Facturas::OnDobleClic, this);
 	
 	facturas.clear();
-	
 	if (!f.empty()) {
 		for (auto fact : f){
 			facturas.push_back(fact);
@@ -98,7 +97,7 @@ void Lista_Facturas::CargarFacturas (string file_n) {
 		return;  // No hay facturas para cargar
 	}
 	
-	int iteracion = 0;
+	int iteracion = 1;
 	
 	// Determinar el tamaño del archivo
 	file.seekg(0, ios::end); // Se busca el final para saber si el archivo esta vacio
@@ -108,7 +107,7 @@ void Lista_Facturas::CargarFacturas (string file_n) {
 	}
 	file.seekg(0, ios::beg); // Se vuelve al principio en caso de no estar vacio
 	
-	while (file.peek() != EOF && !file.eof()) {
+	while (file.peek() != EOF && !file.eof()) { // Mientras la siguiente lectura no sea el fin del archivo, se seguiran cargando facturas
 		cout << "Cargando factura Nro. " << iteracion << endl;
 		Factura fac;
 		fac.CargarDesdeBin(file);
@@ -118,10 +117,6 @@ void Lista_Facturas::CargarFacturas (string file_n) {
 		cout << "Fecha de la factura -> " << fac.ObtenerFecha() << endl;
 		cout << "Total de la factura -> " << fac.getTotal() << endl;
 		
-		// Verificar si aún quedan datos por leer
-		if (file.peek() == EOF) {
-			break;
-		}
 	}
 	
 	cout << "Total de facturas cargadas desde archivo: " << facturas.size() << endl;

@@ -22,6 +22,7 @@ using namespace std;
 m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	filaSeleccionada=-1;
 	columnaSeleccionada=-1;
+	
 	Grilla_Productos->Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &m_ventanuli::OnRightClick, this);
 	
 	car=new CarritoDeCompras();
@@ -30,7 +31,6 @@ m_ventanuli::m_ventanuli(wxWindow *parent) : ventanuli(parent) {
 	genesis->OrdenarVector();
 	
 	this->CreaGrilla();
-	
 }
 
 void m_ventanuli::CreaGrilla ( ) {
@@ -148,7 +148,7 @@ void m_ventanuli::m_buscar( wxCommandEvent& event ){
 			}
 		}
 	}else{
-		wxMessageBox("La barra de búsqueda está vacía","Advertencia",wxOK|wxICON_WARNING);
+		RefrescarGrilla();
 	}
 }
 
@@ -169,11 +169,13 @@ void m_ventanuli::OnRightClick (wxGridEvent & event) {
 		menuContextual.Append(1001, "Agregar al carrito");
 		menuContextual.Append(1002, "Ver detalles");
 		menuContextual.Append(1003, "Modificar stock");
+		menuContextual.Append(1004, "Eliminar producto");
 		
 		// Conectar eventos a los ítems del menú
 		Bind(wxEVT_MENU, &m_ventanuli::OnAgregar, this, 1001);
 		Bind(wxEVT_MENU, &m_ventanuli::OnVerDetalles, this, 1002);
 		Bind(wxEVT_MENU, &m_ventanuli::OnModificar, this, 1003);
+		Bind(wxEVT_MENU, &m_ventanuli::OnEliminar, this, 1004);
 		
 		// Mostrar el menú en la posición del cursor
 		PopupMenu(&menuContextual);
@@ -195,12 +197,6 @@ void m_ventanuli::OnModificar (wxCommandEvent & event) {
 	dlg->Destroy();
 }
 void m_ventanuli::OnVerDetalles (wxCommandEvent & event) {
-	
-	if(filaSeleccionada == -1 || columnaSeleccionada == -1) {
-		wxMessageBox("Por favor, seleccione una celda válida","Atención", wxOK | wxICON_INFORMATION);
-		return;
-	}
-	
 	V_DetallesProd* dlg = new V_DetallesProd(this,genesis->MostrarProducto(filaSeleccionada));
 	dlg->ShowModal();
 	dlg->Destroy();
@@ -219,7 +215,18 @@ void m_ventanuli::OnAgregar (wxCommandEvent & event) {
 	genesis->ReestablecerListas();
 	RefrescarGrilla();
 }
-
+void m_ventanuli::OnEliminar (wxCommandEvent & event) {
+	// Mensaje de confirmación
+	if(wxMessageBox("¿Está seguro de eliminar el producto?","Confirmación", wxYES_NO | wxICON_QUESTION) == wxYES){
+		Producto pr = genesis->MostrarProducto(filaSeleccionada);
+		genesis->EliminarProducto(pr.Ver_id()); // Se elimina del vector base
+		genesis->ReestablecerListas(); // Se reestablecen los dos vectores
+		RefrescarGrilla();
+		genesis->ActualizarBinario(); // Se actualiza el binario sin el producto
+	}
+	
+	
+}
 void m_ventanuli::Clic_VerCarro( wxCommandEvent& event )  {
 	V_Compras* dlg = new V_Compras(this,car,genesis,PasarVector());
 	
@@ -269,6 +276,5 @@ void m_ventanuli::ClicAgregarPNuevo( wxCommandEvent& event )  {
 		RefrescarGrilla();
 		genesis->ActualizarBinario();
 	}
-	event.Skip();
 }
 

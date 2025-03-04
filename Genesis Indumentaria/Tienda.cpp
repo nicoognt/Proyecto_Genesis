@@ -55,7 +55,13 @@ Producto * Tienda::MostrarConId (int id) {
 void Tienda::AgregarProducto(Producto A){
 	vector_base.push_back(A);
 }
-
+void Tienda::EliminarProducto (int id) {
+	for (size_t i = 0;i<vector_base.size();i++){
+		if(vector_base[i].Ver_id() == id){
+			vector_base.erase(vector_base.begin()+i);
+		}
+	}
+}
 void Tienda::RestaurarStock (Producto a) {
 	for(size_t i=0;i<vector_base.size();i++) { 
 		if(vector_base[i].Ver_id() == a.Ver_id()){
@@ -70,10 +76,10 @@ void Tienda::OrdenarVector ( ) {
 }
 
 void Tienda::AplicarFiltros (const wxString& genero,const wxString& categoria, const wxString& orden, float precioMin, float precioMax) {
-	/// Limpio el vector para actualizarlo
+	// Limpio el vector para actualizarlo
 	vector_filtros.erase(vector_filtros.begin(),vector_filtros.end());
 	
-	/// Aplico filtros para renovar el vector
+	// Aplico filtros para renovar el vector
 	for(auto& producto : vector_base){
 		if((genero == "Todos" || producto.VerGen() == genero) && (categoria == "Todas" || producto.VerCategoria() == categoria) && 
 			(producto.VerPrecio() >= precioMin && producto.VerPrecio() <= precioMax)){
@@ -81,7 +87,7 @@ void Tienda::AplicarFiltros (const wxString& genero,const wxString& categoria, c
 		}
 	}
 	
-	/// Veo qué formato de orden se seleccionó
+	// Veo qué formato de orden se seleccionó
 	if (orden == "Alfabético"){
 		sort(vector_base.begin(),vector_base.end(),orden_alfabetico);
 		sort(vector_filtros.begin(),vector_filtros.end(),orden_alfabetico);

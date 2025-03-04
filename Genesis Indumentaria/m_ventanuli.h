@@ -41,16 +41,13 @@ protected:
 	void OnVerDetalles( wxCommandEvent& event );
 	void OnAgregar( wxCommandEvent& event );
 	void OnModificar( wxCommandEvent& event );
+	void OnEliminar( wxCommandEvent& event );
 	
 public:
 	
 	/// Crear y refrescar la grilla
 	void CreaGrilla();
 	void RefrescarGrilla();
-	
-	/// Pasar/modificar el precio final del carrito 
-	void SetPrecio(float p);
-	float GetPrecio();
 	
 	// Compartir la lista de ventas -> Usado en el carrito de compras, en el caso de vender los productos y generar una factura
 	vector<Factura>* PasarVector();
