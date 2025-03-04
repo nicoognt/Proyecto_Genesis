@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include "Producto.h"
+#include <string>
 using namespace std;
 
 Factura::Factura(vector<Producto> items,string n) {

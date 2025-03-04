@@ -92,6 +92,7 @@ void Lista_Facturas::CargarFacturas (string file_n) {
 	
 	ifstream file(file_n, ios::binary);
 	if (!file.is_open()) {
+		file.close();
 		ofstream newFile(file_n, ios::binary);
 		newFile.close();
 		return;  // No hay facturas para cargar
@@ -100,28 +101,22 @@ void Lista_Facturas::CargarFacturas (string file_n) {
 	int iteracion = 0;
 	
 	// Determinar el tamaño del archivo
-	file.seekg(0, ios::end);
+	file.seekg(0, ios::end); // Se busca el final para saber si el archivo esta vacio
 	if (file.tellg() == 0) {
 		file.close();
 		return;
 	}
-	file.seekg(0, ios::beg);
+	file.seekg(0, ios::beg); // Se vuelve al principio en caso de no estar vacio
 	
 	while (file.peek() != EOF && !file.eof()) {
 		cout << "Cargando factura Nro. " << iteracion << endl;
 		Factura fac;
 		fac.CargarDesdeBin(file);
 		
-		string fecha = fac.ObtenerFecha();
-		if (!fecha.empty()) {
-			facturas.push_back(fac);
-			iteracion++;
-			cout << "Fecha de la factura -> " << fecha << endl;
-			cout << "Total de la factura -> " << fac.getTotal() << endl;
-		} else {
-			cout << "Error al cargar la factura, se omitirá" << endl;
-			break;
-		}
+		facturas.push_back(fac);
+		iteracion++;
+		cout << "Fecha de la factura -> " << fac.ObtenerFecha() << endl;
+		cout << "Total de la factura -> " << fac.getTotal() << endl;
 		
 		// Verificar si aún quedan datos por leer
 		if (file.peek() == EOF) {
