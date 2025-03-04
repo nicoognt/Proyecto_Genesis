@@ -20,7 +20,7 @@ class Producto {
 private:
 	
 	string nombre,categoria,genero;
-	/// Se guarda el stock particular de c/talle
+	// Se guarda el stock particular de c/talle
 	int talle_s;
 	int talle_m;
 	int talle_l;
@@ -37,13 +37,14 @@ public:
 	Producto(string nom="",string cat="",string gen="",int tS=0,
 			 int tM=0,int tL=0,int Id=0,float p=0);
 	
-	/// Métodos para modificar c/u de los stocks
+	// Métodos para modificar c/u de los stocks
 	void Modificar_S(int cantidad);
 	void Modificar_M(int cantidad);
 	void Modificar_L(int cantidad);
+	// Forma de modificar el precio
 	void ModificarPrecio(float nuevoPrecio);
 	
-	/// Métodos que devuelven todos los datos de un producto
+	// Métodos que devuelven todos los datos de un producto
 	string VerNombre();
 	string VerCategoria();
 	int VerTalleS();
@@ -53,13 +54,14 @@ public:
 	int Ver_id();
 	float VerPrecio();
 	
+	// Método que devuelve 1, 2 o 3 para saber qué talle se está agregando al carrito
 	int VerTalle();
-	/// Método para importar desde un archivo binario
+	// Método para importar desde un archivo binario
 	void CargarDesdeBin(ifstream& archivo);
-	/// Método para exportar a un archivo binario
+	// Método para exportar a un archivo binario
 	void SubirEnBin(ofstream& archivo);
 	
-	/// Sobrecargas útiles
+	// Sobrecargas útiles
 	Producto operator+(Producto a);
 	Producto operator-(Producto a);
 	

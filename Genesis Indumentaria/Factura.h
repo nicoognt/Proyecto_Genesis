@@ -9,14 +9,11 @@ class Producto;
 
 class Factura {
 private:
-	
 	float total;
 	string fecha_venta;
 	vector<Producto> productosComprados;
 	string metodo_pago;
-	
 public:
-	
 	Factura(vector<Producto> items={}, string n="");
 	// Obtener los datos de una factura
 	string ObtenerFecha();
@@ -30,8 +27,6 @@ public:
 	// Guardar uan factura en binario y cargarla
 	void GuardarEnBin(ofstream& file);
 	void CargarDesdeBin(ifstream& file);
-	// Escribir una factura
-	
 };
 
 #endif

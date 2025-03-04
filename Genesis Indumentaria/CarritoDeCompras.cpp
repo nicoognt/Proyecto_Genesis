@@ -25,16 +25,21 @@ void CarritoDeCompras::Eliminar (int id) {
 }
 
 Factura CarritoDeCompras::Vender ( ) {
+	// Obtengo la hora
 	auto now = chrono::system_clock::now();
+	// La paso a un formato en C
 	time_t now_time_t = chrono::system_clock::to_time_t(now);
+	// No me acuerdo xd
 	tm now_tm = *localtime(&now_time_t);
 	
+	// Creo un stringstream para hacer la fecha, un string con el formato de fecha y hora
 	stringstream ss;
 	ss << put_time(&now_tm, "%d/%m/%Y, %H:%M:%S");
 	float total = CalcularTotal();
 	Factura a(compras,ss.str());
 	a.setTotal(total);
 	compras.clear();
+	// Retorno la fecha
 	return a;
 }
 

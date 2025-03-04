@@ -7,10 +7,11 @@
 #include <string>
 using namespace std;
 Facts_detalle::Facts_detalle (wxWindow * parent, vector<Producto> a, string fecha, string metodo) : Ventana_DetalleFacts(parent),productosVendidos(a),fecha_venta(fecha),metodo_DePago(metodo) {
+	// Seteo el título de la ventana con la fecha de la factura
 	SetLabel("Venta registrada (" + fecha_venta + ")");
 	listaDetalles->InsertColumn(0,"Productos vendidos:",wxLIST_FORMAT_CENTER,200);
 	listaDetalles->InsertColumn(1,"Precio total:",wxLIST_FORMAT_CENTER,120);
-	
+	// Cargo los productos de la factura
 	CargarProductos();
 }
 
@@ -41,6 +42,7 @@ void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
 	file.AddLine("Factura de venta - " + fecha_venta);
 	file.AddLine("Productos vendidos:");
 	
+	// Para c/producto, analizo cuál talle es distinto de 0
 	for (auto producto : productosVendidos) {
 		if (producto.VerTalleS() > 0) {
 			wxString line = wxString::Format("%s - Talle S (x%d) - $%.2f", producto.VerNombre(), producto.VerTalleS(), producto.VerTalleS() * producto.VerPrecio());
@@ -55,8 +57,10 @@ void Facts_detalle::ClicDescargar( wxCommandEvent& event )  {
 			file.AddLine(line);
 		}
 	}
+	// Aniado el metodo de pago
 	wxString linea_metodo; linea_metodo << "Metodo utilizado: "+metodo_DePago;
 	file.AddLine(linea_metodo);
+	// Escribo en el archivo y lo cierro
 	file.Write();
 	file.Close();
 	
